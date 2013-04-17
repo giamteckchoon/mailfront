@@ -59,3 +59,4 @@ socket.lib
 testcvm
 testcvm.o
 timeout.o
+ucspitls.o

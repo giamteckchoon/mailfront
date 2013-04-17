@@ -62,10 +62,10 @@ docs:
 getprotoenv.o: compile getprotoenv.c mailfront.h responses.h constants.h
 	./compile getprotoenv.c
 
-imapfront-auth: imapfront-auth.o load timeout.o socket.lib
-	./load imapfront-auth timeout.o -lcvm-sasl -lcvm-v2client -lbg `cat socket.lib`
+imapfront-auth: imapfront-auth.o ucspitls.o load timeout.o socket.lib
+	./load imapfront-auth ucspitls.o timeout.o -lcvm-sasl -lcvm-v2client -lbg `cat socket.lib`
 
-imapfront-auth.o: compile imapfront-auth.c
+imapfront-auth.o: compile imapfront-auth.c ucspitls.h
 	./compile imapfront-auth.c
 
 install: INSTHIER conf-bin conf-modules conf-include
@@ -163,10 +163,10 @@ pop3-response.o: compile pop3-response.c pop3.h constants.h
 pop3.a: makelib iobytes.o timeout.o pop3-capa.o pop3-mainloop.o pop3-response.o
 	./makelib pop3.a iobytes.o timeout.o pop3-capa.o pop3-mainloop.o pop3-response.o
 
-pop3front-auth: pop3front-auth.o load pop3.a socket.lib
-	./load pop3front-auth pop3.a -lcvm-sasl -lcvm-v2client -lbg `cat socket.lib`
+pop3front-auth: pop3front-auth.o load ucspitls.o pop3.a socket.lib
+	./load pop3front-auth ucspitls.o pop3.a -lcvm-sasl -lcvm-v2client -lbg `cat socket.lib`
 
-pop3front-auth.o: compile pop3front-auth.c pop3.h constants.h
+pop3front-auth.o: compile pop3front-auth.c pop3.h ucspitls.h constants.h
 	./compile pop3front-auth.c
 
 pop3front-maildir: pop3front-maildir.o load pop3.a
@@ -174,6 +174,9 @@ pop3front-maildir: pop3front-maildir.o load pop3.a
 
 pop3front-maildir.o: compile pop3front-maildir.c pop3.h constants.h
 	./compile pop3front-maildir.c
+
+ucspitls.o: compile ucspitls.c
+	./compile ucspitls.c
 
 programs: mailfront imapfront-auth pop3front-maildir pop3front-auth testcvm qmqpfront-echo smtpfront-echo qmtpfront-qmail qmtpfront-echo qmqpfront-qmail smtpfront-qmail
 
