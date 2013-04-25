@@ -32,6 +32,7 @@
 #include <cvm/v2client.h>
 #include <iobuf/iobuf.h>
 #include <str/str.h>
+#include "ucspitls.h"
 
 const char program[] = "imapfront-auth";
 const int msg_show_pid = 1;
@@ -59,6 +60,9 @@ static int auth_count;
 static int auth_max;
 
 static struct sasl_auth saslauth = { .prefix = "+ " };
+
+static int tls_available = 0;
+static int auth_available = 1;
 
 void log_start(const char* tagstr)
 {
@@ -233,6 +237,10 @@ void cmd_capability(void)
 
   respond_start(NOTAG);
   respond_str("CAPABILITY IMAP4rev1");
+  if (tls_available)
+    respond_str(" STARTTLS");
+  if (!auth_available)
+    respond_str(" LOGINDISABLED");
   if (*capability != 0) {
     respond_str(" ");
     respond_str(capability);
@@ -303,7 +311,9 @@ void do_exec(void)
 void cmd_login(int argc, str* argv)
 {
   int cr;
-  if (argc != 2)
+  if (!auth_available)
+    respond(0,"BAD LOGIN command disabled without SSL/TLS");
+  else if (argc != 2)
     respond(0, "BAD LOGIN command requires exactly two arguments");
   else {
     if ((cr = cvm_authenticate_password(cvm, argv[0].s, domain,
@@ -339,6 +349,22 @@ void cmd_authenticate(int argc, str* argv)
       exit(0);
 }
 
+void cmd_starttls(void)
+{
+  if (!tls_available) {
+    respond(0, "BAD STARTTLS not availale");
+    return;
+  }
+
+  respond(0,"OK starting TLS negotiation");
+  if (!ucspitls())
+    exit(1);
+
+  /* FIX - Reset state? */
+  tls_available = 0;
+  auth_available = 1;
+}
+
 struct command
 {
   const char* name;
@@ -352,6 +378,7 @@ struct command commands[] = {
   { "LOGOUT",      cmd_logout,     0 },
   { "LOGIN",       0, cmd_login },
   { "AUTHENTICATE", 0, cmd_authenticate },
+  { "STARTTLS"   , cmd_starttls,   0 },
   { 0, 0, 0 }
 };
 
@@ -414,6 +441,10 @@ extern void set_timeout(void);
 
 int main(int argc, char* argv[])
 {
+  if (getenv("UCSPITLS"))
+    tls_available = 1;
+  if (getenv("AUTH_REQUIRES_TLS"))
+    auth_available = 0;
   set_timeout();
   if (!startup(argc, argv)) return 0;
   respond(NOTAG, "OK imapfront ready.");
