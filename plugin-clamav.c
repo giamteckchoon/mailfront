@@ -14,6 +14,8 @@ static RESPONSE(no_hostname,451,"4.3.0 Could not resolve virus scanner hostname"
 static RESPONSE(no_scan,451,"4.3.0 Could not virus scan message");
 static response resp_virus = { 554, 0 };
 
+static unsigned long failsafe;
+
 #define MAX_IPS 16
 #define MAX_CHUNK_SIZE 0xffffffffUL
 
@@ -41,6 +43,12 @@ static int copystream(int fd, size_t size, obuf* out)
   return obuf_write(out, (char*)prefix, 4);
 }
 
+static const response *warn_sys(const char *s1)
+{
+  warn2sys("clamav skipped: ", s1);
+  return failsafe ? 0 : &resp_internal;
+}
+
 static const response* message_end(int fd)
 {
   const char* hostname;
@@ -60,12 +68,15 @@ static const response* message_end(int fd)
   ibuf netin;
   obuf netout;
   struct stat st;
+
+  if ((tmp = getenv("CLAMAV_FAILSAFE")) && *tmp)
+    failsafe = strtoul(tmp, 0, 10);
   
   if ((hostname = session_getenv("CLAMAV_HOST")) != 0
       || (hostname = session_getenv("CLAMD_HOST")) != 0) {
 
     if (fstat(fd, &st) != 0)
-      return &resp_internal;
+      return warn_sys("fstat(fd, &st) != 0");
     /* For simplicity, this plugin just sends a single chunk, but each
      * chunk is limited to 2^32 bytes by the protocol. */
     if (st.st_size > 0xffffffffLL) {
@@ -99,15 +110,19 @@ static const response* message_end(int fd)
 	|| (send_timeout = strtoul(tmp, (char**)&tmp, 10)) == 0
 	|| *tmp != 0)
       send_timeout = timeout;
-    if ((ip_count = resolve_ipv4name_n(hostname, ips, MAX_IPS)) <= 0)
-      return &resp_no_hostname;
+    if ((ip_count = resolve_ipv4name_n(hostname, ips, MAX_IPS)) <= 0) {
+      if (failsafe > 0)
+        return warn_sys("Could not resolve virus scanner hostname");
+      else
+        return &resp_no_hostname;
+    }
 
     gettimeofday(&tv, 0);
     offset = (tv.tv_sec ^ tv.tv_usec) % ip_count;
     for (i = 0; i < ip_count; ++i) {
       const ipv4addr* addr = &ips[(i + offset) % ip_count];
       if (lseek(fd, 0, SEEK_SET) != 0)
-	return &resp_internal;
+	return warn_sys("lseek(fd, 0, SEEK_SET) != 0");
       if ((sock = try_connect(addr, cmdport, connect_timeout)) < 0)
 	continue;
 
@@ -141,7 +156,10 @@ static const response* message_end(int fd)
 	close(sock);
     }
   }
-  return &resp_no_scan;
+  if (failsafe > 0)
+    return warn_sys("Could not virus scan message");
+  else
+    return &resp_no_scan;
 }
 
 struct plugin plugin = {
