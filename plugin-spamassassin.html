@@ -21,6 +21,12 @@ files.</p>
 
 <dl>
 
+<dt><tt>$SPAMD_FAILSAFE</tt></dt>
+<dd>The default behaviour of the plugin is to defer any SMTP delivery if the
+SpamAssassin scanner is not available, at the risk of emails being finally rejected if
+the problem is not fixed. To let any mail pass in such a case set this variable
+to a numerical value greater than 0.</dd>
+
 <dt><tt>$SPAMD_CONNECT_TIMEOUT</tt></dt> <dd>The maximum amount of time
 to wait for a response when connecting to a SpamAssassin scanner, in
 milliseconds. (defaults to $SPAMD_TIMEOUT below)</dd>
