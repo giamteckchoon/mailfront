@@ -47,6 +47,7 @@ static unsigned long maxsize;
 static const char* user;
 static int reject_spam;
 static int isspam;
+static unsigned long failsafe;
 
 static int copyit(ibuf* netin, int fdout)
 {
@@ -112,6 +113,12 @@ static int scanit(int fd, int fdout, int sock,
   return 0;
 }
 
+static const response *warn_sys(const char *s1)
+{
+  warn2sys("SpamAssassin scanning skipped: ", s1);
+  return failsafe ? 0 : &resp_internal;
+}
+
 static const response* message_end(int fd)
 {
   const char* hostname;
@@ -127,6 +134,9 @@ static const response* message_end(int fd)
   struct stat st;
   int fdout;
 
+  if ((tmp = getenv("SPAMD_FAILSAFE")) && *tmp)
+    failsafe = strtoul(tmp, 0, 10);
+
   hostname = 0;
   if ((path = session_getenv("SPAMD_PATH")) != 0
       || (hostname = session_getenv("SPAMD_HOST")) != 0) {
@@ -135,7 +145,7 @@ static const response* message_end(int fd)
 	&& (maxsize = strtoul(tmp, (char**)&tmp, 10)) != 0
 	&& *tmp == 0) {
       if (fstat(fd, &st) != 0)
-	return &resp_internal;
+	return warn_sys("fstat(fd, &st) != 0");
       if (st.st_size > (ssize_t)maxsize){
 	warn1("SpamAssassin scanning skipped: message larger than maximum");
 	return 0;
@@ -167,15 +177,19 @@ static const response* message_end(int fd)
     else
       reject_spam = 0;
     isspam = 0;
-    if ((ip_count = resolve_ipv4name_n(hostname, ips, MAX_IPS)) <= 0)
-      return &resp_no_hostname;
+    if ((ip_count = resolve_ipv4name_n(hostname, ips, MAX_IPS)) <= 0) {
+      if (failsafe > 0)
+        return warn_sys("Could not resolve SpamAssassin hostname");
+      else
+        return &resp_no_hostname;
+    }
 
     if ((fdout = scratchfile()) == -1)
-      return &resp_internal;
+      return warn_sys("(fdout = scratchfile()) == -1");
 
     if (path != 0) {
       if (lseek(fd, 0, SEEK_SET) != 0)
-	return &resp_internal;
+	return warn_sys("lseek(fd, 0, SEEK_SET) != 0");
       if ((sock = try_connect_unix(path, connect_timeout)) >= 0)
 	if (scanit(fd, fdout, sock, &st)) {
 	  return (reject_spam && isspam)
@@ -189,7 +203,7 @@ static const response* message_end(int fd)
       for (i = 0; i < ip_count; ++i) {
 	const ipv4addr* addr = &ips[(i + offset) % ip_count];
 	if (lseek(fd, 0, SEEK_SET) != 0)
-	  return &resp_internal;
+	  return warn_sys("lseek(fd, 0, SEEK_SET) != 0");
 	if ((sock = try_connect(addr, port, connect_timeout)) < 0)
 	  continue;
 	if (scanit(fd, fdout, sock, &st)) {
@@ -200,7 +214,10 @@ static const response* message_end(int fd)
       }
     }
   }
-  return &resp_no_scan;
+  if (failsafe > 0)
+    return warn_sys("Could not SpamAssassin scan message");
+  else
+    return &resp_no_scan;
 }
 
 struct plugin plugin = {
