@@ -30,6 +30,7 @@
 #include <str/iter.h>
 #include <str/str.h>
 #include <cvm/sasl.h>
+#include "ucspitls.h"
 #include "pop3.h"
 
 const char program[] = "pop3front-auth";
@@ -48,6 +49,9 @@ static unsigned auth_max;
 
 static struct sasl_auth saslauth = { .prefix = "+ " };
 
+static int tls_available = 0;
+static int auth_available = 1;
+
 static void do_exec(void)
 {
   if (!cvm_setugid() || !cvm_setenv())
@@ -58,6 +62,23 @@ static void do_exec(void)
     respond("-ERR Could not execute second stage");
   }
   _exit(1);
+}
+
+static void cmd_stls(void)
+{
+  if (!tls_available) {
+    respond("-ERR STLS not available");
+    return;
+  }
+
+  respond("+OK starting TLS negotiation");
+  if (!ucspitls())
+    exit(1);
+
+  tls_available = 0;
+  auth_available = 1;
+  /* reset state */
+  str_truncate(&user, 0);
 }
 
 static void cmd_auth_none(void)
@@ -108,7 +129,9 @@ static void cmd_user(const str* s)
     respond("-ERR Too many USER commands issued");
     exit(0);
   }
-  if (!str_copy(&user, s))
+  if (!auth_available)
+    respond("-ERR Authentication not allowed without SSL/TLS");
+  else if (!str_copy(&user, s))
     respond(err_internal);
   else
     respond(ok);
@@ -145,6 +168,7 @@ command commands[] = {
   { "PASS", 0,             cmd_pass, "PASS XXXXXXXX" },
   { "QUIT", cmd_quit,      0,        0 },
   { "USER", 0,             cmd_user, 0 },
+  { "STLS", cmd_stls ,0,        0 },
   { 0,      0,             0,        0 }
 };
 
@@ -162,6 +186,10 @@ int startup(int argc, char* argv[])
     obuf_putsflush(&errbuf, usage);
     return 0;
   }
+  if (getenv("UCSPITLS"))
+    tls_available = 1;
+  if (getenv("AUTH_REQUIRES_TLS"))
+    auth_available = 0;
   cvm = argv[1];
   nextcmd = argv+2;
   if (!sasl_auth_init(&saslauth)) {

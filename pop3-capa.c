@@ -26,12 +26,14 @@
 #include <iobuf/obuf.h>
 #include <str/str.h>
 #include <cvm/sasl.h>
+#include "ucspitls.h"
 #include "pop3.h"
 
 static const char caps[] =
   "PIPELINING\r\n"
   "TOP\r\n"
   "UIDL\r\n"
+  "STLS\r\n"
   "USER\r\n";
 
 static str auth_resp;
