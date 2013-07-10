@@ -111,7 +111,7 @@ static const response* init(void)
   int is_ipv6;
 
   linkproto = getprotoenv(0);
-  is_ipv6 = linkproto != 0 && strcasecmp(linkproto, "TCP6") == 0;
+  is_ipv6 = linkproto != 0 && (strcasecmp(linkproto, "TCP6") == 0 || strcasecmp(linkproto, "SSL6") == 0);
   if (!str_copyip(&local_ip, getprotoenv("LOCALIP"), is_ipv6)) return &resp_oom;
   if (!str_copyip(&remote_ip, getprotoenv("REMOTEIP"), is_ipv6)) return &resp_oom;
   local_host = getprotoenv("LOCALHOST");
