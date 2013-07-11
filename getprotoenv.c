@@ -18,5 +18,19 @@ const char* getprotoenv(const char* name)
   if ((env = getenv(fullname.s)) != 0
       && env[0] == 0)
     env = 0;
+  if (env == 0) {
+    str_init(&fullname);
+    if (!str_copy2s(&fullname, "TCP", name)) die_oom(111);
+    if ((env = getenv(fullname.s)) != 0
+        && env[0] == 0)
+      env = 0;
+  }
+  if (env == 0) {
+    str_init(&fullname);
+    if (!str_copy2s(&fullname, "SSL", name)) die_oom(111);
+    if ((env = getenv(fullname.s)) != 0
+        && env[0] == 0)
+      env = 0;
+  }
   return env;
 }
