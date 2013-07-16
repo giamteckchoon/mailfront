@@ -1,0 +1,53 @@
+- Fix SASL "Authentication failed" message to include EMSS code
+
+- Write install document.
+
+- Build up TLS support.
+
+- Tests:
+  - Test application of environment variables in mail rules
+
+- Add hooks for plugins to load or (temporarily) disable the operation
+  of other plugins?
+
+New plugin: starttls
+
+  - Add support for RFC 2487 STARTTLS as a plugin
+
+Plugin: clamav
+
+  - Add tests (not sure how to emulate the daemon properly)
+
+Plugin: lua
+
+  - Fix hooks that can modify strings to actually allow modification
+
+Plugin: patterns
+
+  - Add better MIME attachment discrimination to patterns, instead of
+    just keying on a blank line.
+
+Plugin: mailrules
+
+  - Add variable substitution to rule variable setting (ie x=${y} etc)
+
+  - Allow selecting based on authentication state.
+
+Protocol: SMTP
+
+  - Build a shared routine for breaking out the domain name.
+
+  - Add RFC 2034/3463 enhanced status codes to all responses.
+
+  - Add some information about authentication into the headers (?)
+
+  - Handle $LOCALIPHOST (all back-ends): rewrite envelope recipient
+    addresses of the form box@[a.b.c.d], where a.b.c.d is a local IP
+    address, to box@$LOCALIPHOST. (low priority)
+
+- pop3front:
+
+  - Properly re-parse flags in cmd_quit
+
+  - Split the generic protocol handling bits from pop3front-maildir (low
+    priority -- who wants anything but maildir?)

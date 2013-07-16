@@ -1,0 +1,98 @@
+<html>
+<body>
+
+<h2><a href="mailfront.html">MailFront</a></h2>
+<h2><a href="smtpfront.html">SMTP Front Ends</a></h2>
+
+<h1>Plugin: patterns</h1>
+
+<hr />
+
+<p>This module provides an ability for rejecting messages based on
+simple patterns in their content.<p>
+
+<h2>Configuration</h2>
+
+<dl>
+
+<dt><tt>$PATTERNS</tt></dt> <dd>If set, the named file is loaded and
+parsed (see below), and pattern matching is enabled.</dd>
+
+<dt><tt>$PATTERNS_LINEMAX</tt></dt> <dd>Line buffer size (defaults to
+256)</dd>
+
+<dt><tt>$PATTERNS_RESP</tt></dt> <dd>Response message to give when a
+pattern is matched (defaults to "<tt>This message contains
+prohibited content</tt>")</dd>
+
+</dl>
+
+<h2>Sender Action</h2>
+
+<p>None</p>
+
+<h2>Recipient Action</h2>
+
+<p>None</p>
+
+<h2>Data Action</h2>
+
+<p>Each line of the data sent from the client is loaded into a line
+buffer (with a maximum size as above) and then scanned against the
+patterns listed in the configuration file.  If any pattern matches, the
+message is rejected.</p>
+
+<h2>Message Action</h2>
+
+<p>None</p>
+
+<h2>Patterns File Format</h2>
+
+<p>The patterns file contains a list of standard glob-style patterns.
+Each line of the file starts with a control character, which is
+<i>not</i> part of the pattern itself:</p>
+
+<dl>
+
+<dt><tt>#</tt></dt> <dd>Comment line, ignored.</dd>
+
+<dt><tt>=</tt></dt> <dd>Sets the response text given when a message is
+rejected.  All following patterns use this response until the next
+response line.  Including this in the patterns file overrides the value
+of <tt>$PATTERNS_RESP</tt>.</dd>
+
+<dt><tt>:</tt></dt> <dd>The pattern will be applied only in the
+header.</dd>
+
+<dt><tt>\</tt></dt> <dd>The pattern will be applied only after a blank
+line.</dd>
+
+<dt>Anything else</dt> <dd>A normal pattern, applied to any non-blank
+line.</dd>
+
+</dl>
+
+<p>The following patterns list is a much simplified version of Russell
+Nelson's <a
+href="http://qmail.org/qmail-smtpd-viruscan-1.1.patch">qmail-smtpd virus
+scan patch</a>.  In particular, it doesn't actually do any kind of
+checking if the blank line really marked a MIME boundary or not.</p>
+
+<pre>
+=We don't accept email with executable content (#5.3.4)
+\TVqQAAMAA*
+\TVpQAAIAA*
+\TVpAALQAc*
+\TVpyAXkAX*
+\TVrmAU4AA*
+\TVrhARwAk*
+\TVoFAQUAA*
+\TVoAAAQAA*
+\TVoIARMAA*
+\TVouARsAA*
+\TVrQAT8AA*
+\TVoAAAEAAA*
+</pre>
+
+</body>
+</html>

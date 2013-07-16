@@ -1,0 +1,59 @@
+<html>
+<body>
+
+<h2><a href="mailfront.html">mailfront</a></h2>
+
+<h1>Plugin: cvm-authenticate</h1>
+
+<hr />
+
+<p>This plugin uses a <a
+href="http://untroubled.org/cvm/cvm.html">CVM</a> to validate recipient
+addresses.</p>
+
+<h2>Configuration</h2>
+
+<p>This module is configured by
+  the <a href="http://untroubled.org/cvm/sasl.html">CVM SASL</a>
+  library.</p>
+
+<p>Additionally, it recognizes the following environment variable:</p>
+
+<dl>
+
+<dt><tt>$AUTH_REQUIRES_TLS</tt></dt>
+
+<dd>Only offer authentication when the client is using an encrypted
+connection, to avoid sending a password over an insecure connection.
+This checks that TLS has been negotiated by
+the <a href="plugin-starttls-ucspi.html">starttls-ucspi plugin</a>.</dd>
+
+</dl>
+
+<h2>Commands</h2>
+
+<dl>
+
+<dt><tt>AUTH</tt></dt> <dd>Implements the SMTP service extension for
+authentication, as specified by RFC 2554.</dd>
+
+</dl>
+
+<h2>Sender Action</h2>
+
+<p>None</p>
+
+<h2>Recipient Action</h2>
+
+<p>None</p>
+
+<h2>Data Action</h2>
+
+<p>None</p>
+
+<h2>Message Action</h2>
+
+<p>None</p>
+
+</body>
+</html>
