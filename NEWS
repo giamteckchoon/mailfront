@@ -1,0 +1,595 @@
+-------------------------------------------------------------------------------
+Changes in version 2.00
+
+- This version updates the plugin API to add new features:
+
+  - Capabilities reported by the SMTP EHLO response can be added by
+    plugins.
+
+  - Plugins are passed any SMTP parameters given with the sender and
+    recipient commands.
+
+  - Plugins can add new commands to the SMTP protocol.
+
+  Plugins compiled for previous versions of mailfront will not work
+  without recompiling.  The short-circuit on accept logic has also been
+  eliminated to fix a semantic issue.
+
+- SMTP AUTH support has been moved into a new plugin, cvm-authenticate.
+  Existing installations relying on SMTP AUTH support will need to make
+  sure they are using this new plugin.  The smtpfront-qmail wrapper
+  has been modified to provide this additional plugin.
+
+- Fixed plugin-add-received to add the "IPv6:" prefix in the Received:
+  header when the protocol is TCP6.
+
+- Added plugin starttls-ucspi to implement STARTTLS using ucspi-tls.
+
+- SMTP AUTH can now be restricted to TLS-enabled sessions.
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 1.21
+
+- Added controls for pop3front-auth to limit the number of USER commands
+  and authentication failures allowed per session.
+
+- Added control to imapfront-auth to limit the number of authentication
+  failures allowed per session.
+
+- Modified the clamav plugin to use the newer INSTREAM protocol.
+
+- imapfront-auth now sets $DOVECONF_ENV in Dovecot mode in order to
+  avoid having Dovecot imapd reset it through doveconf.
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 1.20
+
+- Added Lua scripting plugin (optional, build with 'make lua').
+
+- Modified the qmail backend to evaluate $QMAILQUEUE as late as possible.
+  This allows more options for changing $QMAILQUEUE in plugins.
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 1.18
+
+- Added support for running Dovecot IMAP from imapfront-auth.
+  See imapfront.html for details on how to set this up.
+
+- Moved more trivial plugins into builtins.
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 1.17
+
+- Added support for rejecting whole messages when the recipient count is
+  exceeded in plugin-counters.
+
+- Made the check-fqdn plugin explicitly reject empty recipients.
+
+- Added a sender domain restriction to the check-fqdn plugin.
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 1.16
+
+- Added missing plugin-spamassassin.so to installation.
+
+- Fix bug in handling invalid message numbers in retrieving messages in
+  pop3front-maildir.
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 1.15
+
+- Added a SpamAssassin scanning plugin.
+
+- Optimized pop3front-maildir to avoid stat'ing each message twice, and
+  to use sizes recorded in the filename to avoid stat'ing entirely.
+  See pop3front.html for details on the filenames.
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 1.12
+
+- Fixed problem with overwriting existing session data items.
+
+- Fixed several problems with handling of databytes in rules.
+
+- Fixed crash in plugin cvm-validate when the lookup secret was unset.
+
+- pop3front-auth now supports a no-argument variant on the AUTH command,
+  used by KMail to test for authentication modes, and documented in
+  http://www.tools.ietf.org/html/draft-myers-sasl-pop3-05
+  Thanks Bernhard Graf for the initial patch
+
+- pop3front-auth and -maildir now support the CAPA command.
+  Thanks Bernhard Graf for the initial patch
+
+- Made imapfront-auth more compatible with Courier IMAP by adding extra
+  bits to the CAPABILITY command.  Thanks Bernhard Graf.
+
+- plugin-cvm-validate handles modules that provide an "out of scope"
+  fact by passing to the next plugin.
+
+- Fixed handling of addresses without a domain in @file rules.
+  Thanks Jorge Valdes
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 1.11
+
+- Fixed the main mailfront program to clean up temporary files properly.
+
+- Modified the SMTP protocol module to export the SASL authentication
+  information internally.
+
+- Modified the check-fqdn plugin to append $DEFAULTHOST and
+  $DEFAULTDOMAIN to addresses if necessary.
+
+- Added separate connect and send timeouts and a maximum message size to
+  the ClamAV plugin, and fixed a bug with handling port numbers when
+  using multiple IPs.
+
+- Modified the ClamAV plugin to prefer $CLAMAV_* settings over $CLAMD_*
+
+- Added plugin API documentation.
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 1.10
+
+- Added a ClamAV virus scanner plugin.  Note: Using this plugin will
+  cause mailfront to save messages to temporary files.  See
+  mailfront.html for details.
+
+- Modified the plugin API to add a version code, a flags word, and to
+  (optionally) save messages to a temporary file.
+
+- Fixed a few cases where the UCSPI-TCP protocol was assumed.
+
+- Fixed pop3front-maildir breakage on dietlibc/uClibc and empty
+  maildirs.  Thanks Wayne Marshall.
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 1.01
+
+- Fixed a bug in the counters plugin that triggered a problem in the
+  SMTP protocol when handling the SIZE=# parameter.
+
+- Reversed the order of cvm-validate and qmail-validate in the wrapper
+  scripts (and documentation) due to the semantics of the two plugins.
+
+- Added a list of built-in plugins.  The list currently contains the
+  three accept* plugins, which are extremely trivial.
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 1.0
+
+Mailfront has been rewritten to be totally modular.  The core mailfront
+program loads the protocol, backend, and all plugin behaviors at run
+time from shared objects.
+
+The previous commands, such as smtpfront-qmail, are now shell script
+wrappers for the main "mailfront" command, and as such are depricated in
+favor of using "mailfront" directly.  The *front-qmail wrappers preload
+all the plugins that were previously compiled into the corresponding
+programs:
+
+	check-fqdn counters mailrules relayclient cvm-validate
+	qmail-validate add-received patterns accept-sender
+
+NOTE: The *front-reject backends have been dropped in favor of a plugin.
+In addition, the $REQUIRE_AUTH feature has been moved to another plugin.
+If you used this backend or feature you will need to adjust your
+configuration accordingly.
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 0.98.1
+
+- Fixed the $REQUIRE_AUTH feature to properly check for $RELAYCLIENT
+  being set.
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 0.98
+
+- Added enhanced mail system status codes (RFC 1893/2034).
+
+- Added support for rejecting all mail unless client is authenticated
+  (either as a relay client or with SMTP authentication) if
+  $REQUIRE_AUTH is set.
+
+- Full domain names are now required in all addresses except for the
+  null sender.
+
+- Removed the "bounce must have a single recipient" rule, as it is
+  currently causing more problems (with address checkers) than it is
+  solving (spammers no longer use this technique).
+
+- Fixed one-off bug in counting recipients for $MAXRCPTS.
+
+- Truncate UIDL responses to 70 characters as per RFC 1939.
+
+- Added QMQP and QMTP "reject" front ends, for completeness.
+
+The enhanced mail system status codes together with the $REQUIRE_AUTH
+change should make smtpfront compliant with RFC 2476's requirements for
+a "message submission agent", suitable for use on TCP port 587.
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 0.97
+
+- Add support to the qmail backend for custom qmail-queue error messages
+  taken from $QQERRMSG_#.
+
+- Clear session timeouts (via alarm) before executing authenticated
+  commands in imapfront-auth and pop3front-auth.
+
+- Fixed typo in the CVM lookup code that would prevent the proper
+  operation of lookup secrets.  Thanks Dale Woolridge.
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 0.96
+
+- Switched Pattern matching from the simpler mechanism (originated in
+  multilog) to standard shell glob.
+
+- Fixed the SMTP front-end's inability to handle quoted or escaped
+  characters, or to strip source routing addresses.
+
+- Fixed smtpfront-reject crashing on receipt of EHLO.
+  Thanks Janos Farkas.
+
+- Fixed extern/static conflict in smtp-respond.c.  Thanks Gerrit Pape.
+
+NOTE: The pattern matching change has the (small) potential to break
+existing rules' behavior, if the rules were depending on specific
+behavior of the more simplistic pattern matching used previously.
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 0.95
+
+- Fixed bug in header pattern matching that made it only look at the
+  first header line.  Thanks Janos Farkas.
+
+- Fixed bug in handling of environment variables when applying multiple
+  rules to the same message.
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 0.94
+
+- Switched to CVM 2 support.
+
+- Added support for restricting patterns to match only in headers.
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 0.93
+
+- Fixed bug in pattern matching where the pattern was longer than the
+  line that would other match.
+
+- Fixed bug in parsing the databytes column in mail rules.
+
+- Fixed omission of not resetting maxdatabytes, which could be set by a
+  rule, after checking for sender rules.
+
+- Fixed bug in handling multiple sender or recipient specific rules.
+
+- Modified the CVM lookup secret handling to use $CVM_LOOKUP_SECRET just
+  like the latest CVM code, falling back to $LOOKUP_SECRET if that isn't
+  set.
+
+- Added seperate $AUTH_TIMEOUT and $AUTH_SESSION_TIMEOUT overrides for
+  the authentication front-ends (imapfront-auth and pop3front-auth).
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 0.92
+
+- Fixed bug in QMQP front-end that prevented it from accepting relayed
+  messages (relayclient wasn't getting set properly).
+
+- Added qmqpfront-echo and qmtpfront-echo test front-ends, for
+  completeness.
+
+- Fixed bug in pattern handling that would cause a bogus "out of memory"
+  error if the patterns file had a blank line.
+
+- Fixed bug:  Only set $MAILDIR in imapfront-auth if the CVM set it.
+  Thanks Charlie Brady.
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 0.91
+
+- Fixed a bug in the CVM lookup code that would cause failures if
+  $LOOKUP_SECRET was not set.  Thanks Bernhard Graf.
+
+- Explicitly set $MAILDIR in imapfront-auth, to provide the variable for
+  Courier-IMAP's imapd.  Thanks Bernhard Graf.
+
+- Fixed the generated Received: headers to always put the remote host
+  name in the comment if tcpserver looked it up.  This fixes problems
+  with SpamAssassin flagging messages as having forged sender addresses.
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 0.90
+
+- Added support for explicit application of mail rules to senders or
+  recipients, as well as negation of rule patterns.
+
+- Fixed a bug in handling patterns that are not after a blank line.
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 0.89
+
+- Added support for content pattern rejection.
+
+- Added a new "no-op" mail rule type.
+
+- Defer looking up $MAXRCPTS and $RELAYCLIENT as well so that they can
+  be set in the mailrules.
+ 
+- Drop connections after $MAXNOTIMPL unimplemented commands are given.
+
+- The qmail home directory may be overridden with $QMAILHOME.
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 0.88
+
+- Fixed handling of "@domain" entries in mailrules lists and CDB files.
+
+- Added patch from Marcelo Augusto <maugusto@stetnet.com.br> to allow
+  for limits on the maximum number of recipients per message.
+
+- Defer looking up $MAXHOPS and $HEADER_ADD so that they can be set in
+  the mailrules.
+
+- Added support for IMAP string literals in imapfront-auth.
+
+- smtpfront now exports CVM environment variables after authentication.
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 0.87
+
+- Fixed a bug that prevented looping email detection from working.
+
+- Fixed the Received: header generation to match the syntax described in
+  RFC 2821.
+
+- Added the link protocol (ie TCP or TCP6) to the Received: header.
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 0.86
+
+- Allow for addition of user-specified headers with $HEADER_ADD.
+
+- SMTP front end now logs invalid commands.
+
+- Added a hook for CVM validation of recipient addresses.
+
+- Added support for RFC 1870 ESMTP SIZE extension.
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 0.85
+
+- Added a QMTP front-end, with many features in common with the SMTP
+  front-end (excluding authentication, of course).
+
+- Added a QMQP front-end.
+
+- The front-ends optionally add an extra "fixup" Received: header if
+  $FIXUP_RECEIVED_HOST and $FIXUP_RECEIVED_IP are set and differ from
+  $TCPLOCALHOST and $TCPLOCALIP.
+
+- Fixed internal variable transposition bug in smtp-commands.c.
+
+- Switched to bglibs 1.006 library scheme.
+
+- Fixed bug: aborting DATA command does not work, must only give
+  responses once all the data is received.
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 0.81
+
+- Fixed bug: the qmail backend didn't honour $QMAILQUEUE.
+
+- Fixed bug: environment variables set multiple times in mail rules
+  would use the first value.
+
+- Fixed bug: databytes would not be set internally if $DATABYTES was not
+  set.
+
+- Fixed bug: all bounces following the first in a single connection
+  would be rejected.
+
+- Fixed bug: The "*" pattern failed to match the empty string.
+
+- Abort the DATA command immediately if the databytes limit is reached.
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 0.80
+
+- Fixed bug: setting $SMTPGREETING caused smtpfront to crash when issued
+  HELO or EHLO commands.
+
+- Fixed bug: lookups in badmailfrom in smtpfront-qmail did not properly
+  lowercase the address.
+
+- Fixed bug: qmail-validate didn't handle wildcards in rcpthosts or
+  morercpthosts.cdb.
+
+- Added sender and recipient pattern matching to all SMTP front-ends.
+  See mailrules.html for full details.
+
+Development of this version has been sponsored by Mitel Networks
+Corporation. http://www.mitel.com/ http://www.e-smith.com/
+-------------------------------------------------------------------------------
+Changes in version 0.77
+
+- Added missing imapfront-auth to insthier.
+
+- Made smtpfront-qmail handle wildcards in badrcptto.
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 0.76
+
+- Fixed missing "OK" bug in imapfront-auth.
+
+- Log SASL authenticated credentials and failures.
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 0.75
+
+- Modified pop3front to log all commands and responses.
+
+- Added support for $SMTPGREETING to smtpfront.
+
+- Added an IMAP front end.  Works with Courier IMAP presently.
+
+- Switched to using external bglibs.
+
+- smtpfront rejects bounce messages with multiple recipients.  See
+  http://www.ornl.gov/its/archives/mailing-lists/qmail/2001/12/msg00405.html
+
+- Added a session timeout, controlled by $SESSION_TIMEOUT, defaults to
+  24 hours.
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 0.74
+
+- Modified quit code in pop3front to properly tag only read messages as
+  "read".
+
+- Implemented the obsolete LAST command.
+
+- Messages are now sorted in numerical order of their UID.
+
+- Added an exit hook to both pop3front and smtpfront to print the number
+  of bytes input and output.
+
+- Fixed a one-off bug in handling "@domain" entries in badmailfrom in
+  smtpfront-qmail.
+
+- pop3front-auth now logs the user name.
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 0.73
+
+- Fixed bugs in the RETR/TOP function of pop3front-maildir which would
+  cause message corruption.
+
+- Fixed bugs in the DELE/STAT functions of pop3front-maildir which
+  neglected to remove the deleted message count/bytes from the totals
+  reported by STAT.
+
+- Added a "maximum message count" option to pop3front-maildir, which
+  limits the number of visible messages.
+
+- Added timeouts to pop3front.
+
+- All POP3 error responses are now printed to stderr.
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 0.72
+
+- This version includes a one-off bug fix in the CVM client code.
+
+- Added the missing pop3front-* targets in insthier.c
+
+- Added missing Solaris/SysV -lsocket -lnsl linker flags.
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 0.71
+
+- Log the parameters to the MAIL and RCPT commands in smtpfront.
+
+- Fixed missing lowercase conversion when handling validating domain
+  names against rcpthosts and company.
+
+- Fixed a number of bugs in the SASL implementation.  SMTP AUTH PLAIN
+  and/or LOGIN have now been tested with Mozilla Mail (PLAIN), Pegasus
+  (PLAIN I think), PMMail (LOGIN), The Bat (PLAIN), Eudora (LOGIN), and
+  Outlook Express (LOGIN).
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 0.70
+
+- Added a POP3 authenticator and maildir handler, complete with support
+  for the RFC 1734 AUTH command.  If you can believe it, the maildir
+  portion is actually smaller than qmail-pop3d, and just as functional!
+
+- Fixed the AUTH PLAIN mechanism in the cvm-sasl library.
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+Changes in version 0.60
+
+- Adds support for the SMTP AUTH command, supporting LOGIN, PLAIN, and
+  CRAM-MD5 mechanisms via CVM.
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------

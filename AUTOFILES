@@ -1,0 +1,13 @@
+AUTOFILES
+Makefile
+SRCFILES
+TARGETS
+conf-bgincs
+conf-bglibs
+conf-bin
+conf-cc
+conf-ccso
+conf-include
+conf-ld
+conf-qmail
+warn-auto.sh

@@ -1,0 +1,151 @@
+<html>
+<body>
+
+<h1>MailFront</h1>
+
+<p><a href="pop3front.html">POP3 Front End</a>
+<br><a href="imapfront.html">IMAP Front End</a>
+<br><a href="plugin-api.html">Plugin API</a>
+</p>
+
+<hr />
+
+<h2>Overview</h2>
+
+<p>The <tt>mailfront</tt> program acts as a driver container, loading up
+a protocol module, a backend module, and a list of plugins at run time.
+All protocols are completely interchangeable, as are the backends.</p>
+
+<h2>Configuration</h2>
+
+<p>The protocol and backend modules are specified as the first two
+command line arguments.  The remainder of the command line arguments
+specify lists of plugins.</p>
+
+<p>If <tt>$PLUGINS</tt> is set, it contains a list of plugins, separated
+by colons, that will be loaded after the plugins specified on the
+command line.  If <tt>$MODULE_PATH</tt> is set, it specifies the
+directory in which modules will be loaded.  Otherwise, the built in
+module path will be used, which is configured by editing the file
+<tt>conf-modules</tt> before building.</p>
+
+<p>Each plugin name may be one of following three forms:</p>
+
+<dl>
+
+<dt><tt>-name</tt></dt> <dd>The previously loaded plugin called
+"<tt>name</tt>" is removed from list.  The special name "<tt>*</tt>"
+means to empty the entire list.</dd>
+
+<dt><tt>+name</tt></dt> <dd>The named plugin is loaded and placed at the
+front of the list.</dd>
+
+<dt><tt>name</tt></dt> <dd>The named plugin is loaded and placed at the
+back of the list.</dd>
+
+</dl>
+
+<p>Note that in both cases where a plugin is loaded, it is first removed
+from the list if it was previously loaded.  It is not possible for the
+same module to be loaded multiple times.</p>
+
+<p>A configuration that would match previous installations of mailfront
+using the qmail backend would use the following list of plugins:</p>
+
+<pre>check-fqdn:counters:mailrules:relayclient:cvm-validate:qmail-validate:add-received:patterns</pre>
+
+<p>The included <tt>*front-qmail</tt> shell script wrappers for the
+<tt>mailfront</tt> program are preconfigured to load the above list of
+plugins before any of their command line arguments or
+<tt>$PLUGINS</tt>.</p>
+
+<h2>Protocols</h2>
+
+<p>The protocol module is responsible for all interaction at the network
+I/O level with the client.  It links into the system by calling down to
+the handler wrappers provided by mailfront, which in turn dispatches
+calls to the plugins and finally the backend.  The following protocols
+are available:</p>
+
+<ul>
+
+<li><a href="protocol-qmqp.html">qmqp</a></li>
+
+<li><a href="protocol-qmtp.html">qmtp</a></li>
+
+<li><a href="protocol-smtp.html">smtp</a></li>
+
+</ul>
+
+<h2>Plugins</h2>
+
+<p>Plugins are used to enhance or alter the behavior of mailfront.
+Without any plugins loaded, mailfront does not accept any senders or
+recipients.  Plugins may intercept and modify all aspects of a message.
+The following plugins are included in the main package:</p>
+
+<ul>
+
+<li><a href="plugin-accept.html">accept</a></li>
+
+<li><a href="plugin-accept-recipient.html">accept-recipient</a></li>
+
+<li><a href="plugin-accept-sender.html">accept-sender</a></li>
+
+<li><a href="plugin-add-received.html">add-received</a></li>
+
+<li><a href="plugin-check-fqdn.html">check-fqdn</a></li>
+
+<li><a href="plugin-clamav.html">clamav</a></li>
+
+<li><a href="plugin-counters.html">counters</a></li>
+
+<li><a href="plugin-cvm-authenticate.html">cvm-validate</a></li>
+
+<li><a href="plugin-cvm-validate.html">cvm-validate</a></li>
+
+<li><a href="plugin-force-file.html">force-file</a></li>
+
+<li><a href="plugin-lua.html">lua</a></li>
+
+<li><a href="plugin-mailrules.html">mailrules</a></li>
+
+<li><a href="plugin-patterns.html">patterns</a></li>
+
+<li><a href="plugin-qmail-validate.html">qmail-validate</a></li>
+
+<li><a href="plugin-reject.html">reject</a></li>
+
+<li><a href="plugin-relayclient.html">relayclient</a></li>
+
+<li><a href="plugin-require-auth.html">require-auth</a></li>
+
+<li><a href="plugin-spamassassin.html">spamassassin</a></li>
+
+</ul>
+
+<h2>Backends</h2>
+
+<p>The backend is the final stage in incoming mail handling, and is
+responsible for passing the message on to the mail system.  It is
+invoked only if no plugin generated an error.  The following backends
+are available:</p>
+
+<ul>
+
+<li><a href="backend-echo.html">echo</a></li>
+
+<li><a href="backend-qmail.html">qmail</a></li>
+
+</ul>
+
+<h2>Temporary Files</h2>
+
+<p>Some plugins require the use of a temporary file, either to be able
+to modify contents after receiving a message or to fulfill external
+timing requirements.  These plugins are noted in their documentation
+above.  The temporary files are created in the directory named by
+<tt>$TMPDIR</tt> (defaults to "<tt>/tmp</tt>").</p>
+
+</body>
+</html>

@@ -1,0 +1,147 @@
+Version 2.00 of mailfront is now available at:
+	http://untroubled.org/mailfront/
+------------------------------------------------------------------------------
+Changes in version 2.00
+
+- This version updates the plugin API to add new features:
+
+  - Capabilities reported by the SMTP EHLO response can be added by
+    plugins.
+
+  - Plugins are passed any SMTP parameters given with the sender and
+    recipient commands.
+
+  - Plugins can add new commands to the SMTP protocol.
+
+  Plugins compiled for previous versions of mailfront will not work
+  without recompiling.  The short-circuit on accept logic has also been
+  eliminated to fix a semantic issue.
+
+- SMTP AUTH support has been moved into a new plugin, cvm-authenticate.
+  Existing installations relying on SMTP AUTH support will need to make
+  sure they are using this new plugin.  The smtpfront-qmail wrapper
+  has been modified to provide this additional plugin.
+
+- Fixed plugin-add-received to add the "IPv6:" prefix in the Received:
+  header when the protocol is TCP6.
+
+- Added plugin starttls-ucspi to implement STARTTLS using ucspi-tls.
+
+- SMTP AUTH can now be restricted to TLS-enabled sessions.
+
+Development of this version has been sponsored by FutureQuest, Inc.
+ossi@FutureQuest.net  http://www.FutureQuest.net/
+-------------------------------------------------------------------------------
+mailfront
+Mail server network protocol front-ends
+Bruce Guenter <bruce@untroubled.org>
+Version 2.00
+2013-04-12
+
+This is mailfront, a package containing customizeable network front-ends
+for mail servers.  It contains complete SMTP, QMQP, QMTP, and POP3
+front-ends as well as an authentication module for IMAP.  The mail
+delivery front-ends also contain internal address filtering features.
+
+Two SMTP back-ends are provided.  One delivers mail to qmail-queue,
+mimicking most of the behavior of qmail-smtpd, with the addition of
+support for SMTP AUTH.  The other rejects all SMTP commands if
+$SMTPREJECT is set, and execs its command line otherwise (in order to
+run the above program).
+
+A mailing list has been set up to discuss this and other packages.
+To subscribe, send an email to:
+	bgware-subscribe@lists.untroubled.org
+A mailing list archive is available at:
+	http://lists.untroubled.org/?list=bgware
+
+Development versions of mailfront are available via git at:
+	http://bruce-guenter.dyndns.org/git/mailfront.git
+
+Requirements:
+
+- bglibs version 1.101
+- cvm version 0.82
+- Lua version 5 or later (optional)
+
+Installation:
+
+- Build the sources by running "make".
+- To build the Lua plugin, run "make lua".
+- After the package has been compiled, run "make install" as root.
+
+Configuration:
+
+- To take advantage of the SMTP AUTH features, make sure you have a CVM
+  authentication program (some are included with the cvm package itself).
+- Run a CVM authentication module to provide the AUTH feature.
+  Example:  To run cvm-vmailmgr as a daemon:
+    exec /usr/local/bin/softlimit -m 9000000 \
+     /usr/local/bin/cvm-vmailmgr /tmp/.cvm-vmailmgr 2>&1
+- Configure your mail system to use the SMTP back-end with the
+  appropriate environment variables.
+
+  Example using tcpserver (highly recommended):
+    #!/bin/sh
+    QMAILDUID=`id -u qmaild`
+    NOFILESGID=`id -g qmaild`
+    MAXSMTPD=`head -1 /var/qmail/control/concurrencyincoming`
+    if [ -z "$QMAILDUID" -o -z "$NOFILESGID" -o -z "$MAXSMTPD" ]; then
+        echo $0: QMAILDUID, NOFILESGID, or MAXSMTPD is unset
+        exit 1
+    fi
+    exec \
+    /usr/local/bin/envdir /etc/smtpfront \
+    /usr/local/bin/softlimit -m 2000000 \
+    /usr/local/bin/tcpserver -v -R -H \
+      -l "`head -1 /var/qmail/control/me`" -x /etc/tcp.smtp.cdb \
+      -c "$MAXSMTPD" -u "$QMAILDUID" -g "$NOFILESGID" 0 25 \
+    /usr/local/bin/smtpfront-qmail 2>&1
+
+  /etc/smtpfront/CVM_SASL_PLAIN:
+    cvm-local:/tmp/.cvm-vmailmgr
+
+  Example using xinetd with TCP Wrappers:
+
+  /etc/xinetd.d/smtp:
+    # default: on
+    # description: smtp
+    service smtp
+    {
+    	disable	= no
+    	flags		= REUSE NAMEINARGS
+    	socket_type	= stream        
+    	protocol	= tcp
+    	wait		= no
+    	user		= qmaild
+    	server		= /usr/sbin/tcpd
+    	server_args 	= /var/qmail/bin/tcp-env -R /usr/local/sbin/smtpfront-wrapper
+    	log_on_success          += USERID
+    	log_on_failure          += USERID
+    }
+
+  /usr/local/sbin/smtpfront-wrapper:
+    #!/bin/sh
+    CVM_SASL_PLAIN=cvm-local:/tmp/.cvm-unix
+    export CVM_SASL_PLAIN
+    CVM_SASL_LOGIN=cvm-local:/tmp/.cvm-unix
+    export CVM_SASL_LOGIN
+    exec /usr/local/bin/smtpfront-qmail 2>> /tmp/smtpfront-errs.txt
+
+
+This project was initiated at FutureQuest, Inc.  We are releasing it
+as an open-source project because we felt it would be useful to others,
+as well as to repay our debt of gratitude to the larger open-source
+community for the excellent packages we have enjoyed.
+
+For more details, you may contact FutureQuest, Inc. at:
+FutureQuest, Inc.
+PO BOX 623127
+Oviedo FL 32762-3127 USA
+http://www.FutureQuest.net/
+ossi@FutureQuest.net
+
+This package is Copyright(C) 2013 Bruce Guenter or FutureQuest, Inc.,
+and may be copied according to the GNU GENERAL PUBLIC LICENSE (GPL)
+Version 2 or a later version.  A copy of this license is included with
+this package.  This package comes with no warranty of any kind.

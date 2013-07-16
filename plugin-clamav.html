@@ -1,0 +1,81 @@
+<html>
+<body>
+
+<h2><a href="mailfront.html">mailfront</a></h2>
+
+<h1>Plugin: clamav</h1>
+
+<hr />
+
+<p>This plugin scans messages against a <a
+href="http://www.clamav.net/">ClamAV</a> server.  If the message data is
+detected as having a virus, the message is rejected, and the error
+response contains the virus name as detected by ClamAV.  This scanner
+only operates over TCP/IP sockets (either remotely or locally).</p>
+
+<p><b>Notes:</b> This plugin requires ClamAV version 0.95 or later, and
+will only scan messages 4GB or smaller due to implementation
+limitations.  It also causes mailfront to save messages to temporary
+files.</p>
+
+<h2>Configuration</h2>
+
+<dl>
+
+<dt><tt>$CLAMAV_CONNECT_TIMEOUT</tt></dt> <dd>The maximum amount of time
+to wait for a response when connecting to a ClamAV scanner, in
+milliseconds. (defaults to <tt>$CLAMAV_TIMEOUT</tt> below)</dd>
+
+<dt><tt>$CLAMAV_MAXSIZE</tt></dt> <dd>The maximum message size to be
+scanned, in bytes.  This limit is useful for avoiding overloading the
+scanning system(s).  If the incoming message is larger than this
+threshold, a warning is printed and no scanning is done.  If unset or
+set to "<tt>0</tt>", there is no limit.</dd>
+
+<dt><tt>$CLAMAV_HOST</tt></dt> <dd>The hostname of the ClamAV scanner.
+If this name resolves to multiple IP addresses, all of them are tried in
+sequence (starting at a random point) until one scans the message.</dd>
+
+<dt><tt>$CLAMAV_PORT</tt></dt> <dd>Use this TCP port number for the
+command/response data. (defaults to 3310)</dd>
+
+<dt><tt>$CLAMAV_SEND_TIMEOUT</tt></dt> <dd>The maximum amount of time to
+wait for the output buffer to clear when sending data to a ClamAV
+scanner, in milliseconds. (defaults to <tt>$CLAMAV_TIMEOUT</tt>
+below)</dd>
+
+<dt><tt>$CLAMAV_TIMEOUT</tt></dt> <dd>The maximum amount of time to wait
+for a response from the ClamAV scanner, in milliseconds. (defaults to
+5000)</dd>
+
+<dt><tt>$CLAMD_HOST</tt></dt> <dd>Sets the scanner host address if
+<tt>$CLAMAV_HOST</tt> is unset.</dd>
+
+<dt><tt>$CLAMD_PORT</tt></dt> <dd>Sets the scanner port address if
+<tt>$CLAMAV_PORT</tt> is unset.</dd>
+
+<dt><tt>$CLAMD_TIMEOUT</tt></dt> <dd>Sets the timeout value if
+<tt>$CLAMAV_TIMEOUT</tt> is unset.</dd>
+
+</dl>
+
+<h2>Sender Action</h2>
+
+<p>None</p>
+
+<h2>Recipient Action</h2>
+
+<p>None</p>
+
+<h2>Data Action</h2>
+
+<p>None</p>
+
+<h2>Message Action</h2>
+
+<p>The message is scanned when all the data has been completely
+transmitted (to prevent timeout issues with sending data to the ClamAV
+server).</p>
+
+</body>
+</html>

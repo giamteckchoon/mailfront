@@ -1,0 +1,5384 @@
+------------------------------------------------------------------------
+r554 | bruce | 2007-09-27 15:23:24 -0600 (Thu, 27 Sep 2007) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+
+Added note about API documentation.
+
+------------------------------------------------------------------------
+r553 | bruce | 2007-09-27 15:20:52 -0600 (Thu, 27 Sep 2007) | 2 lines
+Changed paths:
+   A /trunk/EXTRADIST
+   M /trunk/makedist.py
+   M /trunk/plugin-api.html
+   D /trunk/plugin-prototype.c
+   D /trunk/plugin-prototype.html
+   A /trunk/plugin-template.c (from /trunk/plugin-prototype.c:542)
+   A /trunk/plugin-template.html (from /trunk/plugin-prototype.html:542)
+
+Small reorganization of the template plugin and links.
+
+------------------------------------------------------------------------
+r552 | bruce | 2007-09-27 14:19:06 -0600 (Thu, 27 Sep 2007) | 2 lines
+Changed paths:
+   M /trunk/TODO
+   M /trunk/mailfront.c
+   M /trunk/plugin-api.html
+
+Made mailfront call the reset hooks early on message permanent errors.
+
+------------------------------------------------------------------------
+r551 | bruce | 2007-09-27 09:47:22 -0600 (Thu, 27 Sep 2007) | 2 lines
+Changed paths:
+   M /trunk/TODO
+   A /trunk/tests/plugin-qmail-validate
+
+Added tests for plugin-qmail-validate.
+
+------------------------------------------------------------------------
+r550 | bruce | 2007-09-27 09:16:21 -0600 (Thu, 27 Sep 2007) | 2 lines
+Changed paths:
+   M /trunk/tests.inc
+
+Tweaked the tests to report unexpected startup messages.
+
+------------------------------------------------------------------------
+r549 | bruce | 2007-09-27 00:08:52 -0600 (Thu, 27 Sep 2007) | 2 lines
+Changed paths:
+   M /trunk/tests/smtpfront-auth-login
+   M /trunk/tests/smtpfront-auth-plain
+   M /trunk/tests/smtpfront-require-auth
+
+Removed dependancy on qmail-validate in tests.
+
+------------------------------------------------------------------------
+r548 | bruce | 2007-09-27 00:01:29 -0600 (Thu, 27 Sep 2007) | 3 lines
+Changed paths:
+   M /trunk/backend-echo.c
+
+Restored the ability of backend-echo.c to report data bytes when a
+temporary file is in use.
+
+------------------------------------------------------------------------
+r547 | bruce | 2007-09-26 15:47:16 -0600 (Wed, 26 Sep 2007) | 2 lines
+Changed paths:
+   M /trunk/plugin-api.html
+
+Missed a paragraph in the API document.
+
+------------------------------------------------------------------------
+r546 | bruce | 2007-09-26 14:52:29 -0600 (Wed, 26 Sep 2007) | 3 lines
+Changed paths:
+   M /trunk/mailfront.html
+   A /trunk/plugin-api.html
+
+Wrote a plugin API document, moving some technical information out of
+the main page.
+
+------------------------------------------------------------------------
+r545 | bruce | 2007-09-25 15:38:33 -0600 (Tue, 25 Sep 2007) | 4 lines
+Changed paths:
+   M /trunk/TODO
+   M /trunk/backend-echo.c
+   M /trunk/backend-qmail.c
+   M /trunk/builtins.c
+   A /trunk/mailfront-internal.h (from /trunk/mailfront.h:544)
+   M /trunk/mailfront.c
+   M /trunk/mailfront.h
+   M /trunk/modules.c
+   M /trunk/plugin-add-received.c
+   M /trunk/plugin-mailrules.c
+   M /trunk/protocol-smtp.c
+   M /trunk/session.c
+
+Moved all internal implementation declarations into their own header,
+and purged all modules of references to those internals (most notably
+direct access to the session structure).
+
+------------------------------------------------------------------------
+r544 | bruce | 2007-09-25 14:51:58 -0600 (Tue, 25 Sep 2007) | 4 lines
+Changed paths:
+   M /trunk/mailfront.c
+   M /trunk/mailfront.h
+   M /trunk/modules.c
+
+Moved several global variables into the session structure.
+They have been added to the end of the structure to retain ABI
+compatibility with existing plugins.
+
+------------------------------------------------------------------------
+r543 | bruce | 2007-09-25 12:36:30 -0600 (Tue, 25 Sep 2007) | 3 lines
+Changed paths:
+   M /trunk/plugin-add-received.html
+   M /trunk/protocol-smtp.html
+
+Document use of ${PROTO}LOCALHOST (and others) in the SMTP protocol and
+the add-received plugin.
+
+------------------------------------------------------------------------
+r542 | bruce | 2007-09-24 17:20:01 -0600 (Mon, 24 Sep 2007) | 2 lines
+Changed paths:
+   M /trunk/makedist.py
+   A /trunk/plugin-prototype.c (from /trunk/plugin.c:534)
+   A /trunk/plugin-prototype.html (from /trunk/plugin.html:534)
+   D /trunk/plugin.c
+   D /trunk/plugin.html
+
+Renamed the prototype to plugin-prototype.c and added it to the web site files.
+
+------------------------------------------------------------------------
+r541 | bruce | 2007-09-03 12:02:39 -0600 (Mon, 03 Sep 2007) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/plugin-clamav.c
+   M /trunk/plugin-clamav.html
+
+Modified the ClamAV plugin to prefer $CLAMAV_* settings over $CLAMD_*
+
+------------------------------------------------------------------------
+r540 | bruce | 2007-01-22 15:38:27 -0600 (Mon, 22 Jan 2007) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/plugin-clamav.c
+   M /trunk/plugin-clamav.html
+
+Added a maximum message size scanning limit to the clamav plugin.
+
+------------------------------------------------------------------------
+r539 | bruce | 2007-01-22 15:08:25 -0600 (Mon, 22 Jan 2007) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/plugin-clamav.c
+   M /trunk/plugin-clamav.html
+
+Added a separate send timeout to the virus scanner.
+
+------------------------------------------------------------------------
+r538 | bruce | 2007-01-22 10:18:01 -0600 (Mon, 22 Jan 2007) | 3 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/plugin-clamav.c
+
+Fixed a bug in the ClamAV plugin with handling port numbers when using
+multiple IPs.
+
+------------------------------------------------------------------------
+r537 | bruce | 2007-01-22 10:13:00 -0600 (Mon, 22 Jan 2007) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/plugin-clamav.c
+   M /trunk/plugin-clamav.html
+
+Added a separate connect timeout to the ClamAV plugin.
+
+------------------------------------------------------------------------
+r536 | bruce | 2007-01-04 15:27:37 -0600 (Thu, 04 Jan 2007) | 3 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/plugin-check-fqdn.c
+   M /trunk/plugin-check-fqdn.html
+
+Modified the check-fqdn plugin to append $DEFAULTHOST and 
+$DEFAULTDOMAIN to addresses if necessary.
+
+------------------------------------------------------------------------
+r535 | bruce | 2007-01-04 15:23:23 -0600 (Thu, 04 Jan 2007) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/mailfront.c
+   M /trunk/session.c
+
+Fixed the main mailfront program to clean up temporary files properly.
+
+------------------------------------------------------------------------
+r534 | bruce | 2006-12-18 18:05:49 -0600 (Mon, 18 Dec 2006) | 3 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/protocol-smtp.c
+
+Modified the SMTP protocol module to export the SASL authentication 
+information internally.
+
+------------------------------------------------------------------------
+r533 | bruce | 2006-12-18 17:23:51 -0600 (Mon, 18 Dec 2006) | 3 lines
+Changed paths:
+   M /trunk/tests/pop3front-maildir-state
+
+Sort the results of find in a test to compensate for filesystems that
+record filenames out of order.
+
+------------------------------------------------------------------------
+r532 | bruce | 2006-12-18 16:53:26 -0600 (Mon, 18 Dec 2006) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/VERSION
+
+Bumped version to 1.11
+
+------------------------------------------------------------------------
+r531 | bruce | 2006-11-15 15:43:25 -0600 (Wed, 15 Nov 2006) | 1 line
+Changed paths:
+   A /tags/1.10 (from /trunk:530)
+
+Tagged version 1.10
+------------------------------------------------------------------------
+r530 | bruce | 2006-11-15 15:27:30 -0600 (Wed, 15 Nov 2006) | 3 lines
+Changed paths:
+   M /trunk/tests/plugin-reject
+   M /trunk/tests/plugins-prepend
+   M /trunk/tests/plugins-remove
+   M /trunk/tests/rules-databytes
+   M /trunk/tests/rules-databytes2
+   M /trunk/tests/smtpfront-databytes
+
+Adjusted tests to account for mailfront properly picking up
+${PROTO}LOCALHOST now.
+
+------------------------------------------------------------------------
+r529 | bruce | 2006-11-12 23:06:50 -0600 (Sun, 12 Nov 2006) | 3 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/pop3front-maildir.c
+
+Fixed pop3front-maildir breakage on dietlibc/uClibc and empty 
+maildirs.  Thanks Wayne Marshall <wcm@guinix.com>
+
+------------------------------------------------------------------------
+r528 | bruce | 2006-11-12 22:39:29 -0600 (Sun, 12 Nov 2006) | 2 lines
+Changed paths:
+   M /trunk/INSTHIER
+   M /trunk/spec
+
+Added the header files to the installed image.
+
+------------------------------------------------------------------------
+r527 | bruce | 2006-11-12 21:59:55 -0600 (Sun, 12 Nov 2006) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/imapfront-auth.c
+   M /trunk/pop3front-auth.c
+
+Fixed two more cases where the UCSPI-TCP protocol was assumed.
+
+------------------------------------------------------------------------
+r526 | bruce | 2006-11-12 21:58:48 -0600 (Sun, 12 Nov 2006) | 3 lines
+Changed paths:
+   A /trunk/getprotoenv.c
+   M /trunk/mailfront.h
+   M /trunk/mailfront=x
+   M /trunk/plugin-add-received.c
+   M /trunk/protocol-smtp.c
+
+Made the getprotoenv function global, and use it in the SMTP protocol
+instead of only looking for $TCPLOCALHOST.
+
+------------------------------------------------------------------------
+r525 | bruce | 2006-11-12 15:20:01 -0600 (Sun, 12 Nov 2006) | 2 lines
+Changed paths:
+   M /trunk/plugin.c
+
+Added some comments to the prototype plugin file.
+
+------------------------------------------------------------------------
+r524 | bruce | 2006-11-12 15:11:02 -0600 (Sun, 12 Nov 2006) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/mailfront.html
+   M /trunk/plugin-clamav.html
+
+Fixed up some documentation for the temporary file change.
+
+------------------------------------------------------------------------
+r523 | bruce | 2006-11-12 15:09:13 -0600 (Sun, 12 Nov 2006) | 3 lines
+Changed paths:
+   M /trunk/mailfront.c
+   M /trunk/tests/plugin-force-file
+
+Use $TMPDIR instead of $TMPPATH for the temporary file base path, as
+most other programs also use this variable.
+
+------------------------------------------------------------------------
+r522 | bruce | 2006-11-12 14:59:47 -0600 (Sun, 12 Nov 2006) | 2 lines
+Changed paths:
+   M /trunk/mailfront.html
+   A /trunk/plugin-force-file.c
+   A /trunk/plugin-force-file.html
+   A /trunk/plugin-force-file=so
+   A /trunk/tests/plugin-force-file
+
+Added a plugin to force creation of a temporary file.
+
+------------------------------------------------------------------------
+r521 | bruce | 2006-11-12 14:42:40 -0600 (Sun, 12 Nov 2006) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/backend-echo.c
+   M /trunk/backend-qmail.c
+   M /trunk/mailfront.h
+   M /trunk/modules.c
+   M /trunk/plugin-add-received.c
+   M /trunk/plugin-check-fqdn.c
+   M /trunk/plugin-clamav.c
+   M /trunk/plugin-counters.c
+   M /trunk/plugin-cvm-validate.c
+   M /trunk/plugin-mailrules.c
+   M /trunk/plugin-patterns.c
+   M /trunk/plugin-qmail-validate.c
+   M /trunk/plugin-reject.c
+   M /trunk/plugin-relayclient.c
+   M /trunk/plugin-require-auth.c
+   M /trunk/plugin.c
+   M /trunk/protocol-qmqp.c
+   M /trunk/protocol-qmtp.c
+   M /trunk/protocol-smtp.c
+
+Added a version number to the plugin ABI to prevent semantic mismatches.
+
+------------------------------------------------------------------------
+r520 | bruce | 2006-11-12 14:39:16 -0600 (Sun, 12 Nov 2006) | 2 lines
+Changed paths:
+   M /trunk/backend-echo.c
+
+Adapted the backend to work both with and without a temporary file.
+
+------------------------------------------------------------------------
+r519 | bruce | 2006-11-11 22:35:27 -0600 (Sat, 11 Nov 2006) | 3 lines
+Changed paths:
+   M /trunk/backend-qmail.c
+   M /trunk/plugin-add-received.c
+
+Modified the qmail backend and the add-received plugin to work both with
+or without a temporary file.
+
+------------------------------------------------------------------------
+r518 | bruce | 2006-11-11 22:22:37 -0600 (Sat, 11 Nov 2006) | 2 lines
+Changed paths:
+   M /trunk/mailfront.c
+
+Fixed some parts of the optional temporary file semantics.
+
+------------------------------------------------------------------------
+r517 | bruce | 2006-11-11 21:58:15 -0600 (Sat, 11 Nov 2006) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/backend-qmail.c
+   M /trunk/mailfront.c
+   M /trunk/mailfront.h
+   M /trunk/modules.c
+   M /trunk/plugin-clamav.c
+   M /trunk/plugin.c
+
+Reverted change 513, making the temporary file optional again.
+
+------------------------------------------------------------------------
+r516 | bruce | 2006-11-09 00:22:57 -0600 (Thu, 09 Nov 2006) | 3 lines
+Changed paths:
+   M /trunk/backend-echo.c
+
+Modified the echo backend to get its data from the temporary file and
+not use the data_block call.
+
+------------------------------------------------------------------------
+r515 | bruce | 2006-11-09 00:21:49 -0600 (Thu, 09 Nov 2006) | 3 lines
+Changed paths:
+   M /trunk/plugin-add-received.c
+
+Modified the add-received plugin to write the headers directly to the
+temporary file instead of calling the data_block backend plugin.
+
+------------------------------------------------------------------------
+r514 | bruce | 2006-11-09 00:03:57 -0600 (Thu, 09 Nov 2006) | 2 lines
+Changed paths:
+   M /trunk/backend-qmail.c
+   M /trunk/mailfront.c
+   M /trunk/mailfront.h
+   M /trunk/plugin-add-received.c
+   M /trunk/plugin-counters.c
+   M /trunk/plugin-patterns.c
+   M /trunk/plugin.c
+
+Added the temporary file descriptor to the data_start plugin call.
+
+------------------------------------------------------------------------
+r513 | bruce | 2006-11-08 23:56:29 -0600 (Wed, 08 Nov 2006) | 3 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/backend-qmail.c
+   M /trunk/mailfront.c
+   M /trunk/mailfront.h
+   M /trunk/modules.c
+   M /trunk/plugin-clamav.c
+   M /trunk/plugin.c
+
+Made the temporary file semantics mandatory and dropped the flags field
+from the plugins.
+
+------------------------------------------------------------------------
+r512 | bruce | 2006-11-08 23:06:47 -0600 (Wed, 08 Nov 2006) | 3 lines
+Changed paths:
+   M /trunk/backend-qmail.c
+
+Modified the qmail backend to use the temporary file provided by
+mailfront instead of piping the message to qmail-queue piecemeal.
+
+------------------------------------------------------------------------
+r511 | bruce | 2006-11-08 16:37:54 -0600 (Wed, 08 Nov 2006) | 2 lines
+Changed paths:
+   M /trunk/INSTHIER
+
+Added the ClamAV plugin to the installer.
+
+------------------------------------------------------------------------
+r510 | bruce | 2006-11-08 16:29:00 -0600 (Wed, 08 Nov 2006) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/TODO
+   A /trunk/plugin-clamav.c
+   A /trunk/plugin-clamav.html
+   A /trunk/plugin-clamav=so
+
+Added a ClamAV virus scanner plugin.
+
+------------------------------------------------------------------------
+r509 | bruce | 2006-11-08 15:45:16 -0600 (Wed, 08 Nov 2006) | 2 lines
+Changed paths:
+   M /trunk/mailfront.c
+
+Free the temporary file name string after it is used.
+
+------------------------------------------------------------------------
+r508 | bruce | 2006-11-08 15:00:14 -0600 (Wed, 08 Nov 2006) | 2 lines
+Changed paths:
+   A /trunk/plugin.c
+   A /trunk/plugin.html
+
+Added the prototype plugin files to svn.
+
+------------------------------------------------------------------------
+r507 | bruce | 2006-11-08 14:51:39 -0600 (Wed, 08 Nov 2006) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/mailfront.c
+   M /trunk/mailfront.h
+
+Added a flag bit to make the creation of a temporary file optional.
+
+------------------------------------------------------------------------
+r506 | bruce | 2006-11-08 14:47:46 -0600 (Wed, 08 Nov 2006) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/mailfront.h
+   M /trunk/modules.c
+
+Added a flags word to the plugin API.
+
+------------------------------------------------------------------------
+r505 | bruce | 2006-11-08 14:41:28 -0600 (Wed, 08 Nov 2006) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/backend-echo.c
+   M /trunk/backend-qmail.c
+   M /trunk/mailfront.c
+   M /trunk/mailfront.h
+
+Modified the plugin API to save messages to a temporary file.
+
+------------------------------------------------------------------------
+r504 | bruce | 2006-11-08 14:22:17 -0600 (Wed, 08 Nov 2006) | 3 lines
+Changed paths:
+   M /trunk/backend-echo.c
+   M /trunk/backend-qmail.c
+   M /trunk/mailfront.c
+   M /trunk/mailfront.h
+   M /trunk/mailfront.html
+   M /trunk/plugin-accept-recipient.html
+   M /trunk/plugin-accept-sender.html
+   M /trunk/plugin-accept.html
+   M /trunk/plugin-add-received.html
+   M /trunk/plugin-check-fqdn.html
+   M /trunk/plugin-counters.html
+   M /trunk/plugin-cvm-validate.html
+   M /trunk/plugin-mailrules.html
+   M /trunk/plugin-patterns.html
+   M /trunk/plugin-qmail-validate.html
+   M /trunk/plugin-reject.html
+   M /trunk/plugin-relayclient.html
+   M /trunk/plugin-require-auth.html
+   M /trunk/protocol-qmqp.c
+   M /trunk/protocol-qmtp.c
+   M /trunk/protocol-smtp.c
+
+Renamed the "data_end" event to "message_end", and added a plugin
+documentation note about it.
+
+------------------------------------------------------------------------
+r503 | bruce | 2006-11-08 13:57:03 -0600 (Wed, 08 Nov 2006) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/VERSION
+
+Bumped up the version to 1.10 in anticipation of a plugin API change.
+
+------------------------------------------------------------------------
+r502 | bruce | 2006-09-07 15:49:14 -0600 (Thu, 07 Sep 2006) | 1 line
+Changed paths:
+   A /tags/1.01 (from /trunk:501)
+
+Tagged version 1.01
+------------------------------------------------------------------------
+r501 | bruce | 2006-09-07 14:12:45 -0600 (Thu, 07 Sep 2006) | 3 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/plugin-counters.c
+   M /trunk/tests/smtpfront-databytes
+
+Fixed a bug in the counters plugin that triggered a problem in the 
+SMTP protocol when handling the SIZE=# parameter.
+
+------------------------------------------------------------------------
+r500 | bruce | 2006-09-01 23:29:12 -0600 (Fri, 01 Sep 2006) | 5 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/TODO
+   M /trunk/backend-echo.c
+   M /trunk/backend-qmail.c
+   M /trunk/builtins.c
+   M /trunk/mailfront.c
+   M /trunk/mailfront.h
+   M /trunk/plugin-check-fqdn.c
+   M /trunk/plugin-counters.c
+   M /trunk/plugin-cvm-validate.c
+   M /trunk/plugin-mailrules.c
+   M /trunk/plugin-qmail-validate.c
+   M /trunk/plugin-reject.c
+   M /trunk/plugin-relayclient.c
+   M /trunk/plugin-require-auth.c
+   M /trunk/protocol-qmqp.c
+   M /trunk/protocol-qmtp.c
+   M /trunk/protocol-smtp.c
+   M /trunk/tests/plugin-reject
+
+Reverted revisions 496:HEAD.  These changes were aimed at moving SMTP
+SIZE= handling into counters.  This is effectively impossible since it
+needs to handle when a mail rule matches and sets the size, which short
+cuts the counters out.
+
+------------------------------------------------------------------------
+r499 | bruce | 2006-09-01 23:02:56 -0600 (Fri, 01 Sep 2006) | 2 lines
+Changed paths:
+   M /trunk/mailfront.c
+   M /trunk/mailfront.h
+   M /trunk/protocol-smtp.c
+
+Moved the find_param function from the SMTP protocol into mailfront.c
+
+------------------------------------------------------------------------
+r498 | bruce | 2006-09-01 22:48:10 -0600 (Fri, 01 Sep 2006) | 2 lines
+Changed paths:
+   M /trunk/plugin-counters.c
+   M /trunk/protocol-smtp.c
+   M /trunk/tests/plugin-reject
+
+Moved generation of the SIZE=# EHLO response into plugin-counters
+
+------------------------------------------------------------------------
+r497 | bruce | 2006-09-01 22:36:40 -0600 (Fri, 01 Sep 2006) | 2 lines
+Changed paths:
+   M /trunk/TODO
+   M /trunk/mailfront.c
+   M /trunk/mailfront.h
+   M /trunk/protocol-smtp.c
+
+Added SMTP EHLO response generation to handle_helo.
+
+------------------------------------------------------------------------
+r496 | bruce | 2006-08-30 23:53:00 -0600 (Wed, 30 Aug 2006) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/TODO
+   M /trunk/backend-echo.c
+   M /trunk/backend-qmail.c
+   M /trunk/builtins.c
+   M /trunk/mailfront.c
+   M /trunk/mailfront.h
+   M /trunk/plugin-check-fqdn.c
+   M /trunk/plugin-counters.c
+   M /trunk/plugin-cvm-validate.c
+   M /trunk/plugin-mailrules.c
+   M /trunk/plugin-qmail-validate.c
+   M /trunk/plugin-reject.c
+   M /trunk/plugin-relayclient.c
+   M /trunk/plugin-require-auth.c
+   M /trunk/protocol-qmqp.c
+   M /trunk/protocol-qmtp.c
+   M /trunk/protocol-smtp.c
+
+Modified the plugin API to pass down SMTP parameters.
+
+------------------------------------------------------------------------
+r495 | bruce | 2006-08-30 23:52:28 -0600 (Wed, 30 Aug 2006) | 2 lines
+Changed paths:
+   A /trunk/tests/pop3front-auth-split
+
+Added a test for pop3front-auth splitting the username properly.
+
+------------------------------------------------------------------------
+r494 | bruce | 2006-08-30 21:40:53 -0600 (Wed, 30 Aug 2006) | 2 lines
+Changed paths:
+   M /trunk/INSTHIER
+   M /trunk/NEWS
+   A /trunk/builtins.c
+   M /trunk/mailfront.h
+   M /trunk/mailfront=x
+   M /trunk/modules.c
+   D /trunk/plugin-accept-recipient.c
+   D /trunk/plugin-accept-recipient=so
+   D /trunk/plugin-accept-sender.c
+   D /trunk/plugin-accept-sender=so
+   D /trunk/plugin-accept.c
+   D /trunk/plugin-accept=so
+
+Moved the accept* plugins to a list of builtins.
+
+------------------------------------------------------------------------
+r493 | bruce | 2006-08-30 11:11:04 -0600 (Wed, 30 Aug 2006) | 3 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/mailfront.html
+   M /trunk/qmqpfront-qmail.sh
+   M /trunk/qmtpfront-qmail.sh
+   M /trunk/smtpfront-qmail.sh
+
+Reversed the order of cvm-validate and qmail-validate in the wrapper
+scripts (and documentation) due to the semantics of the two plugins.
+
+------------------------------------------------------------------------
+r492 | bruce | 2006-08-30 11:09:26 -0600 (Wed, 30 Aug 2006) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/VERSION
+
+Bumped version to 1.01
+
+------------------------------------------------------------------------
+r491 | bruce | 2006-08-30 00:50:18 -0600 (Wed, 30 Aug 2006) | 2 lines
+Changed paths:
+   A /trunk/tests/plugin-cvm-validate
+
+Added a test for the CVM validate plugin.
+
+------------------------------------------------------------------------
+r490 | bruce | 2006-08-29 09:39:00 -0600 (Tue, 29 Aug 2006) | 2 lines
+Changed paths:
+   M /trunk/README.in
+
+Updated email address and version requirements in the README.
+
+------------------------------------------------------------------------
+r489 | bruce | 2006-08-29 09:38:07 -0600 (Tue, 29 Aug 2006) | 1 line
+Changed paths:
+   A /tags/1.0 (from /trunk:488)
+
+Tagged version 1.0
+------------------------------------------------------------------------
+r488 | bruce | 2006-08-29 09:27:19 -0600 (Tue, 29 Aug 2006) | 2 lines
+Changed paths:
+   M /trunk/spec
+
+Updated the spec for the new conf files and requirements.
+
+------------------------------------------------------------------------
+r487 | bruce | 2006-08-29 09:24:19 -0600 (Tue, 29 Aug 2006) | 2 lines
+Changed paths:
+   M /trunk/INSTHIER
+
+Add the missing accept*.so modules to the installed image.
+
+------------------------------------------------------------------------
+r486 | bruce | 2006-08-29 09:23:59 -0600 (Tue, 29 Aug 2006) | 3 lines
+Changed paths:
+   M /trunk/protocol-smtp.c
+
+Moved variable declaration line above function statements to fix
+a problem with older compilers.
+
+------------------------------------------------------------------------
+r485 | bruce | 2006-08-29 09:22:34 -0600 (Tue, 29 Aug 2006) | 2 lines
+Changed paths:
+   M /trunk/TODO
+
+Removed done item from the TODO list.
+
+------------------------------------------------------------------------
+r484 | bruce | 2006-08-28 21:25:25 -0600 (Mon, 28 Aug 2006) | 4 lines
+Changed paths:
+   M /trunk/TODO
+   M /trunk/mailfront.c
+   M /trunk/mailfront.h
+   M /trunk/plugin-add-received.c
+   M /trunk/plugin-counters.c
+   M /trunk/plugin-mailrules.c
+   M /trunk/plugin-relayclient.c
+   M /trunk/plugin-require-auth.c
+   M /trunk/protocol-smtp.c
+   M /trunk/session.c
+
+Converted all of the session numbers and strings to dictionaries to
+allow plugins to exchange data without needing to define new fields in
+the session structure.
+
+------------------------------------------------------------------------
+r483 | bruce | 2006-08-28 07:23:53 -0600 (Mon, 28 Aug 2006) | 2 lines
+Changed paths:
+   M /trunk/protocol-qmqp.c
+   M /trunk/protocol-qmtp.c
+
+Converted all silent dies into a response function in QMQP and QMTP.
+
+------------------------------------------------------------------------
+r482 | bruce | 2006-08-25 18:09:34 -0600 (Fri, 25 Aug 2006) | 2 lines
+Changed paths:
+   M /trunk/TODO
+
+Updated the TODO list.
+
+------------------------------------------------------------------------
+r481 | bruce | 2006-08-25 18:04:45 -0600 (Fri, 25 Aug 2006) | 3 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/mailfront.html
+   M /trunk/qmqpfront-qmail.sh
+   M /trunk/qmtpfront-qmail.sh
+   M /trunk/smtpfront-qmail.sh
+
+Modified the *front-qmail wrapper scripts to included the expected list
+of plugins, and modified the documentation to make note of this fact.
+
+------------------------------------------------------------------------
+r480 | bruce | 2006-08-25 17:51:30 -0600 (Fri, 25 Aug 2006) | 2 lines
+Changed paths:
+   M /trunk/modules.c
+
+Fixed a few bugs in the new plugin loading implementation.
+
+------------------------------------------------------------------------
+r479 | bruce | 2006-08-25 17:32:25 -0600 (Fri, 25 Aug 2006) | 2 lines
+Changed paths:
+   M /trunk/mailfront.html
+   M /trunk/modules.c
+   A /trunk/tests/plugin-reject (from /trunk/tests/smtpfront-reject:467)
+   A /trunk/tests/plugins-prepend
+   A /trunk/tests/plugins-remove
+   D /trunk/tests/smtpfront-reject
+
+Added support for prepending and removing plugins from the list.
+
+------------------------------------------------------------------------
+r478 | bruce | 2006-08-25 16:27:05 -0600 (Fri, 25 Aug 2006) | 2 lines
+Changed paths:
+   M /trunk/mailfront.h
+   M /trunk/modules.c
+
+Tag all modules with their loaded name.
+
+------------------------------------------------------------------------
+r477 | bruce | 2006-08-25 15:04:01 -0600 (Fri, 25 Aug 2006) | 2 lines
+Changed paths:
+   M /trunk/protocol-smtp=so
+   D /trunk/sasl-stub.c
+   D /trunk/smtp-respond.c
+   D /trunk/smtp.h
+
+Removed some unused files.
+
+------------------------------------------------------------------------
+r476 | bruce | 2006-08-25 14:59:34 -0600 (Fri, 25 Aug 2006) | 3 lines
+Changed paths:
+   M /trunk/protocol-smtp.c
+
+Eliminate the use of the temporary response and string manipulations in
+the SMTP protocol.
+
+------------------------------------------------------------------------
+r475 | bruce | 2006-08-25 14:58:53 -0600 (Fri, 25 Aug 2006) | 2 lines
+Changed paths:
+   M /trunk/mailfront.c
+
+Move output flushing after final into respond_line.
+
+------------------------------------------------------------------------
+r474 | bruce | 2006-08-25 14:51:27 -0600 (Fri, 25 Aug 2006) | 3 lines
+Changed paths:
+   M /trunk/mailfront.c
+   M /trunk/mailfront.h
+   M /trunk/protocol-qmqp.c
+   M /trunk/protocol-qmtp.c
+   M /trunk/protocol-smtp.c
+   M /trunk/qmtp-respond.c
+   M /trunk/qmtp.h
+
+Moved all response line splitting code into mailfront, leaving the
+protocol modules to implement a single respond_line function.
+
+------------------------------------------------------------------------
+r473 | bruce | 2006-08-25 14:22:43 -0600 (Fri, 25 Aug 2006) | 2 lines
+Changed paths:
+   M /trunk/mailfront.c
+   M /trunk/mailfront.h
+   M /trunk/protocol-qmqp.c
+   M /trunk/protocol-qmtp.c
+   M /trunk/protocol-smtp.c
+   M /trunk/smtp-respond.c
+
+Move logging of error messages into a common respond function.
+
+------------------------------------------------------------------------
+r472 | bruce | 2006-08-25 14:15:15 -0600 (Fri, 25 Aug 2006) | 2 lines
+Changed paths:
+   M /trunk/smtp-respond.c
+
+A further simplification of smtp_respond.
+
+------------------------------------------------------------------------
+r471 | bruce | 2006-08-25 14:13:56 -0600 (Fri, 25 Aug 2006) | 3 lines
+Changed paths:
+   M /trunk/protocol-smtp.c
+   M /trunk/smtp-respond.c
+   M /trunk/smtp.h
+
+Dropped the smtp_respond_part function, resulting in a simplification of
+smtp_respond.
+
+------------------------------------------------------------------------
+r470 | bruce | 2006-08-25 13:48:12 -0600 (Fri, 25 Aug 2006) | 2 lines
+Changed paths:
+   M /trunk/protocol-smtp.c
+   M /trunk/smtp-respond.c
+   M /trunk/smtp.h
+
+Renamed the SMTP respond functions as well.
+
+------------------------------------------------------------------------
+r469 | bruce | 2006-08-25 13:44:23 -0600 (Fri, 25 Aug 2006) | 2 lines
+Changed paths:
+   M /trunk/protocol-qmqp.c
+   M /trunk/protocol-qmtp.c
+   M /trunk/qmtp-respond.c
+   M /trunk/qmtp.h
+
+Greatly simplified (and renamed) the QM[QT]P respond function.
+
+------------------------------------------------------------------------
+r468 | bruce | 2006-08-25 12:54:05 -0600 (Fri, 25 Aug 2006) | 2 lines
+Changed paths:
+   M /trunk/mailfront.c
+
+Moved the session_init call to a much less stupid location.
+
+------------------------------------------------------------------------
+r467 | bruce | 2006-08-25 12:21:44 -0600 (Fri, 25 Aug 2006) | 2 lines
+Changed paths:
+   M /trunk/mailfront.c
+   M /trunk/mailfront.h
+   M /trunk/session.c
+
+Added a (for now) trivial session initialization function.
+
+------------------------------------------------------------------------
+r466 | bruce | 2006-08-24 12:42:42 -0600 (Thu, 24 Aug 2006) | 3 lines
+Changed paths:
+   M /trunk/mailfront.c
+   M /trunk/mailfront.h
+   M /trunk/plugin-add-received.c
+
+Moved several session variables used only in the add-received plugin
+into that plugin.
+
+------------------------------------------------------------------------
+r465 | bruce | 2006-08-23 14:59:43 -0600 (Wed, 23 Aug 2006) | 2 lines
+Changed paths:
+   M /trunk/mailfront.c
+   M /trunk/mailfront.h
+   M /trunk/protocol-smtp.c
+
+Added a plugin hook to capture the SMTP HELO/EHLO commands.
+
+------------------------------------------------------------------------
+r464 | bruce | 2006-08-03 14:54:36 -0600 (Thu, 03 Aug 2006) | 2 lines
+Changed paths:
+   M /trunk/mailfront.html
+
+Reformatted the PLUGIN line.
+
+------------------------------------------------------------------------
+r463 | bruce | 2006-08-01 23:35:50 -0600 (Tue, 01 Aug 2006) | 2 lines
+Changed paths:
+   M /trunk/mailfront.h
+   M /trunk/plugin-accept-recipient.c
+   M /trunk/plugin-accept-sender.c
+   M /trunk/plugin-accept.c
+   M /trunk/plugin-add-received.c
+   M /trunk/plugin-check-fqdn.c
+   M /trunk/plugin-counters.c
+   M /trunk/plugin-cvm-validate.c
+   M /trunk/plugin-mailrules.c
+   M /trunk/plugin-patterns.c
+   M /trunk/plugin-qmail-validate.c
+   M /trunk/plugin-reject.c
+   M /trunk/plugin-relayclient.c
+   M /trunk/plugin-require-auth.c
+
+Removed the useless STRUCT_PLUGIN macro.
+
+------------------------------------------------------------------------
+r462 | bruce | 2006-08-01 23:31:30 -0600 (Tue, 01 Aug 2006) | 3 lines
+Changed paths:
+   M /trunk/smtp-respond.c
+
+Fixed the SMTP response system to flush output only after all of a set
+of lines have been output, instead of after each line.
+
+------------------------------------------------------------------------
+r461 | bruce | 2006-07-31 21:46:54 -0600 (Mon, 31 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/mailfront.c
+
+Fixed a couple corner cases in response handling.
+
+------------------------------------------------------------------------
+r460 | bruce | 2006-07-31 21:41:00 -0600 (Mon, 31 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/mailfront.c
+
+Added missing call to backend->init
+
+------------------------------------------------------------------------
+r459 | bruce | 2006-07-31 15:47:52 -0600 (Mon, 31 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/mailfront.c
+
+Make sure not to short-circuit calls to plugins' init and reset functions.
+
+------------------------------------------------------------------------
+r458 | bruce | 2006-07-31 09:57:32 -0600 (Mon, 31 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/qmqpfront-echo.sh
+   M /trunk/qmqpfront-qmail.sh
+   M /trunk/qmtpfront-echo.sh
+   M /trunk/qmtpfront-qmail.sh
+   M /trunk/smtpfront-echo.sh
+   M /trunk/smtpfront-qmail.sh
+
+Forgot the "$@" trailing argument to the commands.
+
+------------------------------------------------------------------------
+r457 | bruce | 2006-07-30 14:32:26 -0600 (Sun, 30 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/TODO
+   M /trunk/mailfront.html
+   M /trunk/plugin-add-received.html
+   M /trunk/plugin-counters.html
+   A /trunk/plugin-cvm-validate.html
+   A /trunk/plugin-mailrules.html
+   M /trunk/plugin-patterns.html
+   M /trunk/plugin-qmail-validate.html
+   A /trunk/plugin-reject.html
+   M /trunk/plugin-relayclient.html
+   A /trunk/plugin-require-auth.html
+
+Finished the plugin documentation.
+
+------------------------------------------------------------------------
+r456 | bruce | 2006-07-30 13:43:29 -0600 (Sun, 30 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/mailfront.h
+   M /trunk/plugin-relayclient.c
+   M /trunk/plugin-require-auth.c
+   M /trunk/protocol-qmqp.c
+
+Removed the session.relayclient variable.
+
+------------------------------------------------------------------------
+r455 | bruce | 2006-07-30 00:39:06 -0600 (Sun, 30 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/TODO
+   M /trunk/mailfront.html
+   M /trunk/plugin-accept-recipient.html
+   M /trunk/plugin-accept-sender.html
+   M /trunk/plugin-accept.html
+   A /trunk/plugin-add-received.html
+   A /trunk/plugin-check-fqdn.html
+   A /trunk/plugin-counters.html
+   M /trunk/plugin-patterns.html
+   M /trunk/plugin-qmail-validate.html
+   M /trunk/plugin-relayclient.html
+
+More documentation reworking.
+
+------------------------------------------------------------------------
+r454 | bruce | 2006-07-29 22:58:38 -0600 (Sat, 29 Jul 2006) | 3 lines
+Changed paths:
+   M /trunk/backend-echo.html
+   M /trunk/backend-qmail.html
+   M /trunk/mailfront.html
+   M /trunk/plugin-accept-recipient.html
+   M /trunk/plugin-accept-sender.html
+   M /trunk/plugin-accept.html
+   M /trunk/plugin-patterns.html
+   M /trunk/plugin-qmail-validate.html
+   M /trunk/plugin-relayclient.html
+   M /trunk/protocol-qmqp.html
+   M /trunk/protocol-qmtp.html
+   M /trunk/protocol-smtp.html
+
+Renamed the titles in the HTML files to make it more obvious what the
+actual protocol/plugin/backend name is.
+
+------------------------------------------------------------------------
+r453 | bruce | 2006-07-29 22:54:30 -0600 (Sat, 29 Jul 2006) | 3 lines
+Changed paths:
+   M /trunk/mailfront.html
+   A /trunk/plugin-accept-recipient.html
+   A /trunk/plugin-accept-sender.html
+   A /trunk/plugin-accept.html
+
+Added documentation for the 3 new accept plugins, and a note about
+configuration to match the previous built-in configuration.
+
+------------------------------------------------------------------------
+r452 | bruce | 2006-07-29 22:47:20 -0600 (Sat, 29 Jul 2006) | 5 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/mailfront.c
+   M /trunk/mailfront.html
+   M /trunk/plugin-qmail-validate.c
+   M /trunk/tests/patterns-after
+   M /trunk/tests/patterns-general
+   M /trunk/tests/patterns-header
+   M /trunk/tests/patterns-message
+   M /trunk/tests/patterns-normal
+   M /trunk/tests/received
+   M /trunk/tests/rules-asterisk
+   M /trunk/tests/rules-both
+   M /trunk/tests/rules-cdb
+   M /trunk/tests/rules-databytes
+   M /trunk/tests/rules-databytes2
+   M /trunk/tests/rules-defaultmsg
+   M /trunk/tests/rules-empty
+   M /trunk/tests/rules-header-add
+   M /trunk/tests/rules-list
+   M /trunk/tests/rules-maxhops
+   M /trunk/tests/rules-multiline
+   M /trunk/tests/rules-negate
+   M /trunk/tests/rules-noop
+   M /trunk/tests/rules-rcptlist
+   M /trunk/tests/rules-recip
+   M /trunk/tests/rules-selector
+   M /trunk/tests/rules-sender
+   M /trunk/tests/smtpfront-auth-login
+   M /trunk/tests/smtpfront-auth-plain
+   M /trunk/tests/smtpfront-databytes
+   M /trunk/tests/smtpfront-looping-delivered-to
+   M /trunk/tests/smtpfront-looping-received
+   M /trunk/tests/smtpfront-maxrcpts
+   M /trunk/tests/smtpfront-reject
+   M /trunk/tests/smtpfront-require-auth
+   M /trunk/tests.inc
+
+Modified mailfront to "fail closed".  That is, if no plugin explicitly
+accepts a sender or recipient, mailfront considers it rejected.  This
+prevents default configurations from becoming open relays, at the
+expense of slightly more confusing configuration.
+
+------------------------------------------------------------------------
+r451 | bruce | 2006-07-29 22:42:25 -0600 (Sat, 29 Jul 2006) | 3 lines
+Changed paths:
+   A /trunk/plugin-accept-recipient.c (from /trunk/plugin-accept.c:448)
+   A /trunk/plugin-accept-recipient=so (from /trunk/plugin-accept=so:448)
+   A /trunk/plugin-accept-sender.c (from /trunk/plugin-accept.c:448)
+   A /trunk/plugin-accept-sender=so (from /trunk/plugin-accept=so:448)
+
+Added trivial plugins to accept only the sender or recipient address,
+which will be needed for normal qmail installations.
+
+------------------------------------------------------------------------
+r450 | bruce | 2006-07-29 22:31:00 -0600 (Sat, 29 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/INSTHIER
+   A /trunk/qmqpfront-echo.sh
+   A /trunk/qmqpfront-echo=sh
+   A /trunk/qmqpfront-qmail.sh
+   A /trunk/qmqpfront-qmail=sh
+   A /trunk/qmtpfront-echo.sh
+   A /trunk/qmtpfront-echo=sh
+   A /trunk/qmtpfront-qmail.sh
+   A /trunk/qmtpfront-qmail=sh
+   A /trunk/smtpfront-echo.sh
+   A /trunk/smtpfront-echo=sh
+   A /trunk/smtpfront-qmail.sh
+   A /trunk/smtpfront-qmail=sh
+
+Added wrapper shell scripts in place of the old program names.
+
+------------------------------------------------------------------------
+r449 | bruce | 2006-07-29 22:23:41 -0600 (Sat, 29 Jul 2006) | 3 lines
+Changed paths:
+   M /trunk/plugin-reject=so
+   M /trunk/plugin-require-auth=so
+
+The reject and require-auth plugins don't actually need libbg, so don't
+specify that library in the linkage.
+
+------------------------------------------------------------------------
+r448 | bruce | 2006-07-29 22:23:11 -0600 (Sat, 29 Jul 2006) | 2 lines
+Changed paths:
+   A /trunk/plugin-accept.c
+   A /trunk/plugin-accept=so
+
+Added a trivial 'accept' plugin, which accepts all senders and recipients.
+
+------------------------------------------------------------------------
+r447 | bruce | 2006-07-29 22:22:33 -0600 (Sat, 29 Jul 2006) | 4 lines
+Changed paths:
+   M /trunk/mailfront.c
+   M /trunk/mailfront.h
+   M /trunk/mailfront.html
+   M /trunk/modules.c
+   D /trunk/tests/module-detect
+
+Simplified the command line handling in mailfront to always require
+protocol and backend names on the command line, and added the option to
+also specify plugins.
+
+------------------------------------------------------------------------
+r446 | bruce | 2006-07-29 22:09:59 -0600 (Sat, 29 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/mailfront=x
+   A /trunk/modules.c (from /trunk/plugins.c:442)
+   D /trunk/plugins.c
+
+Renamed plugins.c to modules.c
+
+------------------------------------------------------------------------
+r445 | bruce | 2006-07-29 21:49:38 -0600 (Sat, 29 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/TODO
+   A /trunk/backend-echo.html
+   A /trunk/backend-qmail.html (from /trunk/qmail-backend.html:412)
+   M /trunk/mailfront.html
+   D /trunk/patterns.html
+   A /trunk/plugin-patterns.html (from /trunk/patterns.html:412)
+   A /trunk/plugin-qmail-validate.html (from /trunk/qmail-validate.html:412)
+   A /trunk/plugin-relayclient.html
+   A /trunk/protocol-qmqp.html
+   A /trunk/protocol-qmtp.html
+   A /trunk/protocol-smtp.html (from /trunk/smtpfront.html:412)
+   D /trunk/qmail-backend.html
+   D /trunk/qmail-validate.html
+   D /trunk/smtpfront.html
+
+Started rewriting the documentation for the new modular architecture.
+
+------------------------------------------------------------------------
+r444 | bruce | 2006-07-29 21:49:14 -0600 (Sat, 29 Jul 2006) | 3 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/VERSION
+
+Bumped version to 1.0, adding a note about the major changes in this
+release.
+
+------------------------------------------------------------------------
+r443 | bruce | 2006-07-29 21:48:39 -0600 (Sat, 29 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/INSTHIER
+
+Fixed up installation instructions.
+
+------------------------------------------------------------------------
+r442 | bruce | 2006-07-28 16:49:40 -0600 (Fri, 28 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/mailfront.c
+   M /trunk/mailfront.h
+   M /trunk/plugin-add-received.c
+   M /trunk/plugins.c
+   M /trunk/protocol-smtp.c
+
+Moved the "protocol" and "backend" into the "session" structure.
+
+------------------------------------------------------------------------
+r441 | bruce | 2006-07-28 16:18:25 -0600 (Fri, 28 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/INSTHIER
+
+Add the protocol modules to INSTHIER and make all modules executable.
+
+------------------------------------------------------------------------
+r440 | bruce | 2006-07-28 13:29:29 -0600 (Fri, 28 Jul 2006) | 3 lines
+Changed paths:
+   M /trunk/mailfront.c
+   A /trunk/tests/module-detect
+
+Fixed up the logic for determining which protocol and backend based on
+command line arguments, and added a test for it.
+
+------------------------------------------------------------------------
+r439 | bruce | 2006-07-28 13:09:20 -0600 (Fri, 28 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/mailfront.c
+   M /trunk/mailfront.h
+   D /trunk/mailfront=l
+   A /trunk/mailfront=x (from /trunk/mailfront=l:433)
+   M /trunk/plugins.c
+   A /trunk/protocol-qmqp.c (from /trunk/qmqp-mainloop.c:436)
+   A /trunk/protocol-qmqp=so
+   A /trunk/protocol-qmtp.c (from /trunk/qmtp-mainloop.c:436)
+   A /trunk/protocol-qmtp=so
+   A /trunk/protocol-smtp.c (from /trunk/smtp-commands.c:421)
+   A /trunk/protocol-smtp=so
+   D /trunk/qmqp-mainloop.c
+   D /trunk/qmqp=l
+   D /trunk/qmqpfront.c
+   D /trunk/qmqpfront=x
+   D /trunk/qmtp-mainloop.c
+   M /trunk/qmtp-respond.c
+   M /trunk/qmtp.h
+   D /trunk/qmtp=l
+   D /trunk/qmtpfront.c
+   D /trunk/qmtpfront=x
+   D /trunk/smtp-commands.c
+   D /trunk/smtp-mainloop.c
+   M /trunk/smtp-respond.c
+   M /trunk/smtp.h
+   D /trunk/smtp=l
+   D /trunk/smtpfront.c
+   D /trunk/smtpfront=x
+   M /trunk/tests/qmqpfront-echo
+   M /trunk/tests/qmtpfront-echo
+   M /trunk/tests/received
+   M /trunk/tests/rules-rcptlist
+   M /trunk/tests/smtpfront-reject
+   M /trunk/tests/smtpgreeting
+   M /trunk/tests.inc
+
+Moved all protocols into dynamically loaded modules.
+
+------------------------------------------------------------------------
+r438 | bruce | 2006-07-28 11:57:28 -0600 (Fri, 28 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/tests/received
+
+Modified the received test to use spac-tests's loops.
+
+------------------------------------------------------------------------
+r437 | bruce | 2006-07-28 11:29:51 -0600 (Fri, 28 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/INSTHIER
+   M /trunk/backend-echo.c
+   A /trunk/backend-echo=so (from /trunk/plugin-counters=so:426)
+   M /trunk/backend-qmail.c
+   A /trunk/backend-qmail=so (from /trunk/plugin-counters=so:426)
+   M /trunk/mailfront.c
+   M /trunk/mailfront.h
+   M /trunk/plugin-add-received.c
+   M /trunk/plugins.c
+   D /trunk/qmail=l
+   D /trunk/qmqpfront-echo.c
+   D /trunk/qmqpfront-echo=x
+   D /trunk/qmqpfront-qmail.c
+   D /trunk/qmqpfront-qmail=x
+   A /trunk/qmqpfront.c (from /trunk/qmqpfront-echo.c:435)
+   A /trunk/qmqpfront=x (from /trunk/qmqpfront-echo=x:435)
+   D /trunk/qmtpfront-echo.c
+   D /trunk/qmtpfront-echo=x
+   D /trunk/qmtpfront-qmail.c
+   D /trunk/qmtpfront-qmail=x
+   A /trunk/qmtpfront.c (from /trunk/qmtpfront-echo.c:435)
+   A /trunk/qmtpfront=x (from /trunk/qmtpfront-echo=x:435)
+   D /trunk/smtpfront-echo.c
+   D /trunk/smtpfront-echo=x
+   D /trunk/smtpfront-qmail.c
+   D /trunk/smtpfront-qmail=x
+   A /trunk/smtpfront.c (from /trunk/smtpfront-echo.c:435)
+   A /trunk/smtpfront=x (from /trunk/smtpfront-echo=x:435)
+   M /trunk/tests/qmqpfront-echo
+   M /trunk/tests/qmtpfront-echo
+   M /trunk/tests/received
+   M /trunk/tests/rules-rcptlist
+   M /trunk/tests/smtpfront-reject
+   M /trunk/tests/smtpgreeting
+   M /trunk/tests.inc
+
+Made all the backends dynamically loadable too.
+
+------------------------------------------------------------------------
+r436 | bruce | 2006-07-28 10:46:40 -0600 (Fri, 28 Jul 2006) | 4 lines
+Changed paths:
+   M /trunk/mailfront.c
+   M /trunk/mailfront.h
+   M /trunk/qmqp-mainloop.c
+   M /trunk/qmtp-mainloop.c
+   M /trunk/smtp-mainloop.c
+
+Moved the duplicated call to handle_init out of the protocols and into
+mailfront.c.  This breaks a protocol_init function out of
+protocol_mainloop.
+
+------------------------------------------------------------------------
+r435 | bruce | 2006-07-28 10:38:33 -0600 (Fri, 28 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/mailfront.c
+   M /trunk/mailfront.h
+   M /trunk/qmqpfront-echo.c
+   M /trunk/qmqpfront-echo=x
+   M /trunk/qmqpfront-qmail.c
+   M /trunk/qmqpfront-qmail=x
+   M /trunk/qmtp-respond.c
+   M /trunk/qmtpfront-echo.c
+   M /trunk/qmtpfront-echo=x
+   M /trunk/qmtpfront-qmail.c
+   M /trunk/qmtpfront-qmail=x
+   M /trunk/smtp-respond.c
+   M /trunk/smtpfront-echo.c
+   M /trunk/smtpfront-echo=x
+   M /trunk/smtpfront-qmail.c
+   M /trunk/smtpfront-qmail=x
+
+Moved main from individual files into mailfront.c
+
+------------------------------------------------------------------------
+r434 | bruce | 2006-07-28 10:30:32 -0600 (Fri, 28 Jul 2006) | 2 lines
+Changed paths:
+   D /trunk/backend-reject.c
+   A /trunk/plugin-reject.c (from /trunk/backend-reject.c:432)
+   A /trunk/plugin-reject=so (from /trunk/plugin-counters=so:426)
+   D /trunk/qmqpfront-reject.c
+   D /trunk/qmqpfront-reject=x
+   D /trunk/qmtpfront-reject.c
+   D /trunk/qmtpfront-reject=x
+   D /trunk/smtpfront-reject.c
+   D /trunk/smtpfront-reject=x
+   M /trunk/tests/smtpfront-reject
+
+Moved the reject backend into a plugin.
+
+------------------------------------------------------------------------
+r433 | bruce | 2006-07-28 10:16:59 -0600 (Fri, 28 Jul 2006) | 2 lines
+Changed paths:
+   A /trunk/mailfront.c (from /trunk/std-handle.c:424)
+   M /trunk/mailfront=l
+   D /trunk/std-handle.c
+
+Renamed std-handle.c to mailfront.c
+
+------------------------------------------------------------------------
+r432 | bruce | 2006-07-28 10:14:21 -0600 (Fri, 28 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/backend-reject.c
+   M /trunk/qmqpfront-reject.c
+   M /trunk/qmtpfront-reject.c
+   M /trunk/smtpfront-reject.c
+
+Moved the -reject main routine into backend-reject.c
+
+------------------------------------------------------------------------
+r431 | bruce | 2006-07-28 09:46:59 -0600 (Fri, 28 Jul 2006) | 3 lines
+Changed paths:
+   M /trunk/plugin-require-auth.c
+   M /trunk/std-handle.html
+   M /trunk/tests/smtpfront-require-auth
+
+Since the require-auth plugin is optional, there is no need for it to
+check for $REQUIRE_AUTH.
+
+------------------------------------------------------------------------
+r430 | bruce | 2006-07-28 09:44:43 -0600 (Fri, 28 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/mailfront.h
+   M /trunk/plugins.c
+   M /trunk/qmqpfront-echo.c
+   M /trunk/qmqpfront-qmail.c
+   M /trunk/qmqpfront-reject.c
+   M /trunk/qmtpfront-echo.c
+   M /trunk/qmtpfront-qmail.c
+   M /trunk/qmtpfront-reject.c
+   M /trunk/smtpfront-echo.c
+   M /trunk/smtpfront-qmail.c
+   M /trunk/smtpfront-reject.c
+   M /trunk/tests/smtpfront-auth-login
+   M /trunk/tests/smtpfront-auth-plain
+   M /trunk/tests/smtpfront-require-auth
+
+Removed the default plugins list.
+
+------------------------------------------------------------------------
+r429 | bruce | 2006-07-28 09:17:46 -0600 (Fri, 28 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/mailfront.h
+   M /trunk/qmqp-mainloop.c
+   M /trunk/qmqpfront-echo.c
+   M /trunk/qmqpfront-qmail.c
+   M /trunk/qmqpfront-reject.c
+   M /trunk/qmtp-mainloop.c
+   M /trunk/qmtpfront-echo.c
+   M /trunk/qmtpfront-qmail.c
+   M /trunk/qmtpfront-reject.c
+   M /trunk/smtp-mainloop.c
+   M /trunk/smtpfront-echo.c
+   M /trunk/smtpfront-qmail.c
+   M /trunk/smtpfront-reject.c
+
+Renamed all the protocol main loops to "protocol_mainloop"
+
+------------------------------------------------------------------------
+r428 | bruce | 2006-07-26 17:39:56 -0600 (Wed, 26 Jul 2006) | 3 lines
+Changed paths:
+   M /trunk/plugins.c
+   M /trunk/std-handle.html
+   M /trunk/tests.inc
+
+Renamed $PLUGINS_PATH to $MODULE_PATH, as that path will also include
+frontends and backends.
+
+------------------------------------------------------------------------
+r427 | bruce | 2006-07-26 17:26:50 -0600 (Wed, 26 Jul 2006) | 2 lines
+Changed paths:
+   D /trunk/null-validate.c
+
+Removed unused null validation plugin.
+
+------------------------------------------------------------------------
+r426 | bruce | 2006-07-26 17:23:41 -0600 (Wed, 26 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/mailfront.h
+   M /trunk/plugin-add-received=so
+   M /trunk/plugin-check-fqdn=so
+   M /trunk/plugin-counters=so
+   M /trunk/plugin-cvm-validate=so
+   M /trunk/plugin-mailrules=so
+   M /trunk/plugin-patterns=so
+   M /trunk/plugin-qmail-validate.c
+   M /trunk/plugin-qmail-validate=so
+   M /trunk/plugin-relayclient=so
+   M /trunk/plugin-require-auth=so
+
+Removed the last vestiges of the PLUGIN macro.
+
+------------------------------------------------------------------------
+r425 | bruce | 2006-07-26 17:08:32 -0600 (Wed, 26 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/TODO
+   A /trunk/backend-echo.c (from /trunk/echo-backend.c:412)
+   A /trunk/backend-qmail.c (from /trunk/qmail-backend.c:412)
+   A /trunk/backend-reject.c (from /trunk/reject-backend.c:412)
+   D /trunk/echo-backend.c
+   D /trunk/qmail-backend.c
+   M /trunk/qmail=l
+   M /trunk/qmqpfront-echo=x
+   M /trunk/qmqpfront-reject=x
+   M /trunk/qmtpfront-echo=x
+   M /trunk/qmtpfront-reject=x
+   D /trunk/reject-backend.c
+   M /trunk/smtpfront-echo=x
+   M /trunk/smtpfront-reject=x
+
+Renamed all backend code files to backend-*.
+
+------------------------------------------------------------------------
+r424 | bruce | 2006-07-26 17:03:05 -0600 (Wed, 26 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/TODO
+   M /trunk/mailfront.h
+   M /trunk/mailfront=l
+   M /trunk/plugins.c
+   M /trunk/qmqpfront-echo.c
+   M /trunk/qmqpfront-echo=x
+   M /trunk/qmqpfront-qmail.c
+   M /trunk/qmqpfront-reject.c
+   M /trunk/qmtpfront-echo.c
+   M /trunk/qmtpfront-echo=x
+   M /trunk/qmtpfront-qmail.c
+   M /trunk/qmtpfront-reject.c
+   M /trunk/smtpfront-echo.c
+   M /trunk/smtpfront-echo=x
+   M /trunk/smtpfront-qmail.c
+   M /trunk/smtpfront-reject.c
+   M /trunk/std-handle.c
+   M /trunk/tests/patterns-after
+   M /trunk/tests/patterns-general
+   M /trunk/tests/patterns-header
+   M /trunk/tests/patterns-message
+   M /trunk/tests/patterns-normal
+   M /trunk/tests/qmqpfront-echo
+   M /trunk/tests/qmtpfront-echo
+   M /trunk/tests/received
+   M /trunk/tests/rules-asterisk
+   M /trunk/tests/rules-both
+   M /trunk/tests/rules-cdb
+   M /trunk/tests/rules-databytes
+   M /trunk/tests/rules-databytes2
+   M /trunk/tests/rules-defaultmsg
+   M /trunk/tests/rules-empty
+   M /trunk/tests/rules-header-add
+   M /trunk/tests/rules-list
+   M /trunk/tests/rules-maxhops
+   M /trunk/tests/rules-multiline
+   M /trunk/tests/rules-negate
+   M /trunk/tests/rules-noop
+   M /trunk/tests/rules-rcptlist
+   M /trunk/tests/rules-recip
+   M /trunk/tests/rules-selector
+   M /trunk/tests/rules-sender
+   M /trunk/tests/smtpfront-bad-bounce
+   M /trunk/tests/smtpfront-content
+   M /trunk/tests/smtpfront-databytes
+   M /trunk/tests/smtpfront-looping-delivered-to
+   M /trunk/tests/smtpfront-looping-received
+   M /trunk/tests/smtpfront-maxrcpts
+   M /trunk/tests.inc
+
+Switched all validation routines from hard-plugged to dynamically plugged.
+
+------------------------------------------------------------------------
+r423 | bruce | 2006-07-26 16:38:55 -0600 (Wed, 26 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/plugin-cvm-validate=so
+
+Added the missing -lcvm-v2client library needed for the cvm-validate plugin.
+
+------------------------------------------------------------------------
+r422 | bruce | 2006-07-26 16:36:34 -0600 (Wed, 26 Jul 2006) | 2 lines
+Changed paths:
+   A /trunk/conf-modules
+
+Added missing config file.
+
+------------------------------------------------------------------------
+r421 | bruce | 2006-07-26 16:36:06 -0600 (Wed, 26 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/qmqp-mainloop.c
+   M /trunk/qmtp-mainloop.c
+   M /trunk/session.c
+   M /trunk/smtp-commands.c
+   M /trunk/smtp-mainloop.c
+
+Moved the global struct session into session.c
+
+------------------------------------------------------------------------
+r420 | bruce | 2006-07-26 16:24:44 -0600 (Wed, 26 Jul 2006) | 3 lines
+Changed paths:
+   D /trunk/BIN
+   A /trunk/INSTHIER (from /trunk/BIN:412)
+   A /trunk/plugin-add-received=so
+   A /trunk/plugin-check-fqdn=so
+   A /trunk/plugin-counters=so
+   A /trunk/plugin-cvm-validate=so
+   A /trunk/plugin-mailrules=so
+   A /trunk/plugin-patterns=so
+   A /trunk/plugin-qmail-validate=so
+   A /trunk/plugin-relayclient=so
+   A /trunk/plugin-require-auth=so
+
+Compile all the plugins into shared objects, and install them in
+`conf-modules`.
+
+------------------------------------------------------------------------
+r419 | bruce | 2006-07-26 16:23:02 -0600 (Wed, 26 Jul 2006) | 3 lines
+Changed paths:
+   M /trunk/plugin-qmail-validate.c
+
+Make sure conf_qmail is included statically if qmail-validate is being
+compiled as a plugin.
+
+------------------------------------------------------------------------
+r418 | bruce | 2006-07-26 16:22:16 -0600 (Wed, 26 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/mailfront=l
+
+Add plugins.o object to the mailfront library, missed in last commit.
+
+------------------------------------------------------------------------
+r417 | bruce | 2006-07-26 16:21:45 -0600 (Wed, 26 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/mailfront.h
+   A /trunk/plugins.c
+   M /trunk/qmqpfront-echo=x
+   M /trunk/qmqpfront-qmail=x
+   M /trunk/qmqpfront-reject=x
+   M /trunk/qmtpfront-echo=x
+   M /trunk/qmtpfront-qmail=x
+   M /trunk/qmtpfront-reject=x
+   M /trunk/smtpfront-echo=x
+   M /trunk/smtpfront-qmail=x
+   M /trunk/smtpfront-reject=x
+   M /trunk/std-handle.c
+   M /trunk/std-handle.html
+
+Added support for loading plugins dynamically.
+
+------------------------------------------------------------------------
+r416 | bruce | 2006-07-26 15:35:33 -0600 (Wed, 26 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/mailfront.h
+   M /trunk/plugin-add-received.c
+   M /trunk/plugin-check-fqdn.c
+   M /trunk/plugin-counters.c
+   M /trunk/plugin-cvm-validate.c
+   M /trunk/plugin-mailrules.c
+   M /trunk/plugin-patterns.c
+   M /trunk/plugin-qmail-validate.c
+   M /trunk/plugin-relayclient.c
+   M /trunk/plugin-require-auth.c
+
+Added a macro for defining the struct plugin in plugins.
+
+------------------------------------------------------------------------
+r415 | bruce | 2006-07-26 15:19:08 -0600 (Wed, 26 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/mailfront.h
+   M /trunk/null-validate.c
+   M /trunk/plugin-add-received.c
+   M /trunk/plugin-check-fqdn.c
+   M /trunk/plugin-counters.c
+   M /trunk/plugin-cvm-validate.c
+   M /trunk/plugin-mailrules.c
+   M /trunk/plugin-patterns.c
+   M /trunk/plugin-qmail-validate.c
+   M /trunk/plugin-relayclient.c
+   M /trunk/plugin-require-auth.c
+   M /trunk/std-handle.c
+
+Renamed "module" to "plugin" in all relevant files.
+
+------------------------------------------------------------------------
+r414 | bruce | 2006-07-26 15:16:11 -0600 (Wed, 26 Jul 2006) | 2 lines
+Changed paths:
+   D /trunk/add-received.c
+   D /trunk/check-fqdn.c
+   D /trunk/counters.c
+   D /trunk/cvm-validate.c
+   M /trunk/mailfront=l
+   D /trunk/mailrules.c
+   D /trunk/patterns.c
+   A /trunk/plugin-add-received.c (from /trunk/add-received.c:412)
+   A /trunk/plugin-check-fqdn.c (from /trunk/check-fqdn.c:412)
+   A /trunk/plugin-counters.c (from /trunk/counters.c:412)
+   A /trunk/plugin-cvm-validate.c (from /trunk/cvm-validate.c:412)
+   A /trunk/plugin-mailrules.c (from /trunk/mailrules.c:412)
+   A /trunk/plugin-patterns.c (from /trunk/patterns.c:412)
+   A /trunk/plugin-qmail-validate.c (from /trunk/qmail-validate.c:412)
+   A /trunk/plugin-relayclient.c (from /trunk/relayclient.c:412)
+   A /trunk/plugin-require-auth.c (from /trunk/require-auth.c:412)
+   D /trunk/qmail-validate.c
+   M /trunk/qmail=l
+   D /trunk/relayclient.c
+   D /trunk/require-auth.c
+
+Renamed the module source files to add a "plugin-" prefix.
+
+------------------------------------------------------------------------
+r413 | bruce | 2006-07-26 11:28:49 -0600 (Wed, 26 Jul 2006) | 2 lines
+Changed paths:
+   A /trunk/mailfront=l
+
+Added missing file.
+
+------------------------------------------------------------------------
+r412 | bruce | 2006-07-22 23:25:02 -0600 (Sat, 22 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/TODO
+   M /trunk/require-auth.c
+   M /trunk/std-handle.c
+
+Modularization: final module (I hope) -- require-auth.
+
+------------------------------------------------------------------------
+r411 | bruce | 2006-07-22 23:18:51 -0600 (Sat, 22 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/TODO
+   M /trunk/add-received.c
+   M /trunk/mailrules.c
+   D /trunk/mailrules.h
+   M /trunk/relayclient.c
+   M /trunk/smtp-commands.c
+   M /trunk/smtp-mainloop.c
+   M /trunk/std-handle.c
+
+Modularization: made mailrules a module.
+
+------------------------------------------------------------------------
+r410 | bruce | 2006-07-22 23:12:19 -0600 (Sat, 22 Jul 2006) | 3 lines
+Changed paths:
+   M /trunk/counters.c
+   M /trunk/mailfront.h
+   M /trunk/mailrules.c
+   M /trunk/std-handle.c
+
+Fixed up counter handling slightly, required to move things out of
+std-handle.c and still maintain proper semantics.
+
+------------------------------------------------------------------------
+r409 | bruce | 2006-07-22 22:43:57 -0600 (Sat, 22 Jul 2006) | 3 lines
+Changed paths:
+   M /trunk/TODO
+   A /trunk/check-fqdn.c
+   A /trunk/counters.c
+   M /trunk/mailfront.h
+   M /trunk/patterns.c
+   M /trunk/std-handle.c
+
+Modularization: made patterns a proper module and added a module for
+various counters -- too many recipients, hops, or bytes.
+
+------------------------------------------------------------------------
+r408 | bruce | 2006-07-22 10:40:50 -0600 (Sat, 22 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/TODO
+   M /trunk/add-received.c
+   M /trunk/mailfront.h
+   M /trunk/mailrules.c
+   M /trunk/mailrules.h
+   M /trunk/patterns.c
+   M /trunk/qmail-backend.c
+   M /trunk/qmqp=l
+   M /trunk/qmqpfront-echo=x
+   M /trunk/qmqpfront-qmail=x
+   M /trunk/qmqpfront-reject=x
+   M /trunk/qmtp=l
+   M /trunk/qmtpfront-echo=x
+   M /trunk/qmtpfront-qmail=x
+   M /trunk/qmtpfront-reject=x
+   M /trunk/relayclient.c
+   A /trunk/session.c
+   M /trunk/smtp=l
+   M /trunk/smtpfront-echo=x
+   M /trunk/smtpfront-qmail=x
+   M /trunk/smtpfront-reject=x
+   M /trunk/std-handle.c
+
+Moved rules-specific environment variables into session-generic code.
+
+------------------------------------------------------------------------
+r407 | bruce | 2006-07-22 10:12:06 -0600 (Sat, 22 Jul 2006) | 3 lines
+Changed paths:
+   M /trunk/TODO
+   M /trunk/add-received.c
+   M /trunk/cvm-validate.c
+   M /trunk/echo-backend.c
+   M /trunk/mailfront.h
+   M /trunk/qmail-backend.c
+   M /trunk/qmail-validate.c
+   M /trunk/qmqp-mainloop.c
+   M /trunk/qmtp-mainloop.c
+   M /trunk/reject-backend.c
+   M /trunk/relayclient.c
+   M /trunk/smtp-commands.c
+   M /trunk/smtp-mainloop.c
+   M /trunk/std-handle.c
+
+Moved the session parameter back into a global, simplifying a lot of
+function calls (and some code).
+
+------------------------------------------------------------------------
+r406 | bruce | 2006-07-22 09:42:23 -0600 (Sat, 22 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/TODO
+   A /trunk/add-received.c
+   M /trunk/mailfront.h
+   M /trunk/qmqp=l
+   M /trunk/qmtp=l
+   M /trunk/smtp=l
+   M /trunk/std-handle.c
+
+Modularization: moved Received: header generation into a module.
+
+------------------------------------------------------------------------
+r405 | bruce | 2006-07-22 08:57:46 -0600 (Sat, 22 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/relayclient.c
+   M /trunk/std-handle.c
+
+Removed the extraneous authenticated logic out of std-handle.c
+
+------------------------------------------------------------------------
+r404 | bruce | 2006-07-21 18:03:23 -0600 (Fri, 21 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/qmqp=l
+   M /trunk/qmtp=l
+   A /trunk/relayclient.c
+   A /trunk/require-auth.c
+   M /trunk/smtp=l
+   M /trunk/std-handle.c
+
+Modularization: moved relayclient + authenticated logic into a module.
+
+------------------------------------------------------------------------
+r403 | bruce | 2006-07-21 17:44:12 -0600 (Fri, 21 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/cvm-validate.c
+   M /trunk/mailfront.h
+   M /trunk/std-handle.c
+
+Modularization: moved CVM validation of recipients into a module.
+
+------------------------------------------------------------------------
+r402 | bruce | 2006-07-21 17:37:29 -0600 (Fri, 21 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/mailfront.h
+   M /trunk/null-validate.c
+   M /trunk/qmail-validate.c
+   M /trunk/std-handle.c
+
+Modularization: made backend validation a module.
+
+------------------------------------------------------------------------
+r401 | bruce | 2006-07-21 17:19:28 -0600 (Fri, 21 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/mailfront.h
+   M /trunk/std-handle.c
+
+Modularization: start of the dynamic module framework.
+
+------------------------------------------------------------------------
+r400 | bruce | 2006-07-21 16:42:34 -0600 (Fri, 21 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/mailfront.h
+   M /trunk/qmqp-mainloop.c
+   M /trunk/qmtp-mainloop.c
+   M /trunk/reject-backend.c
+   M /trunk/smtp-commands.c
+   M /trunk/std-handle.c
+
+Modularization: eliminated globals maxdatabytes, maxhops, and maxrcpts.
+
+------------------------------------------------------------------------
+r399 | bruce | 2006-07-21 16:11:02 -0600 (Fri, 21 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/echo-backend.c
+   M /trunk/mailfront.h
+   M /trunk/qmail-backend.c
+   M /trunk/qmqp-mainloop.c
+   M /trunk/qmtp-mainloop.c
+   M /trunk/reject-backend.c
+   M /trunk/smtp-commands.c
+   M /trunk/smtp-mainloop.c
+   M /trunk/std-handle.c
+
+Modularization: moved the session from a global to a parameter.
+
+------------------------------------------------------------------------
+r398 | bruce | 2006-07-21 15:41:11 -0600 (Fri, 21 Jul 2006) | 3 lines
+Changed paths:
+   M /trunk/mailfront.h
+   M /trunk/qmqp-mainloop.c
+   M /trunk/qmtp-mainloop.c
+   M /trunk/reject-backend.c
+   M /trunk/smtp-commands.c
+   M /trunk/std-handle.c
+
+More modularization: move the protocol and helo_domain parameters into
+the session structure.
+
+------------------------------------------------------------------------
+r397 | bruce | 2006-07-21 15:28:37 -0600 (Fri, 21 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/mailfront.h
+   M /trunk/qmqp-mainloop.c
+   M /trunk/reject-backend.c
+   M /trunk/smtp-commands.c
+   M /trunk/std-handle.c
+
+Starting modularization: move several globals into a session structure.
+
+------------------------------------------------------------------------
+r396 | bruce | 2006-07-21 15:28:12 -0600 (Fri, 21 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/VERSION
+
+Bumped version to 0.99
+
+------------------------------------------------------------------------
+r395 | bruce | 2006-07-18 16:19:36 -0600 (Tue, 18 Jul 2006) | 1 line
+Changed paths:
+   A /tags/0.98.1 (from /trunk:394)
+
+Tagged version 0.98.1
+------------------------------------------------------------------------
+r394 | bruce | 2005-10-29 12:54:15 -0600 (Sat, 29 Oct 2005) | 4 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/std-handle.c
+
+Fixed the $REQUIRE_AUTH feature to properly check for $RELAYCLIENT 
+being set by looking up $RELAYCLIENT before (and after) checking the
+sender against mail rules.
+
+------------------------------------------------------------------------
+r393 | bruce | 2005-10-29 12:48:10 -0600 (Sat, 29 Oct 2005) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/VERSION
+
+Bumped version to 0.98.1
+
+------------------------------------------------------------------------
+r392 | bruce | 2005-10-26 11:34:57 -0600 (Wed, 26 Oct 2005) | 1 line
+Changed paths:
+   A /tags/0.98 (from /trunk:391)
+
+Tagged version 0.98
+------------------------------------------------------------------------
+r391 | bruce | 2005-10-26 11:29:55 -0600 (Wed, 26 Oct 2005) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+
+Added note to NEWS about MSA support.
+
+------------------------------------------------------------------------
+r390 | bruce | 2005-10-26 11:22:24 -0600 (Wed, 26 Oct 2005) | 2 lines
+Changed paths:
+   M /trunk/imapfront.html
+   M /trunk/msa.html
+   M /trunk/pop3front.html
+   M /trunk/smtpfront.html
+
+Added links for all RFC references.
+
+------------------------------------------------------------------------
+r389 | bruce | 2005-10-25 22:43:43 -0600 (Tue, 25 Oct 2005) | 2 lines
+Changed paths:
+   M /trunk/TODO
+
+Updated the TODO document.
+
+------------------------------------------------------------------------
+r388 | bruce | 2005-10-25 22:43:34 -0600 (Tue, 25 Oct 2005) | 2 lines
+Changed paths:
+   A /trunk/tests/qmqpfront-echo
+   A /trunk/tests/qmtpfront-echo
+
+Added simple tests for the QMQP/QMTP front-ends.
+
+------------------------------------------------------------------------
+r387 | bruce | 2005-10-25 17:26:31 -0600 (Tue, 25 Oct 2005) | 2 lines
+Changed paths:
+   M /trunk/msa.html
+   M /trunk/smtpfront.html
+
+Cleaned up the MSA documentation.
+
+------------------------------------------------------------------------
+r386 | bruce | 2005-10-25 17:20:37 -0600 (Tue, 25 Oct 2005) | 3 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/mailfront.h
+   D /trunk/msa.c
+   M /trunk/qmqp=l
+   M /trunk/qmtp=l
+   M /trunk/smtp=l
+   M /trunk/std-handle.c
+   M /trunk/std-handle.html
+   M /trunk/tests/patterns-after
+   M /trunk/tests/patterns-general
+   M /trunk/tests/patterns-header
+   M /trunk/tests/patterns-message
+   M /trunk/tests/patterns-normal
+   M /trunk/tests/received
+   M /trunk/tests/rules-asterisk
+   M /trunk/tests/rules-both
+   M /trunk/tests/rules-cdb
+   M /trunk/tests/rules-databytes
+   M /trunk/tests/rules-databytes2
+   M /trunk/tests/rules-defaultmsg
+   M /trunk/tests/rules-empty
+   M /trunk/tests/rules-header-add
+   M /trunk/tests/rules-list
+   M /trunk/tests/rules-maxhops
+   M /trunk/tests/rules-multiline
+   M /trunk/tests/rules-negate
+   M /trunk/tests/rules-noop
+   M /trunk/tests/rules-rcptlist
+   M /trunk/tests/rules-recip
+   M /trunk/tests/rules-selector
+   M /trunk/tests/rules-sender
+   M /trunk/tests/smtpfront-auth-login
+   M /trunk/tests/smtpfront-auth-plain
+   M /trunk/tests/smtpfront-bad-bounce
+   M /trunk/tests/smtpfront-content
+   M /trunk/tests/smtpfront-databytes
+   M /trunk/tests/smtpfront-looping-delivered-to
+   M /trunk/tests/smtpfront-looping-received
+   M /trunk/tests/smtpfront-maxrcpts
+   M /trunk/tests/smtpfront-quotes
+   M /trunk/tests/smtpfront-require-auth
+
+Moved most of the MSA functionality into std-handle.c, making FQDNs
+unconditionally mandatory.
+
+------------------------------------------------------------------------
+r385 | bruce | 2005-10-25 00:14:06 -0600 (Tue, 25 Oct 2005) | 3 lines
+Changed paths:
+   M /trunk/std-handle.html
+
+Fixed the std-handle HTML documentation to not mirror the SMTP front end
+documentation.
+
+------------------------------------------------------------------------
+r384 | bruce | 2005-10-24 15:17:43 -0600 (Mon, 24 Oct 2005) | 2 lines
+Changed paths:
+   M /trunk/reject-backend.c
+   M /trunk/responses.c
+   M /trunk/responses.h
+   M /trunk/std-handle.c
+
+Moved the duplicated number_ok and response_ok functions into responses.c
+
+------------------------------------------------------------------------
+r383 | bruce | 2005-10-24 15:09:30 -0600 (Mon, 24 Oct 2005) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   A /trunk/qmqpfront-reject.c (from /trunk/smtpfront-reject.c:382)
+   A /trunk/qmqpfront-reject=x (from /trunk/smtpfront-reject=x:382)
+   A /trunk/qmtpfront-reject.c (from /trunk/smtpfront-reject.c:382)
+   A /trunk/qmtpfront-reject=x (from /trunk/smtpfront-reject=x:382)
+   M /trunk/reject-backend.c
+
+Added QMQP and QMTP "reject" front ends, for completeness.
+
+------------------------------------------------------------------------
+r382 | bruce | 2005-10-24 15:01:32 -0600 (Mon, 24 Oct 2005) | 2 lines
+Changed paths:
+   A /trunk/reject-backend.c (from /trunk/smtpfront-reject.c:378)
+   M /trunk/smtpfront-reject.c
+   M /trunk/smtpfront-reject=x
+
+Broke apart the reject backend to make it useable for the other protocols.
+
+------------------------------------------------------------------------
+r381 | bruce | 2005-10-24 14:55:03 -0600 (Mon, 24 Oct 2005) | 3 lines
+Changed paths:
+   M /trunk/smtpfront.html
+   A /trunk/std-handle.html (from /trunk/smtpfront.html:376)
+
+Broke the SMTP documentation into its two logical parts, separating out
+the parts the belong to std-handle.c
+
+------------------------------------------------------------------------
+r380 | bruce | 2005-10-24 14:51:22 -0600 (Mon, 24 Oct 2005) | 2 lines
+Changed paths:
+   M /trunk/qmail-validate.c
+   M /trunk/qmqp=l
+   M /trunk/qmqpfront-qmail=x
+   M /trunk/qmtp=l
+   M /trunk/qmtpfront-qmail=x
+   M /trunk/smtp=l
+   M /trunk/smtpfront-qmail=x
+   M /trunk/std-handle.c
+
+Moved the CVM validation hook out of qmail-validate and into std-handle.
+
+------------------------------------------------------------------------
+r379 | bruce | 2005-10-24 14:49:57 -0600 (Mon, 24 Oct 2005) | 2 lines
+Changed paths:
+   M /trunk/tests/smtpfront-require-auth
+
+Fixed up message for "authentication required".
+
+------------------------------------------------------------------------
+r378 | bruce | 2005-10-24 14:45:02 -0600 (Mon, 24 Oct 2005) | 2 lines
+Changed paths:
+   M /trunk/smtpfront-reject.c
+
+Skip going through std-handle.c for the simple reject backend.
+
+------------------------------------------------------------------------
+r377 | bruce | 2005-10-22 00:20:20 -0600 (Sat, 22 Oct 2005) | 2 lines
+Changed paths:
+   M /trunk/std-handle.c
+
+Fix up the SMTP code for the "authentication required" message.
+
+------------------------------------------------------------------------
+r376 | bruce | 2005-10-22 00:17:12 -0600 (Sat, 22 Oct 2005) | 4 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/smtpfront.html
+   M /trunk/std-handle.c
+   A /trunk/tests/smtpfront-require-auth
+
+Added support for rejecting all mail unless client is authenticated
+(either as a relay client or with SMTP authentication) if
+$REQUIRE_AUTH is set.
+
+------------------------------------------------------------------------
+r375 | bruce | 2005-10-21 16:04:51 -0600 (Fri, 21 Oct 2005) | 2 lines
+Changed paths:
+   M /trunk/smtp-mainloop.c
+
+Added a missing extended mail system status code to a response here.
+
+------------------------------------------------------------------------
+r374 | bruce | 2005-10-20 23:01:40 -0600 (Thu, 20 Oct 2005) | 2 lines
+Changed paths:
+   M /trunk/tests/patterns-after
+   M /trunk/tests/patterns-general
+   M /trunk/tests/patterns-header
+   M /trunk/tests/patterns-message
+   M /trunk/tests/patterns-normal
+   M /trunk/tests/rules-databytes
+   M /trunk/tests/rules-databytes2
+   M /trunk/tests/rules-header-add
+   M /trunk/tests/rules-maxhops
+   M /trunk/tests/smtpfront-auth-login
+   M /trunk/tests/smtpfront-auth-plain
+   M /trunk/tests/smtpfront-bad-bounce
+   M /trunk/tests/smtpfront-content
+   M /trunk/tests/smtpfront-databytes
+   M /trunk/tests/smtpfront-looping-delivered-to
+   M /trunk/tests/smtpfront-looping-received
+   M /trunk/tests/smtpfront-maxnotimpl
+   M /trunk/tests/smtpfront-maxrcpts
+   M /trunk/tests/smtpfront-reject
+
+Adjusted messages in the tests to match the current strings.
+
+------------------------------------------------------------------------
+r373 | bruce | 2005-10-20 22:55:56 -0600 (Thu, 20 Oct 2005) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/pop3front-maildir.c
+   M /trunk/tests/pop3front-maildir-state
+
+Truncate UIDL responses to 70 characters as per RFC 1939.
+
+------------------------------------------------------------------------
+r372 | bruce | 2005-10-20 22:11:31 -0600 (Thu, 20 Oct 2005) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/cvm-validate.c
+   M /trunk/mailrules.c
+   M /trunk/msa.c
+   M /trunk/qmail-backend.c
+   M /trunk/qmail-validate.c
+   M /trunk/qmqp-mainloop.c
+   M /trunk/qmtp-mainloop.c
+   M /trunk/responses.c
+   M /trunk/responses.h
+   M /trunk/smtp-commands.c
+   M /trunk/smtp-mainloop.c
+   M /trunk/std-handle.c
+
+Added enhanced mail system status codes (RFC 1893/2034).
+
+------------------------------------------------------------------------
+r371 | bruce | 2005-10-20 14:15:47 -0600 (Thu, 20 Oct 2005) | 2 lines
+Changed paths:
+   M /trunk/smtpfront-reject.c
+
+Eliminate unused variable warnings in smtpfront-reject.c
+
+------------------------------------------------------------------------
+r370 | bruce | 2005-10-19 22:56:28 -0600 (Wed, 19 Oct 2005) | 3 lines
+Changed paths:
+   M /trunk/msa.c
+   M /trunk/msa.html
+
+Added support for adding a default host and domain to addresses that are
+missing them in MSA mode.
+
+------------------------------------------------------------------------
+r369 | bruce | 2005-10-18 17:05:55 -0600 (Tue, 18 Oct 2005) | 2 lines
+Changed paths:
+   M /trunk/echo-backend.c
+   A /trunk/null-validate.c (from /trunk/echo-backend.c:342)
+   M /trunk/qmqpfront-echo=x
+   M /trunk/qmtpfront-echo=x
+   M /trunk/smtpfront-echo=x
+
+Broke the stub validate routines out of echo-backend.c
+
+------------------------------------------------------------------------
+r368 | bruce | 2005-10-18 17:03:50 -0600 (Tue, 18 Oct 2005) | 3 lines
+Changed paths:
+   M /trunk/mailfront.h
+   A /trunk/msa.c
+   A /trunk/msa.html
+   M /trunk/qmqp=l
+   M /trunk/qmtp=l
+   M /trunk/smtp=l
+   M /trunk/smtpfront.html
+   M /trunk/std-handle.c
+
+Added the start of hooks and documentation on RFC 2476 "Message
+Submission Agent" mode.
+
+------------------------------------------------------------------------
+r367 | bruce | 2005-10-14 11:29:46 -0600 (Fri, 14 Oct 2005) | 3 lines
+Changed paths:
+   M /trunk/mailrules.c
+   M /trunk/responses.c
+
+Use the RESPONSE macro for all "const response resp_*" definitions to
+make searching the sources easier.
+
+------------------------------------------------------------------------
+r366 | bruce | 2005-10-13 14:04:20 -0600 (Thu, 13 Oct 2005) | 4 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/std-handle.c
+   M /trunk/tests/smtpfront-bad-bounce
+
+Removed the "bounce must have a single recipient" rule, as it is
+currently causing more problems (with address checkers) than it is
+solving (spammers no longer use this technique).
+
+------------------------------------------------------------------------
+r365 | bruce | 2005-10-13 10:45:02 -0600 (Thu, 13 Oct 2005) | 2 lines
+Changed paths:
+   M /trunk/qmail-backend.c
+
+Fixed an "assignment discards qualifiers" warning.
+
+------------------------------------------------------------------------
+r364 | bruce | 2005-10-13 10:43:50 -0600 (Thu, 13 Oct 2005) | 2 lines
+Changed paths:
+   M /trunk/qmail-backend.c
+
+Tweaked permanent qmail-queue failure error message.
+
+------------------------------------------------------------------------
+r363 | bruce | 2005-10-12 16:38:23 -0600 (Wed, 12 Oct 2005) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/std-handle.c
+   A /trunk/tests/smtpfront-maxrcpts
+
+Fixed one-off bug in counting recipients for $MAXRCPTS.
+
+------------------------------------------------------------------------
+r362 | bruce | 2005-10-12 16:35:54 -0600 (Wed, 12 Oct 2005) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/VERSION
+
+Bumped version to 0.98.
+
+------------------------------------------------------------------------
+r361 | bruce | 2005-10-05 00:12:51 -0600 (Wed, 05 Oct 2005) | 1 line
+Changed paths:
+   A /tags/0.97 (from /trunk:360)
+
+Tagged version 0.97
+------------------------------------------------------------------------
+r360 | bruce | 2005-10-04 23:44:14 -0600 (Tue, 04 Oct 2005) | 2 lines
+Changed paths:
+   M /trunk/spec
+
+Renamed "Copyright:" field in spec to "License:".
+
+------------------------------------------------------------------------
+r359 | bruce | 2005-10-04 11:37:31 -0600 (Tue, 04 Oct 2005) | 4 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/cvm-validate.c
+
+Fixed typo in the CVM lookup code that would prevent the proper 
+operation of lookup secrets.
+Thanks Dale Woolridge <hash-8825ae786a15bd37352a6bff8422776f@woolridge.org>
+
+------------------------------------------------------------------------
+r358 | bruce | 2005-09-22 16:12:14 -0600 (Thu, 22 Sep 2005) | 2 lines
+Changed paths:
+   M /trunk/qmail-backend.c
+
+Fixed typo in a comparison operator.
+
+------------------------------------------------------------------------
+r357 | bruce | 2005-09-22 15:46:06 -0600 (Thu, 22 Sep 2005) | 3 lines
+Changed paths:
+   M /trunk/qmail-backend.c
+   M /trunk/qmail-backend.html
+
+Fixed up the qmail backend to properly follow qmail's semantics for
+qmail-queue exit codes from 1 to 10.
+
+------------------------------------------------------------------------
+r356 | bruce | 2005-09-22 15:14:52 -0600 (Thu, 22 Sep 2005) | 3 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/qmail-backend.c
+   M /trunk/qmail-backend.html
+
+Add support to the qmail backend for custom qmail-queue error messages
+taken from $QQERRMSG_#.
+
+------------------------------------------------------------------------
+r355 | bruce | 2005-08-12 14:27:15 -0600 (Fri, 12 Aug 2005) | 3 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/imapfront-auth.c
+   M /trunk/pop3front-auth.c
+
+Clear session timeouts (via alarm) before executing authenticated 
+commands in imapfront-auth and pop3front-auth.
+
+------------------------------------------------------------------------
+r354 | bruce | 2005-08-12 14:26:34 -0600 (Fri, 12 Aug 2005) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/VERSION
+
+Bumped version to 0.97
+
+------------------------------------------------------------------------
+r353 | bruce | 2005-07-12 00:02:25 -0600 (Tue, 12 Jul 2005) | 1 line
+Changed paths:
+   A /tags/0.96 (from /trunk:352)
+
+Tagged version 0.96
+------------------------------------------------------------------------
+r352 | bruce | 2005-07-11 23:52:10 -0600 (Mon, 11 Jul 2005) | 2 lines
+Changed paths:
+   M /trunk/spec
+
+Depend on the new bglibs that has the fixed glob functions.
+
+------------------------------------------------------------------------
+r351 | bruce | 2005-07-10 23:13:15 -0600 (Sun, 10 Jul 2005) | 3 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/mailrules.c
+   M /trunk/mailrules.html
+   M /trunk/tests/rules-asterisk
+
+Switched Pattern matching from the simpler mechanism (originated in
+multilog) to standard shell glob.
+
+------------------------------------------------------------------------
+r350 | bruce | 2005-07-08 13:17:38 -0600 (Fri, 08 Jul 2005) | 3 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/smtp-respond.c
+
+Fixed extern/static conflicting definition of "line" in smtp-respond.c.
+Thanks Gerrit Pape <pape@smarden.org>
+
+------------------------------------------------------------------------
+r349 | bruce | 2005-07-08 13:09:30 -0600 (Fri, 08 Jul 2005) | 2 lines
+Changed paths:
+   M /trunk/TODO
+
+Replaced todo item about negation with one for selectors.
+
+------------------------------------------------------------------------
+r348 | bruce | 2005-07-08 12:26:22 -0600 (Fri, 08 Jul 2005) | 3 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/sasl-stub.c
+   A /trunk/tests/smtpfront-reject
+
+Fixed smtpfront-reject crashing on receipt of EHLO.
+Thanks Janos Farkas <chexum@gmail.com>
+
+------------------------------------------------------------------------
+r347 | bruce | 2005-07-08 00:25:39 -0600 (Fri, 08 Jul 2005) | 3 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/constants.h
+   M /trunk/smtp-commands.c
+   A /trunk/tests/smtpfront-quotes
+
+Fixed the SMTP front-end's inability to handle quoted or escaped 
+characters, or to strip source routing addresses.
+
+------------------------------------------------------------------------
+r346 | bruce | 2005-07-08 00:19:44 -0600 (Fri, 08 Jul 2005) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/VERSION
+
+Bumped version to 0.96
+
+------------------------------------------------------------------------
+r345 | bruce | 2005-06-10 15:12:59 -0600 (Fri, 10 Jun 2005) | 1 line
+Changed paths:
+   A /tags/0.95 (from /trunk:344)
+
+Tagged version 0.95
+------------------------------------------------------------------------
+r344 | bruce | 2005-06-10 15:08:45 -0600 (Fri, 10 Jun 2005) | 2 lines
+Changed paths:
+   M /trunk/spec
+
+Fixed install stage in spec.
+
+------------------------------------------------------------------------
+r343 | bruce | 2005-06-10 13:39:20 -0600 (Fri, 10 Jun 2005) | 3 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/mailrules.c
+   A /trunk/tests/rules-databytes2
+
+Fixed bug in handling of environment variables when applying multiple
+rules to the same message.
+
+------------------------------------------------------------------------
+r342 | bruce | 2005-06-10 12:23:48 -0600 (Fri, 10 Jun 2005) | 2 lines
+Changed paths:
+   A /trunk/BIN
+   M /trunk/README.in
+   D /trunk/insthier.c
+   M /trunk/spec
+
+Switch installation procedure to use new bg-installer from bglibs-1.022
+
+------------------------------------------------------------------------
+r341 | bruce | 2005-06-09 23:31:00 -0600 (Thu, 09 Jun 2005) | 2 lines
+Changed paths:
+   M /trunk/tests/patterns-after
+   M /trunk/tests/patterns-general
+   M /trunk/tests/patterns-header
+   M /trunk/tests/patterns-message
+   M /trunk/tests/patterns-normal
+   M /trunk/tests/rules-asterisk
+   M /trunk/tests/rules-both
+   M /trunk/tests/rules-cdb
+   M /trunk/tests/rules-databytes
+   M /trunk/tests/rules-defaultmsg
+   M /trunk/tests/rules-empty
+   M /trunk/tests/rules-header-add
+   M /trunk/tests/rules-list
+   M /trunk/tests/rules-maxhops
+   M /trunk/tests/rules-multiline
+   M /trunk/tests/rules-negate
+   M /trunk/tests/rules-noop
+   M /trunk/tests/rules-recip
+   M /trunk/tests/rules-selector
+   M /trunk/tests/rules-sender
+   M /trunk/tests/smtpfront-databytes
+   M /trunk/tests/smtpfront-looping-delivered-to
+   M /trunk/tests/smtpfront-looping-received
+   M /trunk/tests/smtpfront-maxnotimpl
+   M /trunk/tests.inc
+
+Made the test scripts more portable (tested with ash).
+
+------------------------------------------------------------------------
+r340 | bruce | 2005-06-09 16:47:14 -0600 (Thu, 09 Jun 2005) | 3 lines
+Changed paths:
+   M /trunk/tests.inc
+
+Fixed the selftests to use the invoking user's UID/GID.
+Thanks Janos Farkas
+
+------------------------------------------------------------------------
+r339 | bruce | 2005-06-09 16:46:01 -0600 (Thu, 09 Jun 2005) | 4 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/patterns.c
+   M /trunk/tests/patterns-header
+
+Fixed bug in header pattern matching that made it only look at the 
+first header line.
+Thanks Janos Farkas <chexum@gmail.com>
+
+------------------------------------------------------------------------
+r338 | bruce | 2005-06-09 16:44:36 -0600 (Thu, 09 Jun 2005) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/VERSION
+
+Bumped version to 0.95
+
+------------------------------------------------------------------------
+r337 | bruce | 2005-06-02 00:35:50 -0600 (Thu, 02 Jun 2005) | 1 line
+Changed paths:
+   A /tags/0.94 (from /trunk:336)
+
+Tagged version 0.94
+------------------------------------------------------------------------
+r336 | bruce | 2005-06-01 23:35:05 -0600 (Wed, 01 Jun 2005) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/cvm-validate.c
+   M /trunk/imapfront-auth.c
+   M /trunk/imapfront-auth=x
+   M /trunk/pop3front-auth.c
+   M /trunk/pop3front-auth=x
+   M /trunk/qmqpfront-echo=x
+   M /trunk/qmqpfront-qmail=x
+   M /trunk/qmtpfront-echo=x
+   M /trunk/qmtpfront-qmail=x
+   D /trunk/sasl-auth.c
+   D /trunk/sasl-auth.h
+   M /trunk/sasl-stub.c
+   M /trunk/smtp-commands.c
+   M /trunk/smtp-mainloop.c
+   M /trunk/smtp.h
+   M /trunk/smtpfront-echo=x
+   M /trunk/smtpfront-qmail=x
+
+Switched to CVM 2 support, with new SASL library etc.
+
+------------------------------------------------------------------------
+r335 | bruce | 2005-06-01 23:20:37 -0600 (Wed, 01 Jun 2005) | 2 lines
+Changed paths:
+   M /trunk/tests.inc
+
+Use cvm-pwfile instead of a shell script for testing authentication.
+
+------------------------------------------------------------------------
+r334 | bruce | 2005-06-01 23:19:59 -0600 (Wed, 01 Jun 2005) | 2 lines
+Changed paths:
+   M /trunk/makedist.py
+
+Put the ChangeLog on the web site.
+
+------------------------------------------------------------------------
+r333 | bruce | 2005-06-01 19:30:29 -0600 (Wed, 01 Jun 2005) | 2 lines
+Changed paths:
+   M /trunk/README.in
+   M /trunk/spec
+
+Document the current version requirements.
+
+------------------------------------------------------------------------
+r332 | bruce | 2005-05-30 23:45:10 -0600 (Mon, 30 May 2005) | 2 lines
+Changed paths:
+   M /trunk/tests/rules-rcptlist
+
+Fixed up a test that was broken by recent changes to spac-tests
+
+------------------------------------------------------------------------
+r331 | bruce | 2005-05-30 23:13:09 -0600 (Mon, 30 May 2005) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/patterns.c
+   M /trunk/patterns.html
+   A /trunk/tests/patterns-header
+
+Added support for restricting patterns to match only in headers.
+
+------------------------------------------------------------------------
+r330 | bruce | 2005-05-30 23:02:27 -0600 (Mon, 30 May 2005) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/VERSION
+
+Bumped version to 0.94
+
+------------------------------------------------------------------------
+r329 | bruce | 2005-04-21 11:21:00 -0600 (Thu, 21 Apr 2005) | 1 line
+Changed paths:
+   A /tags/0.93 (from /trunk:328)
+
+Tagged version 0.93
+------------------------------------------------------------------------
+r328 | bruce | 2005-04-21 11:02:44 -0600 (Thu, 21 Apr 2005) | 2 lines
+Changed paths:
+   M /trunk/README.in
+
+Use the new @YEAR@ macro in the copyright statement.
+
+------------------------------------------------------------------------
+r327 | bruce | 2005-04-21 00:31:47 -0600 (Thu, 21 Apr 2005) | 3 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/imapfront-auth.c
+   M /trunk/imapfront.html
+   M /trunk/pop3front-auth.c
+   M /trunk/pop3front-maildir.c
+   M /trunk/pop3front.html
+   M /trunk/std-handle.c
+   M /trunk/timeout.c
+
+Added seperate $AUTH_TIMEOUT and $AUTH_SESSION_TIMEOUT overrides for
+the authentication front-ends (imapfront-auth and pop3front-auth).
+
+------------------------------------------------------------------------
+r326 | bruce | 2004-12-04 11:59:06 -0600 (Sat, 04 Dec 2004) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/mailrules.c
+   A /trunk/tests/rules-rcptlist
+
+Fixed bug in handling multiple sender or recipient specific rules.
+
+------------------------------------------------------------------------
+r325 | bruce | 2004-12-04 11:58:13 -0600 (Sat, 04 Dec 2004) | 4 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/cvm-validate.c
+   M /trunk/smtpfront.html
+
+Modified the CVM lookup secret handling to use $CVM_LOOKUP_SECRET just
+like the latest CVM code, falling back to $LOOKUP_SECRET if that isn't
+set.
+
+------------------------------------------------------------------------
+r324 | bruce | 2004-12-03 12:26:40 -0600 (Fri, 03 Dec 2004) | 5 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/patterns.c
+   A /trunk/tests/patterns-general
+
+Fixed bug in pattern matching where the pattern was longer than the
+line that would other match.  This relied on the erroneous assumption
+that patterns would always be shorter than the lines they were intended
+to match.
+
+------------------------------------------------------------------------
+r323 | bruce | 2004-12-03 10:56:18 -0600 (Fri, 03 Dec 2004) | 2 lines
+Changed paths:
+   A /trunk/tests/rules-databytes (from /trunk/tests/smtpfront-databytes:320)
+
+Added test to ensure databytes is being obeyed.
+
+------------------------------------------------------------------------
+r322 | bruce | 2004-12-02 10:03:00 -0600 (Thu, 02 Dec 2004) | 3 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/std-handle.c
+
+Fixed omission of not resetting maxdatabytes, which could be set by a
+rule, after checking for sender rules.
+
+------------------------------------------------------------------------
+r321 | bruce | 2004-12-02 10:01:36 -0600 (Thu, 02 Dec 2004) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/mailrules.c
+
+Fixed bug in parsing the databytes column in mail rules.
+
+------------------------------------------------------------------------
+r320 | bruce | 2004-10-29 16:03:27 -0600 (Fri, 29 Oct 2004) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/VERSION
+
+Bumped version to 0.93
+
+------------------------------------------------------------------------
+r319 | bruce | 2004-10-29 16:01:42 -0600 (Fri, 29 Oct 2004) | 1 line
+Changed paths:
+   A /tags/0.92 (from /trunk:318)
+
+Tagged version 0.92
+------------------------------------------------------------------------
+r318 | bruce | 2004-10-29 15:56:13 -0600 (Fri, 29 Oct 2004) | 2 lines
+Changed paths:
+   M /trunk/tests.inc
+
+Use the newer "-n" format for head/tail.
+
+------------------------------------------------------------------------
+r317 | bruce | 2004-03-25 16:49:51 -0600 (Thu, 25 Mar 2004) | 3 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/imapfront-auth.c
+
+Fixed bug:  Only set $MAILDIR in imapfront-auth if the CVM set it.  
+Thanks Charlie Brady.
+
+------------------------------------------------------------------------
+r316 | bruce | 2004-03-11 12:20:12 -0600 (Thu, 11 Mar 2004) | 3 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/patterns.c
+   M /trunk/tests/patterns-normal
+
+Fixed bug in pattern handling that would cause a bogus "out of memory"
+error if the patterns file had a blank line.
+
+------------------------------------------------------------------------
+r315 | bruce | 2004-03-06 22:29:04 -0600 (Sat, 06 Mar 2004) | 3 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/qmqp-mainloop.c
+
+Fixed bug in QMQP front-end that prevented it from accepting relayed
+messages (relayclient wasn't getting set properly).
+
+------------------------------------------------------------------------
+r314 | bruce | 2004-03-06 22:25:47 -0600 (Sat, 06 Mar 2004) | 2 lines
+Changed paths:
+   M /trunk/insthier.c
+
+Added qmqpfront-echo and qmtpfront-echo test front-ends to insthier.
+
+------------------------------------------------------------------------
+r313 | bruce | 2004-03-06 22:25:00 -0600 (Sat, 06 Mar 2004) | 2 lines
+Changed paths:
+   M /trunk/smtpfront-echo.c
+
+Fixed program name.
+
+------------------------------------------------------------------------
+r312 | bruce | 2004-03-06 22:24:47 -0600 (Sat, 06 Mar 2004) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   A /trunk/qmqpfront-echo.c (from /trunk/smtpfront-echo.c:293)
+   A /trunk/qmqpfront-echo=x (from /trunk/smtpfront-echo=x:302)
+   A /trunk/qmtpfront-echo.c (from /trunk/smtpfront-echo.c:293)
+   A /trunk/qmtpfront-echo=x (from /trunk/smtpfront-echo=x:302)
+
+Added qmqpfront-echo and qmtpfront-echo test front-ends.
+
+------------------------------------------------------------------------
+r311 | bruce | 2004-03-06 22:12:36 -0600 (Sat, 06 Mar 2004) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/VERSION
+
+Bumped version to 0.92
+
+------------------------------------------------------------------------
+r310 | bruce | 2004-03-05 17:14:35 -0600 (Fri, 05 Mar 2004) | 2 lines
+Changed paths:
+   M /trunk/smtp-mainloop.c
+
+Show a message if the connection drops or times out during a command.
+
+------------------------------------------------------------------------
+r309 | bruce | 2004-03-05 16:47:38 -0600 (Fri, 05 Mar 2004) | 2 lines
+Changed paths:
+   M /trunk/spec
+
+Depend on bglibs version 1.016
+
+------------------------------------------------------------------------
+r308 | bruce | 2004-03-05 12:54:31 -0600 (Fri, 05 Mar 2004) | 1 line
+Changed paths:
+   A /tags/0.91 (from /trunk:307)
+
+Tagged version 0.91
+------------------------------------------------------------------------
+r307 | bruce | 2004-03-04 17:19:03 -0600 (Thu, 04 Mar 2004) | 2 lines
+Changed paths:
+   M /trunk/TODO
+
+Added notes about better MIME patterns.
+
+------------------------------------------------------------------------
+r306 | bruce | 2004-03-04 17:08:43 -0600 (Thu, 04 Mar 2004) | 2 lines
+Changed paths:
+   M /trunk/patterns.html
+
+Added new signature identified by James Triplett on the qmail mailing list.
+
+------------------------------------------------------------------------
+r305 | bruce | 2004-03-04 16:59:18 -0600 (Thu, 04 Mar 2004) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+
+Fixed typo in news about Received: header changes.
+
+------------------------------------------------------------------------
+r304 | bruce | 2004-03-04 16:58:20 -0600 (Thu, 04 Mar 2004) | 4 lines
+Changed paths:
+   M /trunk/mailfront.h
+   M /trunk/smtp-commands.c
+   M /trunk/std-handle.c
+   M /trunk/tests/received
+
+Try #3 at proper Received: header generation.  This time,
+${PROTO}LOCALIP and ${PROTO}REMOTEIP don't need to be set (which was the
+behavior before the last change).
+
+------------------------------------------------------------------------
+r303 | bruce | 2004-03-03 23:16:37 -0600 (Wed, 03 Mar 2004) | 3 lines
+Changed paths:
+   M /trunk/echo-backend.c
+   A /trunk/tests/received
+
+Dump the Received: header in the echo backend, so I can use it to test
+for proper header generation.
+
+------------------------------------------------------------------------
+r302 | bruce | 2004-03-03 23:16:00 -0600 (Wed, 03 Mar 2004) | 2 lines
+Changed paths:
+   M /trunk/imapfront-auth=x
+   M /trunk/pop3front-auth=x
+   M /trunk/pop3front-maildir=x
+   M /trunk/qmqpfront-qmail=x
+   M /trunk/qmtpfront-qmail=x
+   M /trunk/smtpfront-echo=x
+   M /trunk/smtpfront-qmail=x
+   M /trunk/smtpfront-reject=x
+   M /trunk/spec
+
+Switched to bglibs 1.015 using -lbg.
+
+------------------------------------------------------------------------
+r301 | bruce | 2004-03-03 23:14:50 -0600 (Wed, 03 Mar 2004) | 3 lines
+Changed paths:
+   M /trunk/std-handle.c
+   M /trunk/tests/patterns-after
+   M /trunk/tests/rules-header-add
+   M /trunk/tests/rules-maxhops
+   M /trunk/tests/smtpfront-bad-bounce
+   M /trunk/tests/smtpfront-content
+   M /trunk/tests/smtpfront-looping-delivered-to
+   M /trunk/tests/smtpfront-looping-received
+
+Fixed up handling of cases where ${PROTO}LOCALHOST or ${PROTO}REMOTEHOST
+is unset; require ${PROTO}LOCALIP and ${PROTO}REMOTEIP to be set.
+
+------------------------------------------------------------------------
+r300 | bruce | 2004-03-02 17:52:41 -0600 (Tue, 02 Mar 2004) | 3 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/std-handle.c
+
+Fixed the generated Received: headers to always put the local host name
+in the comment if tcpserver looked it up.
+
+------------------------------------------------------------------------
+r299 | bruce | 2004-02-10 14:51:57 -0600 (Tue, 10 Feb 2004) | 3 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/imapfront-auth.c
+
+Explicitly set $MAILDIR in imapfront-auth for Courier-IMAP's imapd.
+Thanks Bernhard Graf <bgware@augensalat.de>
+
+------------------------------------------------------------------------
+r298 | bruce | 2004-02-10 13:14:39 -0600 (Tue, 10 Feb 2004) | 3 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/cvm-validate.c
+
+Fixed a bug in the CVM lookup code that would cause failures if
+$LOOKUP_SECRET was not set.  Thanks Bernhard Graf <bgware@augensalat.de>
+
+------------------------------------------------------------------------
+r297 | bruce | 2004-02-10 13:12:43 -0600 (Tue, 10 Feb 2004) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/VERSION
+
+Bumped version to 0.91
+
+------------------------------------------------------------------------
+r296 | bruce | 2004-02-09 16:13:58 -0600 (Mon, 09 Feb 2004) | 1 line
+Changed paths:
+   A /tags/0.90 (from /trunk:295)
+
+Tagged version 0.90
+------------------------------------------------------------------------
+r295 | bruce | 2004-02-09 16:08:24 -0600 (Mon, 09 Feb 2004) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/mailrules.c
+   M /trunk/mailrules.html
+   D /trunk/mailrules2.html
+   A /trunk/tests/rules-negate
+
+Added support for negation of rule patterns.
+
+------------------------------------------------------------------------
+r294 | bruce | 2004-02-09 15:38:54 -0600 (Mon, 09 Feb 2004) | 2 lines
+Changed paths:
+   M /trunk/tests/pop3front-auth
+   M /trunk/tests/smtpgreeting
+   M /trunk/tests.inc
+
+Use explicit paths when running programs.
+
+------------------------------------------------------------------------
+r293 | bruce | 2004-02-09 14:49:00 -0600 (Mon, 09 Feb 2004) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/mailrules.c
+   M /trunk/mailrules.html
+   M /trunk/mailrules2.html
+   A /trunk/tests/rules-selector
+
+Added support for explicit sender/recipient selection.
+
+------------------------------------------------------------------------
+r292 | bruce | 2004-02-09 13:49:06 -0600 (Mon, 09 Feb 2004) | 2 lines
+Changed paths:
+   A /trunk/mailrules2.html
+
+Checked in interim mailrules v2 documentation.
+
+------------------------------------------------------------------------
+r291 | bruce | 2004-02-09 12:30:51 -0600 (Mon, 09 Feb 2004) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/patterns.c
+   M /trunk/tests/patterns-normal
+
+Fixed a bug in handling patterns that are not after a blank line.
+
+------------------------------------------------------------------------
+r290 | bruce | 2004-02-09 12:30:04 -0600 (Mon, 09 Feb 2004) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/VERSION
+
+Bumped version to 0.90
+
+------------------------------------------------------------------------
+r289 | bruce | 2004-02-07 15:01:55 -0600 (Sat, 07 Feb 2004) | 1 line
+Changed paths:
+   A /tags/0.89 (from /trunk:288)
+
+Tagged version 0.89
+------------------------------------------------------------------------
+r288 | bruce | 2004-02-07 14:54:22 -0600 (Sat, 07 Feb 2004) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/qmail-backend.c
+   M /trunk/qmail-backend.html
+   M /trunk/qmail-validate.c
+
+Allow overriding the qmail home directory with $QMAILHOME.
+
+------------------------------------------------------------------------
+r287 | bruce | 2004-02-07 14:48:55 -0600 (Sat, 07 Feb 2004) | 2 lines
+Changed paths:
+   M /trunk/README.in
+
+Bumped up the copyright year.
+
+------------------------------------------------------------------------
+r286 | bruce | 2004-02-07 14:47:38 -0600 (Sat, 07 Feb 2004) | 2 lines
+Changed paths:
+   M /trunk/qmail-backend.c
+
+Block SIGPIPE from killing the front-end if qmail-queue dies.
+
+------------------------------------------------------------------------
+r285 | bruce | 2004-02-06 14:05:08 -0600 (Fri, 06 Feb 2004) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/smtp-commands.c
+   M /trunk/smtp-mainloop.c
+   M /trunk/smtpfront.html
+   A /trunk/tests/smtpfront-maxnotimpl
+
+Drop connections after $MAXNOTIMPL unimplemented commands are given.
+
+------------------------------------------------------------------------
+r284 | bruce | 2004-02-06 12:40:28 -0600 (Fri, 06 Feb 2004) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/VERSION
+
+Bumped version to 0.89, fixing up the NEWS file.
+
+------------------------------------------------------------------------
+r283 | bruce | 2004-02-06 12:40:01 -0600 (Fri, 06 Feb 2004) | 1 line
+Changed paths:
+   M /trunk/TODO
+
+
+------------------------------------------------------------------------
+r282 | bruce | 2004-02-06 12:27:58 -0600 (Fri, 06 Feb 2004) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/mailrules.c
+   M /trunk/mailrules.html
+   A /trunk/tests/rules-noop
+
+Added a new "no-op" mail rule type.
+
+------------------------------------------------------------------------
+r281 | bruce | 2004-02-06 12:20:31 -0600 (Fri, 06 Feb 2004) | 2 lines
+Changed paths:
+   M /trunk/mailrules.c
+
+Make namelen a pre-initialized constant.
+
+------------------------------------------------------------------------
+r280 | bruce | 2004-02-06 12:18:19 -0600 (Fri, 06 Feb 2004) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/mailfront.h
+   A /trunk/patterns.c
+   A /trunk/patterns.html
+   M /trunk/qmqp=l
+   M /trunk/qmtp=l
+   M /trunk/smtp=l
+   M /trunk/smtpfront.html
+   M /trunk/std-handle.c
+   A /trunk/tests/patterns-after
+   A /trunk/tests/patterns-message
+   A /trunk/tests/patterns-normal
+
+Added support for content pattern rejection.
+
+------------------------------------------------------------------------
+r279 | bruce | 2004-02-05 17:33:58 -0600 (Thu, 05 Feb 2004) | 2 lines
+Changed paths:
+   M /trunk/std-handle.c
+
+Pre-initialize the value of maxdatabytes so SMTP can report it.
+
+------------------------------------------------------------------------
+r278 | bruce | 2004-02-05 17:28:55 -0600 (Thu, 05 Feb 2004) | 2 lines
+Changed paths:
+   M /trunk/mailrules.c
+
+Fixed one (last?) bug in rules_getenvu.
+
+------------------------------------------------------------------------
+r277 | bruce | 2004-02-05 17:14:49 -0600 (Thu, 05 Feb 2004) | 3 lines
+Changed paths:
+   M /trunk/std-handle.c
+
+Skip character-by-character processing of data bytes after the last
+header byte is processed.
+
+------------------------------------------------------------------------
+r276 | bruce | 2004-02-05 17:04:21 -0600 (Thu, 05 Feb 2004) | 3 lines
+Changed paths:
+   M /trunk/std-handle.c
+
+Don't bother incrementing the line position if it's already past any
+possible useful values.
+
+------------------------------------------------------------------------
+r275 | bruce | 2004-02-05 15:33:51 -0600 (Thu, 05 Feb 2004) | 4 lines
+Changed paths:
+   M /trunk/mailrules.c
+
+Fixed two bugs in the new rules_getenvu function:
+1. missing external environment variables caused a seg fault
+2. external environment variable values were ignored
+
+------------------------------------------------------------------------
+r274 | bruce | 2004-02-05 13:11:36 -0600 (Thu, 05 Feb 2004) | 3 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/std-handle.c
+
+Defer looking up $RELAYCLIENT and $MAXRCPTS so they can be set in mail
+rules; use the new rules_getenvu to look up $MAXHOPS.
+
+------------------------------------------------------------------------
+r273 | bruce | 2004-02-05 11:54:09 -0600 (Thu, 05 Feb 2004) | 3 lines
+Changed paths:
+   M /trunk/mailrules.c
+   M /trunk/mailrules.h
+   M /trunk/std-handle.c
+
+Handle the databytes rules column by setting an internal environment
+variable.
+
+------------------------------------------------------------------------
+r272 | bruce | 2004-01-27 12:58:39 -0600 (Tue, 27 Jan 2004) | 2 lines
+Changed paths:
+   M /trunk/smtpfront.html
+
+Fixed minor typo in description of databytes handling.
+
+------------------------------------------------------------------------
+r271 | bruce | 2004-01-05 23:08:42 -0600 (Mon, 05 Jan 2004) | 2 lines
+Changed paths:
+   M /trunk/README.in
+
+Updated documentation to make note of seperation between cvm and bglibs.
+
+------------------------------------------------------------------------
+r270 | bruce | 2003-12-01 15:43:59 -0600 (Mon, 01 Dec 2003) | 1 line
+Changed paths:
+   A /tags/0.88 (from /trunk:269)
+
+Tagged version 0.88
+------------------------------------------------------------------------
+r269 | bruce | 2003-12-01 14:28:40 -0600 (Mon, 01 Dec 2003) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/TODO
+   M /trunk/sasl-auth.c
+
+Export CVM data after authentication.
+
+------------------------------------------------------------------------
+r268 | bruce | 2003-12-01 13:38:52 -0600 (Mon, 01 Dec 2003) | 2 lines
+Changed paths:
+   M /trunk/spec
+
+Depend on the latest version of bglibs.
+
+------------------------------------------------------------------------
+r267 | bruce | 2003-11-27 14:52:32 -0600 (Thu, 27 Nov 2003) | 2 lines
+Changed paths:
+   M /trunk/TODO
+
+Fixed RFC numbers for enhanced status codes.
+
+------------------------------------------------------------------------
+r266 | bruce | 2003-11-27 14:52:15 -0600 (Thu, 27 Nov 2003) | 2 lines
+Changed paths:
+   A /trunk/tests/imapfront-auth-login
+   A /trunk/tests/imapfront-auth-plain
+
+Added tests for imapfront-auth AUTHENTICATE command.
+
+------------------------------------------------------------------------
+r265 | bruce | 2003-11-27 14:31:43 -0600 (Thu, 27 Nov 2003) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/imapfront-auth.c
+   A /trunk/tests/imapfront-auth
+   M /trunk/tests.inc
+
+Added support for IMAP string literals, and tests for imapfront-auth.
+
+------------------------------------------------------------------------
+r264 | bruce | 2003-11-26 17:00:52 -0600 (Wed, 26 Nov 2003) | 2 lines
+Changed paths:
+   M /trunk/mailrules.html
+
+Fixed documentation on syntax of setting environment variables in rules.
+
+------------------------------------------------------------------------
+r263 | bruce | 2003-11-20 15:47:46 -0600 (Thu, 20 Nov 2003) | 2 lines
+Changed paths:
+   M /trunk/spec
+
+Fixed typo: building depends on cvm-devel, not cvm.
+
+------------------------------------------------------------------------
+r262 | bruce | 2003-11-20 15:33:41 -0600 (Thu, 20 Nov 2003) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/std-handle.c
+   A /trunk/tests/rules-header-add
+   A /trunk/tests/rules-maxhops
+
+Defer looking up $MAXHOPS and $HEADER_ADD and use rules_getenv instead.
+
+------------------------------------------------------------------------
+r261 | bruce | 2003-11-17 22:21:01 -0600 (Mon, 17 Nov 2003) | 2 lines
+Changed paths:
+   M /trunk/spec
+
+Added dependancy notes regarding bglibs and cvm libraries.
+
+------------------------------------------------------------------------
+r260 | bruce | 2003-11-17 22:13:03 -0600 (Mon, 17 Nov 2003) | 2 lines
+Changed paths:
+   M /trunk/std-handle.c
+
+Make rcpt_count unsigned, to match the values its compared against.
+
+------------------------------------------------------------------------
+r259 | bruce | 2003-11-17 22:12:07 -0600 (Mon, 17 Nov 2003) | 2 lines
+Changed paths:
+   M /trunk/sasl-auth.c
+   M /trunk/sasl-stub.c
+
+Fixup the include path for recent cvm libraries.
+
+------------------------------------------------------------------------
+r258 | bruce | 2003-11-17 21:07:40 -0600 (Mon, 17 Nov 2003) | 2 lines
+Changed paths:
+   M /trunk/README.in
+   M /trunk/makedist.py
+
+Converted lists.em.ca to lists.untroubled.org
+
+------------------------------------------------------------------------
+r257 | bruce | 2003-11-08 15:13:37 -0600 (Sat, 08 Nov 2003) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/smtpfront.html
+   M /trunk/std-handle.c
+
+Added MAXRCPTS patch from Marcelo Augusto <maugusto@stetnet.com.br>.
+
+------------------------------------------------------------------------
+r256 | bruce | 2003-09-15 12:12:36 -0600 (Mon, 15 Sep 2003) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/mailrules.c
+   M /trunk/tests/rules-cdb
+   M /trunk/tests/rules-list
+
+Fixed handling of "@domain" entries in mailrules lists and CDB files.
+
+------------------------------------------------------------------------
+r255 | bruce | 2003-09-15 11:42:15 -0600 (Mon, 15 Sep 2003) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/VERSION
+
+Bumped version to 0.88
+
+------------------------------------------------------------------------
+r254 | bruce | 2003-08-28 15:52:15 -0600 (Thu, 28 Aug 2003) | 2 lines
+Changed paths:
+   M /trunk/tests.inc
+
+Removed testing echo hook.
+
+------------------------------------------------------------------------
+r253 | bruce | 2003-08-28 15:50:49 -0600 (Thu, 28 Aug 2003) | 1 line
+Changed paths:
+   A /tags/0.87 (from /trunk:252)
+
+Tagged version 0.87
+------------------------------------------------------------------------
+r252 | bruce | 2003-08-28 14:04:30 -0600 (Thu, 28 Aug 2003) | 2 lines
+Changed paths:
+   D /trunk/mailrules2.html
+   A /trunk/mailrulesx.html (from /trunk/mailrules2.html:251)
+
+Renamed mailrules v2 to vX, as there may be an intermediate v2 step.
+
+------------------------------------------------------------------------
+r251 | bruce | 2003-08-27 18:09:22 -0600 (Wed, 27 Aug 2003) | 2 lines
+Changed paths:
+   A /trunk/mailrules2.html
+
+Rewrote the mailrules v2 documentation to use a compiled file format.
+
+------------------------------------------------------------------------
+r250 | bruce | 2003-08-27 17:17:10 -0600 (Wed, 27 Aug 2003) | 2 lines
+Changed paths:
+   M /trunk/tests/pop3front-auth-login
+   M /trunk/tests/pop3front-auth-plain
+   M /trunk/tests/pop3front-auth-userpass
+   M /trunk/tests/smtpfront-auth-login
+   M /trunk/tests/smtpfront-auth-plain
+   M /trunk/tests.inc
+
+Use a locally generated CVM for testing.
+
+------------------------------------------------------------------------
+r249 | bruce | 2003-08-27 16:26:03 -0600 (Wed, 27 Aug 2003) | 2 lines
+Changed paths:
+   M /trunk/tests/smtpfront-bad-bounce
+   M /trunk/tests/smtpfront-content
+   M /trunk/tests/smtpfront-looping-delivered-to
+   M /trunk/tests/smtpfront-looping-received
+   M /trunk/tests.inc
+
+Really fixed the sizes, forgot to export the new variables.
+
+------------------------------------------------------------------------
+r248 | bruce | 2003-08-27 14:59:44 -0600 (Wed, 27 Aug 2003) | 2 lines
+Changed paths:
+   M /trunk/tests/smtpfront-bad-bounce
+   M /trunk/tests/smtpfront-content
+   M /trunk/tests/smtpfront-looping-delivered-to
+   M /trunk/tests/smtpfront-looping-received
+   M /trunk/tests.inc
+
+Adjusted tests for new link protocol handling.
+
+------------------------------------------------------------------------
+r247 | bruce | 2003-08-26 17:51:50 -0600 (Tue, 26 Aug 2003) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/std-handle.c
+
+Added the link protocol (ie TCP or TCP6) to the Received: header.
+
+------------------------------------------------------------------------
+r246 | bruce | 2003-08-26 16:50:03 -0600 (Tue, 26 Aug 2003) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/std-handle.c
+
+Fixed the Received: header generation to match the syntax described in RFC 2821.
+
+------------------------------------------------------------------------
+r245 | bruce | 2003-07-17 13:50:15 -0600 (Thu, 17 Jul 2003) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/std-handle.c
+   A /trunk/tests/smtpfront-looping-delivered-to
+   A /trunk/tests/smtpfront-looping-received
+
+Fixed a bug that prevented looping email detection from working.
+
+------------------------------------------------------------------------
+r244 | bruce | 2003-07-17 13:05:19 -0600 (Thu, 17 Jul 2003) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/VERSION
+
+Bumped version to 0.87
+
+------------------------------------------------------------------------
+r243 | bruce | 2003-05-28 14:56:18 -0600 (Wed, 28 May 2003) | 1 line
+Changed paths:
+   A /tags/0.86 (from /trunk:242)
+
+Tagged version 0.86
+------------------------------------------------------------------------
+r242 | bruce | 2003-05-28 14:51:04 -0600 (Wed, 28 May 2003) | 2 lines
+Changed paths:
+   M /trunk/TODO
+
+Added notes about address handling reorganization.
+
+------------------------------------------------------------------------
+r241 | bruce | 2003-05-28 14:48:10 -0600 (Wed, 28 May 2003) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/smtp-commands.c
+   M /trunk/smtpfront.html
+   A /trunk/tests/smtpfront-databytes
+
+Added support for RFC 1870 ESMTP SIZE extension.
+
+------------------------------------------------------------------------
+r240 | bruce | 2003-05-28 14:05:25 -0600 (Wed, 28 May 2003) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   A /trunk/cvm-validate.c
+   M /trunk/mailfront.h
+   M /trunk/qmail-validate.c
+   M /trunk/qmqpfront-qmail=x
+   M /trunk/qmtpfront-qmail=x
+   M /trunk/smtpfront-qmail=x
+   M /trunk/smtpfront.html
+
+Added CVM validation of recipient addresses.
+
+------------------------------------------------------------------------
+r239 | bruce | 2003-05-27 13:20:19 -0600 (Tue, 27 May 2003) | 2 lines
+Changed paths:
+   M /trunk/README.in
+
+Added note about Subversion repository.
+
+------------------------------------------------------------------------
+r238 | bruce | 2003-05-27 13:19:15 -0600 (Tue, 27 May 2003) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/smtp-commands.c
+
+Make SMTP front end log invalid commands.
+
+------------------------------------------------------------------------
+r237 | bruce | 2003-05-27 12:52:36 -0600 (Tue, 27 May 2003) | 2 lines
+Changed paths:
+   M /trunk/qmtp-respond.c
+   M /trunk/qmtp.h
+
+Moved the internal respond_* functions to static.
+
+------------------------------------------------------------------------
+r236 | bruce | 2003-05-22 22:51:18 -0600 (Thu, 22 May 2003) | 3 lines
+Changed paths:
+   M /trunk/qmail-backend.c
+   M /trunk/smtp-respond.c
+
+Restore former behavior of only logging errors (and qmail message
+acceptance data).
+
+------------------------------------------------------------------------
+r235 | bruce | 2003-05-22 22:39:12 -0600 (Thu, 22 May 2003) | 3 lines
+Changed paths:
+   M /trunk/qmail-backend.c
+
+No longer need to log message delivery status, as the front-end code
+logs all responses.
+
+------------------------------------------------------------------------
+r234 | bruce | 2003-05-22 22:34:51 -0600 (Thu, 22 May 2003) | 2 lines
+Changed paths:
+   M /trunk/smtp-respond.c
+   M /trunk/smtp.h
+
+Restored the previously deleted logging messages.
+
+------------------------------------------------------------------------
+r233 | bruce | 2003-04-30 18:09:16 -0600 (Wed, 30 Apr 2003) | 3 lines
+Changed paths:
+   M /trunk/README.in
+
+Added (tweaked) documentation additions from
+"Bryan Curnutt" <bcurnutt@salu.com>
+
+------------------------------------------------------------------------
+r232 | bruce | 2003-03-24 14:35:51 -0600 (Mon, 24 Mar 2003) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+
+Added missing NEWS line item about $HEADER_ADD.
+
+------------------------------------------------------------------------
+r231 | bruce | 2003-03-24 14:35:02 -0600 (Mon, 24 Mar 2003) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/VERSION
+
+Bump up version number.
+
+------------------------------------------------------------------------
+r230 | bruce | 2003-03-24 14:34:21 -0600 (Mon, 24 Mar 2003) | 2 lines
+Changed paths:
+   M /trunk/smtpfront.html
+   M /trunk/std-handle.c
+
+Allow for addition of user specified headers with $HEADER_ADD
+
+------------------------------------------------------------------------
+r229 | bruce | 2003-03-24 14:23:07 -0600 (Mon, 24 Mar 2003) | 2 lines
+Changed paths:
+   M /trunk/smtp-respond.c
+
+Move the \n handling into the primary respond function.
+
+------------------------------------------------------------------------
+r228 | bruce | 2003-03-24 14:17:29 -0600 (Mon, 24 Mar 2003) | 3 lines
+Changed paths:
+   M /trunk/echo-backend.c
+   M /trunk/mailrules.c
+   M /trunk/qmail-backend.c
+   M /trunk/qmail-validate.c
+   M /trunk/qmqp-mainloop.c
+   M /trunk/qmtp-mainloop.c
+   M /trunk/qmtp-respond.c
+   M /trunk/responses.c
+   M /trunk/responses.h
+   M /trunk/smtp-commands.c
+   M /trunk/smtp-respond.c
+   M /trunk/smtpfront-reject.c
+
+Instead of using (inconvenient) pointers to link multi-line messages,
+just treat '\n' as a separator within the message itself.
+
+------------------------------------------------------------------------
+r227 | bruce | 2003-03-06 11:58:02 -0600 (Thu, 06 Mar 2003) | 2 lines
+Changed paths:
+   M /trunk/README.in
+
+Added note about QMQP and QMTP front-ends.
+
+------------------------------------------------------------------------
+r226 | bruce | 2003-03-05 17:28:29 -0600 (Wed, 05 Mar 2003) | 1 line
+Changed paths:
+   A /tags/0.85 (from /trunk:225)
+
+Tagged version 0.85
+------------------------------------------------------------------------
+r225 | bruce | 2003-03-05 17:05:05 -0600 (Wed, 05 Mar 2003) | 2 lines
+Changed paths:
+   M /trunk/TODO
+
+Added some things to do.
+
+------------------------------------------------------------------------
+r224 | bruce | 2003-03-05 14:57:18 -0600 (Wed, 05 Mar 2003) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/smtpfront.html
+
+Documented the fixup header.
+
+------------------------------------------------------------------------
+r223 | bruce | 2003-03-05 14:38:08 -0600 (Wed, 05 Mar 2003) | 2 lines
+Changed paths:
+   M /trunk/qmtp-respond.c
+
+If multiple responses are give, separate them with LF chars.
+
+------------------------------------------------------------------------
+r222 | bruce | 2003-03-05 14:36:53 -0600 (Wed, 05 Mar 2003) | 4 lines
+Changed paths:
+   M /trunk/qmqp=l
+   M /trunk/qmtp=l
+   M /trunk/smtp=l
+   M /trunk/std-handle.c
+
+Added code to add a second "Received:" header before the normal one that
+can be used to fix up mismatches between incoming and outgoing hostnames
+or IPs.
+
+------------------------------------------------------------------------
+r221 | bruce | 2003-03-05 14:34:11 -0600 (Wed, 05 Mar 2003) | 2 lines
+Changed paths:
+   M /trunk/responses.c
+   M /trunk/responses.h
+
+Remove the unused response, and add a OOM one.
+
+------------------------------------------------------------------------
+r220 | bruce | 2003-03-05 14:32:55 -0600 (Wed, 05 Mar 2003) | 2 lines
+Changed paths:
+   M /trunk/README.in
+
+Fix up the copyright years.
+
+------------------------------------------------------------------------
+r219 | bruce | 2003-03-04 11:33:59 -0600 (Tue, 04 Mar 2003) | 2 lines
+Changed paths:
+   A /trunk/tests/smtpfront-content
+
+Test to make sure escaping on SMTP is handled correctly.
+
+------------------------------------------------------------------------
+r218 | bruce | 2003-03-04 11:33:38 -0600 (Tue, 04 Mar 2003) | 2 lines
+Changed paths:
+   M /trunk/echo-backend.c
+
+Properly reset the number of bytes received.
+
+------------------------------------------------------------------------
+r217 | bruce | 2003-03-04 11:01:42 -0600 (Tue, 04 Mar 2003) | 2 lines
+Changed paths:
+   M /trunk/smtp-commands.c
+
+Fixed broken leading period handling.
+
+------------------------------------------------------------------------
+r216 | bruce | 2003-03-04 01:01:59 -0600 (Tue, 04 Mar 2003) | 2 lines
+Changed paths:
+   M /trunk/std-handle.c
+
+The second line uses two spaces, for continuity with qmail.
+
+------------------------------------------------------------------------
+r215 | bruce | 2003-03-04 00:55:23 -0600 (Tue, 04 Mar 2003) | 2 lines
+Changed paths:
+   M /trunk/insthier.c
+
+Install the new QMQP and QMTP programs.
+
+------------------------------------------------------------------------
+r214 | bruce | 2003-03-03 17:49:14 -0600 (Mon, 03 Mar 2003) | 2 lines
+Changed paths:
+   M /trunk/std-handle.c
+
+Use str_cat#s functions to shrink code size.
+
+------------------------------------------------------------------------
+r213 | bruce | 2003-03-03 17:42:29 -0600 (Mon, 03 Mar 2003) | 4 lines
+Changed paths:
+   M /trunk/std-handle.c
+
+Set up {local,remote}_{host,ip} at init time, instead of when building
+the Received: header; modularize building the date string into a
+seperate function.
+
+------------------------------------------------------------------------
+r212 | bruce | 2003-03-03 17:34:42 -0600 (Mon, 03 Mar 2003) | 2 lines
+Changed paths:
+   M /trunk/smtp-commands.c
+
+Removed extraneous reset that was blowing away SMTP response messages.
+
+------------------------------------------------------------------------
+r211 | bruce | 2003-03-03 16:51:13 -0600 (Mon, 03 Mar 2003) | 2 lines
+Changed paths:
+   M /trunk/qmtpfront-qmail.c
+
+Fixed typo: program name is qmtpfront-qmail, not smtpfront-qmail
+
+------------------------------------------------------------------------
+r210 | bruce | 2003-03-03 16:50:16 -0600 (Mon, 03 Mar 2003) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   A /trunk/qmqp-mainloop.c
+   A /trunk/qmqp=l
+   A /trunk/qmqpfront-qmail.c
+   A /trunk/qmqpfront-qmail=x
+
+Added QMQP front-end with qmail back-end.
+
+------------------------------------------------------------------------
+r209 | bruce | 2003-03-03 16:47:08 -0600 (Mon, 03 Mar 2003) | 2 lines
+Changed paths:
+   M /trunk/qmtp-mainloop.c
+
+Log the sender and recipient addresses.
+
+------------------------------------------------------------------------
+r208 | bruce | 2003-03-03 16:45:38 -0600 (Mon, 03 Mar 2003) | 2 lines
+Changed paths:
+   M /trunk/mailfront.h
+   A /trunk/netstring.c
+   M /trunk/qmtp-mainloop.c
+   M /trunk/qmtp=l
+
+Moved the netstring reading code into a separate object.
+
+------------------------------------------------------------------------
+r207 | bruce | 2003-03-03 16:10:48 -0600 (Mon, 03 Mar 2003) | 2 lines
+Changed paths:
+   M /trunk/imapfront-auth=x
+   M /trunk/pop3front-auth=x
+   M /trunk/pop3front-maildir=x
+   M /trunk/qmtpfront-qmail=x
+   M /trunk/smtpfront-echo=x
+   M /trunk/smtpfront-qmail=x
+   M /trunk/smtpfront-reject=x
+   M /trunk/spec
+
+Switched to new (revised) bglibs library scheme.
+
+------------------------------------------------------------------------
+r206 | bruce | 2003-02-18 18:03:40 -0600 (Tue, 18 Feb 2003) | 1 line
+Changed paths:
+   M /trunk/NEWS
+
+
+------------------------------------------------------------------------
+r205 | bruce | 2002-12-18 16:06:41 -0600 (Wed, 18 Dec 2002) | 2 lines
+Changed paths:
+   M /trunk/std-handle.c
+
+Reject the message outright if more than one recipient was given.
+
+------------------------------------------------------------------------
+r204 | bruce | 2002-12-18 14:17:32 -0600 (Wed, 18 Dec 2002) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+
+Added comment about new bglibs usage.
+
+------------------------------------------------------------------------
+r203 | bruce | 2002-12-17 17:09:38 -0600 (Tue, 17 Dec 2002) | 2 lines
+Changed paths:
+   M /trunk/imapfront-auth=x
+   M /trunk/pop3front-auth=x
+   M /trunk/pop3front-maildir=x
+   M /trunk/qmtpfront-qmail=x
+   M /trunk/smtpfront-echo=x
+   M /trunk/smtpfront-qmail=x
+   M /trunk/smtpfront-reject=x
+
+Switched to new bglibs library paths.
+
+------------------------------------------------------------------------
+r202 | bruce | 2002-12-17 17:08:51 -0600 (Tue, 17 Dec 2002) | 2 lines
+Changed paths:
+   M /trunk/README.in
+
+Added installation notes.
+
+------------------------------------------------------------------------
+r201 | bruce | 2002-12-16 17:49:47 -0600 (Mon, 16 Dec 2002) | 2 lines
+Changed paths:
+   M /trunk/imapfront-auth.c
+   M /trunk/mailrules.c
+   M /trunk/pop3front-maildir.c
+   M /trunk/qmail-backend.c
+   M /trunk/qmtp-mainloop.c
+   M /trunk/qmtp-respond.c
+   M /trunk/sasl-auth.c
+   M /trunk/sasl-auth.h
+   M /trunk/smtp-respond.c
+   M /trunk/std-handle.c
+
+Renamed variables to eliminate global/local shadow declarations.
+
+------------------------------------------------------------------------
+r200 | bruce | 2002-12-16 17:27:34 -0600 (Mon, 16 Dec 2002) | 2 lines
+Changed paths:
+   D /trunk/README
+   A /trunk/README.in (from /trunk/README:196)
+
+Moved to a templated README system, generated by spac-dist.
+
+------------------------------------------------------------------------
+r199 | bruce | 2002-12-16 17:26:50 -0600 (Mon, 16 Dec 2002) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/VERSION
+
+Bumped version from 0.82 to 0.85 (0.82 was not released).
+
+------------------------------------------------------------------------
+r198 | bruce | 2002-12-16 17:07:29 -0600 (Mon, 16 Dec 2002) | 2 lines
+Changed paths:
+   D /trunk/README.CVS
+
+Removed extraneous CVS instructions.
+
+------------------------------------------------------------------------
+r197 | bruce | 2002-11-29 15:19:08 -0600 (Fri, 29 Nov 2002) | 2 lines
+Changed paths:
+   M /trunk/std-handle.c
+
+Clarified the logic of handle_sender and handle_recipient.
+
+------------------------------------------------------------------------
+r196 | bruce | 2002-11-19 17:21:55 -0600 (Tue, 19 Nov 2002) | 1 line
+Changed paths:
+   A /branches
+
+Created branches directory
+------------------------------------------------------------------------
+r195 | bruce | 2002-11-19 17:21:55 -0600 (Tue, 19 Nov 2002) | 1 line
+Changed paths:
+   A /tags
+
+Created tags directory
+------------------------------------------------------------------------
+r194 | bruce | 2002-11-08 23:36:03 -0600 (Fri, 08 Nov 2002) | 4 lines
+Changed paths:
+   M /trunk/echo-backend.c
+   M /trunk/mailfront.h
+   M /trunk/qmail-backend.c
+   M /trunk/qmail-validate.c
+   D /trunk/qmail.h
+   M /trunk/qmtpfront-qmail.c
+   M /trunk/smtpfront-qmail.c
+   M /trunk/smtpfront-reject.c
+   M /trunk/std-handle.c
+
+Renamed the qmail_ functions to standard backend_ naming.
+Removed the qmail.h header file.
+Added a call to backend_validate_init to std-handle.c.
+
+------------------------------------------------------------------------
+r193 | bruce | 2002-11-08 23:20:28 -0600 (Fri, 08 Nov 2002) | 2 lines
+Changed paths:
+   M /trunk/qmtpfront-qmail.c
+   M /trunk/smtpfront-qmail.c
+
+Removed duplicate relayclient and authenticated handling.
+
+------------------------------------------------------------------------
+r192 | bruce | 2002-11-08 23:03:40 -0600 (Fri, 08 Nov 2002) | 2 lines
+Changed paths:
+   M /trunk/std-handle.c
+
+Fixed typo with maxdatabytes.
+
+------------------------------------------------------------------------
+r191 | bruce | 2002-11-08 23:03:22 -0600 (Fri, 08 Nov 2002) | 2 lines
+Changed paths:
+   A /trunk/qmtpfront-qmail.c
+   A /trunk/qmtpfront-qmail=x
+
+Added QMTP-qmail main routine.
+
+------------------------------------------------------------------------
+r190 | bruce | 2002-11-08 22:53:54 -0600 (Fri, 08 Nov 2002) | 5 lines
+Changed paths:
+   M /trunk/echo-backend.c
+   M /trunk/mailfront.h
+   M /trunk/qmtp-mainloop.c
+   M /trunk/smtp-commands.c
+   M /trunk/smtp-mainloop.c
+   M /trunk/smtpfront-qmail.c
+   M /trunk/smtpfront-reject.c
+   M /trunk/std-handle.c
+
+Renamed handle and validate functions:
+	handle_* => backend_handle_*
+	validate_* => backend_validate_*
+	std_handle_* => handle_*
+
+------------------------------------------------------------------------
+r189 | bruce | 2002-11-08 22:36:01 -0600 (Fri, 08 Nov 2002) | 2 lines
+Changed paths:
+   M /trunk/mailfront.h
+   M /trunk/smtp-commands.c
+   M /trunk/smtp-mainloop.c
+   M /trunk/smtp.h
+   M /trunk/smtp=l
+
+Removed the duplicated code in std-handle.c
+
+------------------------------------------------------------------------
+r188 | bruce | 2002-11-08 22:35:35 -0600 (Fri, 08 Nov 2002) | 3 lines
+Changed paths:
+   A /trunk/std-handle.c
+
+Pulled a lot of common code from the SMTP library into this shared
+module.
+
+------------------------------------------------------------------------
+r187 | bruce | 2002-11-08 22:34:33 -0600 (Fri, 08 Nov 2002) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   A /trunk/qmtp-mainloop.c
+   A /trunk/qmtp-respond.c
+   A /trunk/qmtp.h
+   A /trunk/qmtp=l
+
+Added a QMTP back-end.
+
+------------------------------------------------------------------------
+r186 | bruce | 2002-11-07 19:42:05 -0600 (Thu, 07 Nov 2002) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/smtp-commands.c
+
+Fixed internal variable transposition bug.
+
+------------------------------------------------------------------------
+r185 | bruce | 2002-11-07 19:41:51 -0600 (Thu, 07 Nov 2002) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/VERSION
+
+Bumped up version.
+
+------------------------------------------------------------------------
+r184 | bruce | 2002-09-27 23:41:02 -0600 (Fri, 27 Sep 2002) | 2 lines
+Changed paths:
+   M /trunk/README
+   M /trunk/VERSION
+
+Bumped version to 0.81.
+
+------------------------------------------------------------------------
+r183 | bruce | 2002-09-25 17:10:10 -0600 (Wed, 25 Sep 2002) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/smtp-commands.c
+
+Abort the DATA command immediately if the databytes limit is reached.
+
+------------------------------------------------------------------------
+r182 | bruce | 2002-09-25 17:08:57 -0600 (Wed, 25 Sep 2002) | 2 lines
+Changed paths:
+   M /trunk/tests/rules-asterisk
+
+Test for "*" pattern matching "".
+
+------------------------------------------------------------------------
+r181 | bruce | 2002-09-25 17:00:10 -0600 (Wed, 25 Sep 2002) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/mailrules.c
+
+Make the "*" pattern properly match all strings.
+
+------------------------------------------------------------------------
+r180 | bruce | 2002-09-25 16:53:02 -0600 (Wed, 25 Sep 2002) | 2 lines
+Changed paths:
+   M /trunk/smtp-commands.c
+
+Remove extraneous reset of mail/rcpt state.
+
+------------------------------------------------------------------------
+r179 | bruce | 2002-09-25 16:51:48 -0600 (Wed, 25 Sep 2002) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/smtp-commands.c
+
+Accept bounces after the first one by properly resetting state.
+
+------------------------------------------------------------------------
+r178 | bruce | 2002-09-25 16:49:50 -0600 (Wed, 25 Sep 2002) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/mailrules.c
+
+Apply maxdatabytes even if $DATABYTES is not set.
+
+------------------------------------------------------------------------
+r177 | bruce | 2002-09-24 20:53:06 -0600 (Tue, 24 Sep 2002) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/qmail-backend.c
+
+Fixed handling of environment variables in mail rules.
+
+------------------------------------------------------------------------
+r176 | bruce | 2002-09-17 19:29:32 -0600 (Tue, 17 Sep 2002) | 4 lines
+Changed paths:
+   M /trunk/mailrules.c
+   M /trunk/mailrules.h
+
+Fix prototype for rules_getenv to return const data.
+Fix rules_getenv to call getenv if no suitable variable was found.
+Fix rules_getenv to return the *last* matching result.
+
+------------------------------------------------------------------------
+r175 | bruce | 2002-09-13 19:46:30 -0600 (Fri, 13 Sep 2002) | 2 lines
+Changed paths:
+   M /trunk/tests/rules-defaultmsg
+
+Fixed deferred message.
+
+------------------------------------------------------------------------
+r174 | bruce | 2002-09-13 19:46:15 -0600 (Fri, 13 Sep 2002) | 2 lines
+Changed paths:
+   M /trunk/README
+
+Bumped up version.
+
+------------------------------------------------------------------------
+r173 | bruce | 2002-09-13 04:38:07 -0600 (Fri, 13 Sep 2002) | 2 lines
+Changed paths:
+   M /trunk/mailrules.html
+
+Added some more examples.
+
+------------------------------------------------------------------------
+r172 | bruce | 2002-09-13 04:37:33 -0600 (Fri, 13 Sep 2002) | 2 lines
+Changed paths:
+   M /trunk/mailrules.c
+
+Added a default handler.
+
+------------------------------------------------------------------------
+r171 | bruce | 2002-09-11 17:31:39 -0600 (Wed, 11 Sep 2002) | 2 lines
+Changed paths:
+   M /trunk/TODO
+
+*** empty log message ***
+
+------------------------------------------------------------------------
+r170 | bruce | 2002-09-11 16:29:27 -0600 (Wed, 11 Sep 2002) | 2 lines
+Changed paths:
+   M /trunk/mailrules.c
+   M /trunk/mailrules.html
+   M /trunk/tests/rules-cdb
+   M /trunk/tests/rules-defaultmsg
+   M /trunk/tests/rules-list
+   M /trunk/tests/rules-recip
+   M /trunk/tests/rules-sender
+
+Fixed z/d semantics to match qmail-remote, QMQP, and QMTP.
+
+------------------------------------------------------------------------
+r169 | bruce | 2002-09-11 16:20:08 -0600 (Wed, 11 Sep 2002) | 2 lines
+Changed paths:
+   M /trunk/mailrules.html
+
+Clarified the note on escapes.
+
+------------------------------------------------------------------------
+r168 | bruce | 2002-09-11 16:17:12 -0600 (Wed, 11 Sep 2002) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/qmail-validate.c
+
+Added support for wildcards in rcpthosts and morercpthosts.cdb.
+
+------------------------------------------------------------------------
+r167 | bruce | 2002-08-27 21:13:21 -0600 (Tue, 27 Aug 2002) | 2 lines
+Changed paths:
+   M /trunk/mailrules.c
+   M /trunk/mailrules.html
+   M /trunk/tests/rules-recip
+   M /trunk/tests/rules-sender
+
+Added support for "pass-through" rules.
+
+------------------------------------------------------------------------
+r166 | bruce | 2002-08-26 20:28:27 -0600 (Mon, 26 Aug 2002) | 2 lines
+Changed paths:
+   M /trunk/mailrules.html
+
+Added note that the qmail rules are only an example.
+
+------------------------------------------------------------------------
+r165 | bruce | 2002-08-26 20:20:24 -0600 (Mon, 26 Aug 2002) | 3 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/qmail-validate.c
+
+Properly lowercase the sender address before looking it up in
+badmailfrom.
+
+------------------------------------------------------------------------
+r164 | bruce | 2002-08-26 03:35:44 -0600 (Mon, 26 Aug 2002) | 2 lines
+Changed paths:
+   M /trunk/README
+   M /trunk/mailrules.html
+
+Clarified interpretation of empty or missing columns.
+
+------------------------------------------------------------------------
+r163 | bruce | 2002-08-26 03:35:19 -0600 (Mon, 26 Aug 2002) | 2 lines
+Changed paths:
+   A /trunk/tests/rules-defaultmsg
+
+Test default messages.
+
+------------------------------------------------------------------------
+r162 | bruce | 2002-08-26 03:35:08 -0600 (Mon, 26 Aug 2002) | 2 lines
+Changed paths:
+   M /trunk/mailrules.c
+
+Properly set up different default messages for each type of rule.
+
+------------------------------------------------------------------------
+r161 | bruce | 2002-08-26 03:28:45 -0600 (Mon, 26 Aug 2002) | 2 lines
+Changed paths:
+   M /trunk/mailrules.c
+
+Fixed handling of empty resposes.
+
+------------------------------------------------------------------------
+r160 | bruce | 2002-08-26 03:08:27 -0600 (Mon, 26 Aug 2002) | 2 lines
+Changed paths:
+   M /trunk/mailrules.html
+
+Added note about empty pattern matching.
+
+------------------------------------------------------------------------
+r159 | bruce | 2002-08-26 03:07:12 -0600 (Mon, 26 Aug 2002) | 2 lines
+Changed paths:
+   A /trunk/tests/rules-empty
+
+Added test for empty pattern.
+
+------------------------------------------------------------------------
+r158 | bruce | 2002-08-26 03:06:57 -0600 (Mon, 26 Aug 2002) | 2 lines
+Changed paths:
+   M /trunk/TODO
+
+*** empty log message ***
+
+------------------------------------------------------------------------
+r157 | bruce | 2002-08-26 03:05:35 -0600 (Mon, 26 Aug 2002) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+
+Added note about mail rules processing and sponsorship.
+
+------------------------------------------------------------------------
+r156 | bruce | 2002-08-26 03:04:35 -0600 (Mon, 26 Aug 2002) | 2 lines
+Changed paths:
+   M /trunk/VERSION
+
+Bumped version.
+
+------------------------------------------------------------------------
+r155 | bruce | 2002-08-26 03:04:02 -0600 (Mon, 26 Aug 2002) | 3 lines
+Changed paths:
+   M /trunk/smtp-commands.c
+
+Fixed bounce to multiple recipient logic to properly reject the data
+command after the condition is discovered.
+
+------------------------------------------------------------------------
+r154 | bruce | 2002-08-26 03:03:25 -0600 (Mon, 26 Aug 2002) | 2 lines
+Changed paths:
+   M /trunk/smtpfront.html
+
+Added note about bounce to multiple recipient handling.
+
+------------------------------------------------------------------------
+r153 | bruce | 2002-08-26 02:57:39 -0600 (Mon, 26 Aug 2002) | 2 lines
+Changed paths:
+   M /trunk/smtp=l
+   M /trunk/smtpfront-echo=x
+   M /trunk/smtpfront-reject=x
+
+Added necessary linkage for mailrules implementation.
+
+------------------------------------------------------------------------
+r152 | bruce | 2002-08-26 02:57:17 -0600 (Mon, 26 Aug 2002) | 2 lines
+Changed paths:
+   A /trunk/tests/rules-asterisk
+   A /trunk/tests/rules-both
+   A /trunk/tests/rules-cdb
+   A /trunk/tests/rules-list
+   A /trunk/tests/rules-multiline
+   A /trunk/tests/rules-recip
+   A /trunk/tests/rules-sender
+
+Added mail rules tests.
+
+------------------------------------------------------------------------
+r151 | bruce | 2002-08-26 02:57:12 -0600 (Mon, 26 Aug 2002) | 2 lines
+Changed paths:
+   A /trunk/mailrules.c
+   A /trunk/mailrules.html
+
+Added mail rules implementation and documentation.
+
+------------------------------------------------------------------------
+r150 | bruce | 2002-08-26 02:56:38 -0600 (Mon, 26 Aug 2002) | 3 lines
+Changed paths:
+   M /trunk/qmail-validate.html
+   M /trunk/smtpfront.html
+
+Added notes about new mail rules interface, and the addition of
+$RELAYCLIENT and authentication handling to all back-ends.
+
+------------------------------------------------------------------------
+r149 | bruce | 2002-08-26 02:55:46 -0600 (Mon, 26 Aug 2002) | 4 lines
+Changed paths:
+   M /trunk/smtp-commands.c
+
+Call the mailrules API at the appropriate places.
+Add $RELAYCLIENT handling here from qmail-validate.
+Add authenticated handleing here.
+
+------------------------------------------------------------------------
+r148 | bruce | 2002-08-25 21:26:30 -0600 (Sun, 25 Aug 2002) | 2 lines
+Changed paths:
+   M /trunk/qmail-backend.c
+
+Use mailrules API to get/export environment variables.
+
+------------------------------------------------------------------------
+r147 | bruce | 2002-08-25 21:24:29 -0600 (Sun, 25 Aug 2002) | 3 lines
+Changed paths:
+   M /trunk/mailrules.h
+   M /trunk/smtp-mainloop.c
+   M /trunk/smtp.h
+
+Moved maxdatabytes saving and restoring into mailrules.
+Added environment API to mailrules.
+
+------------------------------------------------------------------------
+r146 | bruce | 2002-08-20 18:12:20 -0600 (Tue, 20 Aug 2002) | 2 lines
+Changed paths:
+   M /trunk/smtp-mainloop.c
+
+Set up relayclient and saved_maxdatabytes, and init mail rules.
+
+------------------------------------------------------------------------
+r145 | bruce | 2002-08-20 18:11:46 -0600 (Tue, 20 Aug 2002) | 2 lines
+Changed paths:
+   A /trunk/mailrules.h
+
+Added initial API for mail rules processing.
+
+------------------------------------------------------------------------
+r144 | bruce | 2002-08-20 18:10:23 -0600 (Tue, 20 Aug 2002) | 2 lines
+Changed paths:
+   M /trunk/echo-backend.c
+   M /trunk/mailfront.h
+   M /trunk/smtpfront-qmail.c
+
+Add seperate validate_(sender|recipient) routines.
+
+------------------------------------------------------------------------
+r143 | bruce | 2002-08-20 18:09:56 -0600 (Tue, 20 Aug 2002) | 3 lines
+Changed paths:
+   M /trunk/smtpfront-reject.c
+
+Add seperate validate_(sender|recipient) routines.
+Explicitly set relayclient and authenticated to false.
+
+------------------------------------------------------------------------
+r142 | bruce | 2002-08-20 18:07:10 -0600 (Tue, 20 Aug 2002) | 2 lines
+Changed paths:
+   M /trunk/smtp.h
+
+Export relayclient and saved_maxdatabytes state.
+
+------------------------------------------------------------------------
+r141 | bruce | 2002-08-19 18:24:00 -0600 (Mon, 19 Aug 2002) | 2 lines
+Changed paths:
+   M /trunk/smtp-commands.c
+
+Completed other half of single-recipient-bounce logic.
+
+------------------------------------------------------------------------
+r140 | bruce | 2002-08-19 18:22:31 -0600 (Mon, 19 Aug 2002) | 2 lines
+Changed paths:
+   M /trunk/smtp-commands.c
+
+Tweaked single-recipient-bounce logic to apply before any parsing.
+
+------------------------------------------------------------------------
+r139 | bruce | 2002-08-13 04:35:57 -0600 (Tue, 13 Aug 2002) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/smtp-mainloop.c
+
+Fixed handling of SMTPGREETING and TCPLOCALHOST.
+
+------------------------------------------------------------------------
+r138 | bruce | 2002-08-09 20:07:21 -0600 (Fri, 09 Aug 2002) | 2 lines
+Changed paths:
+   M /trunk/README
+   M /trunk/VERSION
+
+Bumped up version.
+
+------------------------------------------------------------------------
+r137 | bruce | 2002-08-08 17:18:45 -0600 (Thu, 08 Aug 2002) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/qmail-validate.c
+
+Add wildcard code for badrcptto to smtpfront-qmail.
+
+------------------------------------------------------------------------
+r136 | bruce | 2002-07-15 23:58:02 -0600 (Mon, 15 Jul 2002) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/insthier.c
+
+Added missing imapfront-auth.
+
+------------------------------------------------------------------------
+r135 | bruce | 2002-06-20 18:24:41 -0600 (Thu, 20 Jun 2002) | 2 lines
+Changed paths:
+   M /trunk/spec
+
+Added build requirement for bglibs.
+
+------------------------------------------------------------------------
+r134 | bruce | 2002-06-20 16:22:41 -0600 (Thu, 20 Jun 2002) | 2 lines
+Changed paths:
+   M /trunk/README
+   M /trunk/VERSION
+
+Bumped up version number.
+
+------------------------------------------------------------------------
+r133 | bruce | 2002-06-20 16:20:27 -0600 (Thu, 20 Jun 2002) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/sasl-auth.c
+
+Provide better credential information, as well as logging failures.
+
+------------------------------------------------------------------------
+r132 | bruce | 2002-06-18 23:38:50 -0600 (Tue, 18 Jun 2002) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/imapfront-auth=x
+   M /trunk/sasl-auth.c
+
+Log SASL authenticated username.
+
+------------------------------------------------------------------------
+r131 | bruce | 2002-06-18 21:21:16 -0600 (Tue, 18 Jun 2002) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/imapfront-auth.c
+
+Fixed missing "OK" bug in imapfront-auth.
+
+------------------------------------------------------------------------
+r130 | bruce | 2002-06-06 18:28:58 -0600 (Thu, 06 Jun 2002) | 2 lines
+Changed paths:
+   M /trunk/spec
+
+Added missing include/library flags.
+
+------------------------------------------------------------------------
+r129 | bruce | 2002-06-06 18:25:47 -0600 (Thu, 06 Jun 2002) | 2 lines
+Changed paths:
+   M /trunk/README
+   M /trunk/VERSION
+
+Bumped up version.
+
+------------------------------------------------------------------------
+r128 | bruce | 2002-06-06 18:22:32 -0600 (Thu, 06 Jun 2002) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/TODO
+   M /trunk/imapfront-auth=x
+   M /trunk/imapfront.html
+   M /trunk/pop3front-auth=x
+   M /trunk/pop3front-maildir=x
+   M /trunk/pop3front.html
+   M /trunk/smtpfront-echo=x
+   M /trunk/smtpfront-qmail=x
+   M /trunk/smtpfront-reject=x
+   M /trunk/smtpfront.html
+   M /trunk/timeout.c
+
+Added support for a session timeout.
+
+------------------------------------------------------------------------
+r127 | bruce | 2002-06-06 18:12:04 -0600 (Thu, 06 Jun 2002) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/TODO
+   M /trunk/smtp-commands.c
+   A /trunk/tests/smtpfront-bad-bounce
+   M /trunk/tests.inc
+
+Reject bounces with multiple recipients.
+
+------------------------------------------------------------------------
+r126 | bruce | 2002-06-06 17:58:45 -0600 (Thu, 06 Jun 2002) | 2 lines
+Changed paths:
+   M /trunk/TODO
+
+*** empty log message ***
+
+------------------------------------------------------------------------
+r125 | bruce | 2002-06-06 17:47:17 -0600 (Thu, 06 Jun 2002) | 2 lines
+Changed paths:
+   M /trunk/TODO
+   M /trunk/imapfront-auth.c
+   M /trunk/imapfront-auth=x
+   M /trunk/pop3-mainloop.c
+   M /trunk/pop3=l
+   M /trunk/smtp-mainloop.c
+   M /trunk/smtp=l
+   A /trunk/timeout.c
+
+Merged the common timeout code into one place.
+
+------------------------------------------------------------------------
+r124 | bruce | 2002-06-06 17:34:54 -0600 (Thu, 06 Jun 2002) | 2 lines
+Changed paths:
+   M /trunk/TODO
+
+Revised pattern matching plan.
+
+------------------------------------------------------------------------
+r123 | bruce | 2002-06-04 20:59:49 -0600 (Tue, 04 Jun 2002) | 2 lines
+Changed paths:
+   M /trunk/imapfront-auth.c
+   M /trunk/imapfront-auth=x
+   M /trunk/insthier.c
+   M /trunk/iobytes.c
+   M /trunk/mailfront.h
+   M /trunk/pop3-mainloop.c
+   M /trunk/pop3-response.c
+   M /trunk/pop3front-auth.c
+   M /trunk/pop3front-auth=x
+   M /trunk/pop3front-maildir.c
+   M /trunk/pop3front-maildir=x
+   M /trunk/qmail-backend.c
+   M /trunk/qmail-validate.c
+   M /trunk/sasl-auth.c
+   M /trunk/sasl-stub.c
+   M /trunk/smtp-commands.c
+   M /trunk/smtp-mainloop.c
+   M /trunk/smtp-respond.c
+   M /trunk/smtp.h
+   M /trunk/smtpfront-echo=x
+   M /trunk/smtpfront-qmail.c
+   M /trunk/smtpfront-qmail=x
+   M /trunk/smtpfront-reject.c
+   M /trunk/smtpfront-reject=x
+
+Switched to using external bglibs.
+
+------------------------------------------------------------------------
+r122 | bruce | 2002-06-04 20:41:30 -0600 (Tue, 04 Jun 2002) | 2 lines
+Changed paths:
+   M /trunk/TODO
+
+*** empty log message ***
+
+------------------------------------------------------------------------
+r121 | bruce | 2002-05-07 23:04:48 -0600 (Tue, 07 May 2002) | 2 lines
+Changed paths:
+   M /trunk/README
+   A /trunk/imapfront.html
+   M /trunk/mailfront.html
+
+Added some IMAP documentation.
+
+------------------------------------------------------------------------
+r120 | bruce | 2002-05-07 22:23:04 -0600 (Tue, 07 May 2002) | 2 lines
+Changed paths:
+   M /trunk/TODO
+
+*** empty log message ***
+
+------------------------------------------------------------------------
+r119 | bruce | 2002-05-07 21:15:51 -0600 (Tue, 07 May 2002) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/TODO
+
+*** empty log message ***
+
+------------------------------------------------------------------------
+r118 | bruce | 2002-05-07 20:28:57 -0600 (Tue, 07 May 2002) | 2 lines
+Changed paths:
+   M /trunk/imapfront-auth.c
+
+Added support for the AUTHENTICATE command.
+
+------------------------------------------------------------------------
+r117 | bruce | 2002-05-07 20:28:43 -0600 (Tue, 07 May 2002) | 2 lines
+Changed paths:
+   M /trunk/pop3front-auth.c
+   M /trunk/sasl-auth.c
+   M /trunk/sasl-auth.h
+   M /trunk/sasl-stub.c
+   M /trunk/smtp-commands.c
+
+Updated the SASL interface to allow one or two arguments.
+
+------------------------------------------------------------------------
+r116 | bruce | 2002-05-07 19:17:47 -0600 (Tue, 07 May 2002) | 2 lines
+Changed paths:
+   A /trunk/imapfront-auth.c
+   A /trunk/imapfront-auth=x
+
+Added first try at an IMAP authentication front end.
+
+------------------------------------------------------------------------
+r115 | bruce | 2002-05-06 20:55:23 -0600 (Mon, 06 May 2002) | 2 lines
+Changed paths:
+   A /trunk/tests/smtpgreeting
+
+Added test for $SMTPGREETING.
+
+------------------------------------------------------------------------
+r114 | bruce | 2002-05-06 20:55:16 -0600 (Mon, 06 May 2002) | 2 lines
+Changed paths:
+   M /trunk/tests.inc
+
+Fixed pop3front-auth function.
+
+------------------------------------------------------------------------
+r113 | bruce | 2002-05-06 20:54:57 -0600 (Mon, 06 May 2002) | 2 lines
+Changed paths:
+   M /trunk/TODO
+
+*** empty log message ***
+
+------------------------------------------------------------------------
+r112 | bruce | 2002-05-06 20:50:23 -0600 (Mon, 06 May 2002) | 2 lines
+Changed paths:
+   M /trunk/mailfront.html
+   M /trunk/smtpfront.html
+
+Updated documentation.
+
+------------------------------------------------------------------------
+r111 | bruce | 2002-05-06 20:49:42 -0600 (Mon, 06 May 2002) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/smtp-mainloop.c
+   M /trunk/smtp.h
+   M /trunk/smtpfront-echo.c
+   M /trunk/smtpfront-qmail.c
+   M /trunk/smtpfront-reject.c
+
+Added support for $SMTPGREETING.
+
+------------------------------------------------------------------------
+r110 | bruce | 2002-04-17 20:31:28 -0600 (Wed, 17 Apr 2002) | 3 lines
+Changed paths:
+   M /trunk/pop3-mainloop.c
+   M /trunk/pop3.h
+   M /trunk/pop3front-auth.c
+   M /trunk/pop3front-maildir.c
+
+Allow for "sanitized" versions of some commands to be logged, for
+example to strip passwords.
+
+------------------------------------------------------------------------
+r109 | bruce | 2002-04-17 20:03:43 -0600 (Wed, 17 Apr 2002) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/pop3-mainloop.c
+   M /trunk/pop3-response.c
+   M /trunk/pop3.h
+
+Modified pop3front to log all commands, not just errors.
+
+------------------------------------------------------------------------
+r108 | bruce | 2002-02-12 22:56:11 -0600 (Tue, 12 Feb 2002) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+
+Typo.
+
+------------------------------------------------------------------------
+r107 | bruce | 2002-02-12 22:41:15 -0600 (Tue, 12 Feb 2002) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/README
+   M /trunk/VERSION
+
+un-bumped version number.
+
+------------------------------------------------------------------------
+r106 | bruce | 2002-02-12 22:23:01 -0600 (Tue, 12 Feb 2002) | 2 lines
+Changed paths:
+   M /trunk/README.CVS
+   M /trunk/TODO
+
+*** empty log message ***
+
+------------------------------------------------------------------------
+r105 | bruce | 2002-02-12 22:19:22 -0600 (Tue, 12 Feb 2002) | 2 lines
+Changed paths:
+   M /trunk/pop3front-auth=x
+   M /trunk/smtpfront-echo=x
+   M /trunk/smtpfront-qmail=x
+
+Replace use of "socket" library with the "net" library.
+
+------------------------------------------------------------------------
+r104 | bruce | 2002-02-12 21:03:07 -0600 (Tue, 12 Feb 2002) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/README
+   M /trunk/VERSION
+
+*** empty log message ***
+
+------------------------------------------------------------------------
+r103 | bruce | 2002-02-12 21:01:33 -0600 (Tue, 12 Feb 2002) | 2 lines
+Changed paths:
+   M /trunk/pop3front-auth.c
+
+Log the username.
+
+------------------------------------------------------------------------
+r102 | bruce | 2002-02-12 20:11:16 -0600 (Tue, 12 Feb 2002) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/qmail-validate.c
+
+Fixed one-off bug in badmailfrom handling.
+
+------------------------------------------------------------------------
+r101 | bruce | 2002-02-12 20:05:57 -0600 (Tue, 12 Feb 2002) | 3 lines
+Changed paths:
+   D /trunk/log.c
+   D /trunk/log.h
+   M /trunk/mailfront.h
+   M /trunk/qmail-backend.c
+   M /trunk/smtp-commands.c
+   M /trunk/smtp-respond.c
+   M /trunk/smtpfront-echo=x
+   M /trunk/smtpfront-qmail=x
+   M /trunk/smtpfront-reject=x
+
+Converted smtpfront to use the msg library, and dropped the custom log
+functions.
+
+------------------------------------------------------------------------
+r100 | bruce | 2002-02-12 20:05:26 -0600 (Tue, 12 Feb 2002) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+
+*** empty log message ***
+
+------------------------------------------------------------------------
+r99 | bruce | 2002-02-12 19:58:46 -0600 (Tue, 12 Feb 2002) | 3 lines
+Changed paths:
+   A /trunk/iobytes.c
+   M /trunk/pop3=l
+   M /trunk/pop3front-maildir.c
+   M /trunk/smtp-mainloop.c
+   M /trunk/smtp=l
+
+Moved the I/O byte reporting into a common module, and added the hook to
+the SMTP front end.
+
+------------------------------------------------------------------------
+r98 | bruce | 2002-02-12 19:48:30 -0600 (Tue, 12 Feb 2002) | 2 lines
+Changed paths:
+   M /trunk/tests.inc
+
+*** empty log message ***
+
+------------------------------------------------------------------------
+r97 | bruce | 2002-02-12 19:48:18 -0600 (Tue, 12 Feb 2002) | 2 lines
+Changed paths:
+   M /trunk/pop3front-maildir.c
+
+Converted to using msg for errors.
+
+------------------------------------------------------------------------
+r96 | bruce | 2002-02-12 17:55:42 -0600 (Tue, 12 Feb 2002) | 2 lines
+Changed paths:
+   M /trunk/TODO
+
+*** empty log message ***
+
+------------------------------------------------------------------------
+r95 | bruce | 2002-02-12 17:55:24 -0600 (Tue, 12 Feb 2002) | 3 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/pop3front-maildir.c
+
+Added an exit hook to pop3front-maildir to print the number of bytes
+input and output.
+
+------------------------------------------------------------------------
+r94 | bruce | 2002-02-06 18:25:49 -0600 (Wed, 06 Feb 2002) | 2 lines
+Changed paths:
+   M /trunk/tests/pop3front-auth-userpass
+   A /trunk/tests/pop3front-maildir-flags
+   A /trunk/tests/pop3front-maildir-last
+   A /trunk/tests/pop3front-maildir-sort
+   A /trunk/tests/pop3front-maildir-state
+   M /trunk/tests.inc
+
+Updated and added tests.
+
+------------------------------------------------------------------------
+r93 | bruce | 2002-02-01 17:30:06 -0600 (Fri, 01 Feb 2002) | 2 lines
+Changed paths:
+   M /trunk/pop3front-maildir.c
+
+Use strchr instead of scanning for flags by hand.
+
+------------------------------------------------------------------------
+r92 | bruce | 2002-02-01 17:27:38 -0600 (Fri, 01 Feb 2002) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+
+*** empty log message ***
+
+------------------------------------------------------------------------
+r91 | bruce | 2002-02-01 17:26:55 -0600 (Fri, 01 Feb 2002) | 2 lines
+Changed paths:
+   M /trunk/pop3front-maildir.c
+
+Implemented the obsolete LAST command.
+
+------------------------------------------------------------------------
+r90 | bruce | 2002-02-01 17:07:18 -0600 (Fri, 01 Feb 2002) | 2 lines
+Changed paths:
+   M /trunk/pop3front-maildir.c
+
+Sort the messages in the maildir (by numerical value).
+
+------------------------------------------------------------------------
+r89 | bruce | 2002-02-01 04:08:13 -0600 (Fri, 01 Feb 2002) | 2 lines
+Changed paths:
+   M /trunk/pop3front-maildir.c
+
+Scan the messages for a "read" flag.
+
+------------------------------------------------------------------------
+r88 | bruce | 2002-02-01 04:01:13 -0600 (Fri, 01 Feb 2002) | 3 lines
+Changed paths:
+   M /trunk/pop3front-maildir.c
+
+Modified the flags handling to properly *add* instead of replacing the
+flags.
+
+------------------------------------------------------------------------
+r87 | bruce | 2002-01-31 18:25:15 -0600 (Thu, 31 Jan 2002) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/pop3front-maildir.c
+
+Properly tag read messages on QUIT.
+
+------------------------------------------------------------------------
+r86 | bruce | 2002-01-31 18:24:28 -0600 (Thu, 31 Jan 2002) | 2 lines
+Changed paths:
+   M /trunk/README
+   M /trunk/VERSION
+
+Bumped version number.
+
+------------------------------------------------------------------------
+r85 | bruce | 2002-01-11 18:54:40 -0600 (Fri, 11 Jan 2002) | 2 lines
+Changed paths:
+   M /trunk/tests/pop3front-auth
+   M /trunk/tests/pop3front-auth-userpass
+
+Fixed extra period.
+
+------------------------------------------------------------------------
+r84 | bruce | 2002-01-11 18:54:29 -0600 (Fri, 11 Jan 2002) | 2 lines
+Changed paths:
+   M /trunk/README
+
+Touched date.
+
+------------------------------------------------------------------------
+r83 | bruce | 2002-01-11 04:29:35 -0600 (Fri, 11 Jan 2002) | 3 lines
+Changed paths:
+   M /trunk/pop3-mainloop.c
+   M /trunk/pop3front.html
+   M /trunk/smtp-mainloop.c
+
+Added $TIMEOUT handling to the POP3 modules.
+Minor adjustment to SMTP $TIMEOUT handling.
+
+------------------------------------------------------------------------
+r82 | bruce | 2002-01-11 04:28:02 -0600 (Fri, 11 Jan 2002) | 2 lines
+Changed paths:
+   M /trunk/TODO
+
+*** empty log message ***
+
+------------------------------------------------------------------------
+r81 | bruce | 2002-01-09 21:59:26 -0600 (Wed, 09 Jan 2002) | 3 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/pop3front-maildir.c
+
+DELE needed to add deleted messages to the appropriate counters so STAT
+could account for the difference.
+
+------------------------------------------------------------------------
+r80 | bruce | 2001-12-28 00:31:52 -0600 (Fri, 28 Dec 2001) | 2 lines
+Changed paths:
+   M /trunk/pop3front.html
+
+Documented the MAX_CUR/NEW_MESSAGES options.
+
+------------------------------------------------------------------------
+r79 | bruce | 2001-12-28 00:25:07 -0600 (Fri, 28 Dec 2001) | 3 lines
+Changed paths:
+   M /trunk/pop3front-maildir.c
+
+Minor optimization: only update the count pointer after the loop is
+complete.
+
+------------------------------------------------------------------------
+r78 | bruce | 2001-12-28 00:23:54 -0600 (Fri, 28 Dec 2001) | 3 lines
+Changed paths:
+   M /trunk/pop3front-maildir.c
+
+Add optional individual count limits on both the cur and new
+subdirectories.
+
+------------------------------------------------------------------------
+r77 | bruce | 2001-12-27 22:32:41 -0600 (Thu, 27 Dec 2001) | 2 lines
+Changed paths:
+   M /trunk/pop3front-auth=x
+   M /trunk/pop3front-maildir=x
+
+Added missing msg/msg.a library.
+
+------------------------------------------------------------------------
+r76 | bruce | 2001-12-27 22:32:23 -0600 (Thu, 27 Dec 2001) | 2 lines
+Changed paths:
+   M /trunk/pop3-response.c
+
+Output all error responses to the logs.
+
+------------------------------------------------------------------------
+r75 | bruce | 2001-12-24 05:38:59 -0600 (Mon, 24 Dec 2001) | 5 lines
+Changed paths:
+   M /trunk/pop3front-maildir.c
+
+Fixed two message corruption bugs in dump_msg:
+- periods at the start of a line weren't escaped and
+- if the line after the last requested line of the body spanned buffers,
+  the first part of it would be written.
+
+------------------------------------------------------------------------
+r74 | bruce | 2001-12-23 05:53:24 -0600 (Sun, 23 Dec 2001) | 2 lines
+Changed paths:
+   M /trunk/pop3-mainloop.c
+
+Added timeout option.
+
+------------------------------------------------------------------------
+r73 | bruce | 2001-12-23 05:52:52 -0600 (Sun, 23 Dec 2001) | 2 lines
+Changed paths:
+   M /trunk/pop3front-auth.c
+
+Fixed some response strings, added program string.
+
+------------------------------------------------------------------------
+r72 | bruce | 2001-12-23 05:52:26 -0600 (Sun, 23 Dec 2001) | 2 lines
+Changed paths:
+   M /trunk/pop3front-maildir.c
+
+Fixed some debug strings, add program string.
+
+------------------------------------------------------------------------
+r71 | bruce | 2001-12-17 04:35:01 -0600 (Mon, 17 Dec 2001) | 2 lines
+Changed paths:
+   A /trunk/COPYING
+   M /trunk/README
+   M /trunk/TODO
+   M /trunk/VERSION
+
+*** empty log message ***
+
+------------------------------------------------------------------------
+r70 | bruce | 2001-12-17 04:30:55 -0600 (Mon, 17 Dec 2001) | 2 lines
+Changed paths:
+   A /trunk/spec
+
+Added missing spec file.
+
+------------------------------------------------------------------------
+r69 | bruce | 2001-11-22 23:13:54 -0600 (Thu, 22 Nov 2001) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/pop3front-maildir.c
+   M /trunk/pop3front.html
+
+Added a maximum accessable message count option.
+
+------------------------------------------------------------------------
+r68 | bruce | 2001-10-18 23:20:17 -0600 (Thu, 18 Oct 2001) | 2 lines
+Changed paths:
+   M /trunk/pop3front-maildir=x
+
+This module doesn't need CVM, so don't link against it.
+
+------------------------------------------------------------------------
+r67 | bruce | 2001-10-18 23:19:57 -0600 (Thu, 18 Oct 2001) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/pop3front-auth=x
+   M /trunk/smtpfront-echo=x
+   M /trunk/smtpfront-qmail=x
+
+Added missing socket.lib linker option.
+
+------------------------------------------------------------------------
+r66 | bruce | 2001-10-18 23:13:41 -0600 (Thu, 18 Oct 2001) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/README
+   M /trunk/VERSION
+
+Bumped up the version number.
+
+------------------------------------------------------------------------
+r65 | bruce | 2001-10-17 22:30:12 -0600 (Wed, 17 Oct 2001) | 2 lines
+Changed paths:
+   M /trunk/insthier.c
+
+Added pop3front-* programs.
+
+------------------------------------------------------------------------
+r64 | bruce | 2001-09-21 21:35:17 -0600 (Fri, 21 Sep 2001) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/TODO
+
+*** empty log message ***
+
+------------------------------------------------------------------------
+r63 | bruce | 2001-09-21 18:33:35 -0600 (Fri, 21 Sep 2001) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/README
+
+*** empty log message ***
+
+------------------------------------------------------------------------
+r62 | bruce | 2001-09-21 18:32:13 -0600 (Fri, 21 Sep 2001) | 3 lines
+Changed paths:
+   M /trunk/smtp-commands.c
+
+Log the MAIL and RCPT parameters always, not just when they are
+accepted by handle_sender and handle_recipient.
+
+------------------------------------------------------------------------
+r61 | bruce | 2001-09-14 22:32:27 -0600 (Fri, 14 Sep 2001) | 2 lines
+Changed paths:
+   A /trunk/tests/pop3front-auth
+   M /trunk/tests/smtpfront-auth-plain
+
+More testing...
+
+------------------------------------------------------------------------
+r60 | bruce | 2001-09-14 21:31:50 -0600 (Fri, 14 Sep 2001) | 2 lines
+Changed paths:
+   A /trunk/tests
+   A /trunk/tests/pop3front-auth-login
+   A /trunk/tests/pop3front-auth-plain
+   A /trunk/tests/pop3front-auth-userpass
+   A /trunk/tests/smtpfront-auth-login
+   A /trunk/tests/smtpfront-auth-plain
+   A /trunk/tests.inc
+
+Added tests of the auth mechanisms.
+
+------------------------------------------------------------------------
+r59 | bruce | 2001-09-14 21:31:37 -0600 (Fri, 14 Sep 2001) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+
+*** empty log message ***
+
+------------------------------------------------------------------------
+r58 | bruce | 2001-09-14 21:31:30 -0600 (Fri, 14 Sep 2001) | 2 lines
+Changed paths:
+   M /trunk/sasl-auth.c
+
+Abort the authentication if the response string starts with '*'.
+
+------------------------------------------------------------------------
+r57 | bruce | 2001-09-14 21:31:06 -0600 (Fri, 14 Sep 2001) | 2 lines
+Changed paths:
+   M /trunk/sasl-auth.c
+
+Properly skip spaces after the mechanism name.
+
+------------------------------------------------------------------------
+r56 | bruce | 2001-09-14 21:29:56 -0600 (Fri, 14 Sep 2001) | 3 lines
+Changed paths:
+   M /trunk/smtp-commands.c
+
+Log the sender and recipient addresses.
+Provide a success response when authentication succeeds.
+
+------------------------------------------------------------------------
+r55 | bruce | 2001-09-14 21:29:15 -0600 (Fri, 14 Sep 2001) | 2 lines
+Changed paths:
+   M /trunk/mailfront.h
+   M /trunk/smtp.h
+
+Moved several SMTP specific function declarations into smtp.h
+
+------------------------------------------------------------------------
+r54 | bruce | 2001-09-14 21:28:49 -0600 (Fri, 14 Sep 2001) | 2 lines
+Changed paths:
+   M /trunk/smtp-respond.c
+
+Use the more efficient putsflush(CRLF) form.
+
+------------------------------------------------------------------------
+r53 | bruce | 2001-09-14 05:47:04 -0600 (Fri, 14 Sep 2001) | 2 lines
+Changed paths:
+   M /trunk/README
+   M /trunk/TODO
+   M /trunk/VERSION
+
+*** empty log message ***
+
+------------------------------------------------------------------------
+r52 | bruce | 2001-09-14 05:45:26 -0600 (Fri, 14 Sep 2001) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/qmail-validate.c
+
+Lowercase domain names before comparing them.
+
+------------------------------------------------------------------------
+r51 | bruce | 2001-09-13 00:03:25 -0600 (Thu, 13 Sep 2001) | 2 lines
+Changed paths:
+   M /trunk/README
+   M /trunk/pop3front-auth=x
+   M /trunk/pop3front-maildir=x
+   A /trunk/pop3front.html
+   M /trunk/smtpfront-echo=x
+   M /trunk/smtpfront-qmail=x
+
+*** empty log message ***
+
+------------------------------------------------------------------------
+r50 | bruce | 2001-09-09 05:35:20 -0600 (Sun, 09 Sep 2001) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/TODO
+
+*** empty log message ***
+
+------------------------------------------------------------------------
+r49 | bruce | 2001-09-09 05:29:22 -0600 (Sun, 09 Sep 2001) | 2 lines
+Changed paths:
+   M /trunk/pop3front-maildir.c
+
+Added support for TOP command.
+
+------------------------------------------------------------------------
+r48 | bruce | 2001-09-09 05:29:00 -0600 (Sun, 09 Sep 2001) | 2 lines
+Changed paths:
+   M /trunk/pop3front-auth.c
+   M /trunk/pop3front-auth=x
+
+Added support for the AUTH command.
+
+------------------------------------------------------------------------
+r47 | bruce | 2001-09-09 05:28:36 -0600 (Sun, 09 Sep 2001) | 2 lines
+Changed paths:
+   M /trunk/mailfront.html
+
+*** empty log message ***
+
+------------------------------------------------------------------------
+r46 | bruce | 2001-09-09 05:28:21 -0600 (Sun, 09 Sep 2001) | 2 lines
+Changed paths:
+   A /trunk/sasl-auth.c
+   A /trunk/sasl-auth.h
+   A /trunk/sasl-stub.c
+   D /trunk/smtp-auth-stub.c
+   D /trunk/smtp-auth.c
+   M /trunk/smtp-commands.c
+   M /trunk/smtp-mainloop.c
+   M /trunk/smtp.h
+   M /trunk/smtpfront-echo=x
+   M /trunk/smtpfront-qmail=x
+   M /trunk/smtpfront-reject=x
+
+Moved the SMTP specific SASL AUTH code to a new more generic module.
+
+------------------------------------------------------------------------
+r45 | bruce | 2001-09-09 05:26:07 -0600 (Sun, 09 Sep 2001) | 2 lines
+Changed paths:
+   M /trunk/pop3-response.c
+
+Use new CRLF constant.
+
+------------------------------------------------------------------------
+r44 | bruce | 2001-09-09 05:25:17 -0600 (Sun, 09 Sep 2001) | 2 lines
+Changed paths:
+   A /trunk/constants.h
+   M /trunk/mailfront.h
+   M /trunk/pop3.h
+   M /trunk/smtp.h
+
+Moved a bunch of the character constants into a seperate module.
+
+------------------------------------------------------------------------
+r43 | bruce | 2001-09-07 18:13:51 -0600 (Fri, 07 Sep 2001) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+
+*** empty log message ***
+
+------------------------------------------------------------------------
+r42 | bruce | 2001-09-07 06:41:57 -0600 (Fri, 07 Sep 2001) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/README
+   M /trunk/TODO
+   A /trunk/VERSION
+
+*** empty log message ***
+
+------------------------------------------------------------------------
+r41 | bruce | 2001-09-07 06:40:17 -0600 (Fri, 07 Sep 2001) | 2 lines
+Changed paths:
+   M /trunk/smtp-auth.c
+
+Revised to use new cvm-sasl structure.
+
+------------------------------------------------------------------------
+r40 | bruce | 2001-09-07 06:39:44 -0600 (Fri, 07 Sep 2001) | 2 lines
+Changed paths:
+   M /trunk/smtp-mainloop.c
+
+Use ibuf_getstr_crlf in favour of smtp_get_line.
+
+------------------------------------------------------------------------
+r39 | bruce | 2001-09-07 06:39:26 -0600 (Fri, 07 Sep 2001) | 3 lines
+Changed paths:
+   M /trunk/smtp.h
+
+Redefined the character macros to add type.
+Use the new ibuf_getstr_crlf function.
+
+------------------------------------------------------------------------
+r38 | bruce | 2001-09-07 06:34:32 -0600 (Fri, 07 Sep 2001) | 2 lines
+Changed paths:
+   A /trunk/pop3=l
+
+*** empty log message ***
+
+------------------------------------------------------------------------
+r37 | bruce | 2001-09-07 06:34:11 -0600 (Fri, 07 Sep 2001) | 2 lines
+Changed paths:
+   A /trunk/pop3-mainloop.c
+   A /trunk/pop3-response.c
+   A /trunk/pop3.h
+   A /trunk/pop3front-auth.c
+   A /trunk/pop3front-auth=x
+   A /trunk/pop3front-maildir.c
+   A /trunk/pop3front-maildir=x
+
+Added a new POP3 server pair.
+
+------------------------------------------------------------------------
+r36 | bruce | 2001-08-24 20:53:06 -0600 (Fri, 24 Aug 2001) | 2 lines
+Changed paths:
+   M /trunk/smtpfront.html
+
+Added (temporary) link for cvm-sasl.html.
+
+------------------------------------------------------------------------
+r35 | bruce | 2001-08-24 20:37:13 -0600 (Fri, 24 Aug 2001) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/README
+   M /trunk/TODO
+
+*** empty log message ***
+
+------------------------------------------------------------------------
+r34 | bruce | 2001-08-24 20:34:12 -0600 (Fri, 24 Aug 2001) | 2 lines
+Changed paths:
+   M /trunk/smtpfront.html
+
+Noted use of SMTP AUTH.
+
+------------------------------------------------------------------------
+r33 | bruce | 2001-08-10 22:05:38 -0600 (Fri, 10 Aug 2001) | 2 lines
+Changed paths:
+   M /trunk/NEWS
+   M /trunk/TODO
+
+*** empty log message ***
+
+------------------------------------------------------------------------
+r32 | bruce | 2001-08-10 20:05:57 -0600 (Fri, 10 Aug 2001) | 2 lines
+Changed paths:
+   M /trunk/smtp-respond.c
+
+Renamed NL to LF.
+
+------------------------------------------------------------------------
+r31 | bruce | 2001-08-10 20:05:43 -0600 (Fri, 10 Aug 2001) | 2 lines
+Changed paths:
+   M /trunk/README.CVS
+   M /trunk/TODO
+   M /trunk/mailfront.html
+
+*** empty log message ***
+
+------------------------------------------------------------------------
+r30 | bruce | 2001-08-10 20:05:26 -0600 (Fri, 10 Aug 2001) | 2 lines
+Changed paths:
+   M /trunk/mailfront.h
+
+Added an "authenticated" state variable.
+
+------------------------------------------------------------------------
+r29 | bruce | 2001-08-10 20:02:44 -0600 (Fri, 10 Aug 2001) | 2 lines
+Changed paths:
+   M /trunk/smtpfront-qmail.c
+
+Allow authenticated sessions to relay.
+
+------------------------------------------------------------------------
+r28 | bruce | 2001-08-10 20:02:08 -0600 (Fri, 10 Aug 2001) | 2 lines
+Changed paths:
+   M /trunk/smtp-commands.c
+   M /trunk/smtp-mainloop.c
+   M /trunk/smtp.h
+
+Added hooks for SMTP AUTH.
+
+------------------------------------------------------------------------
+r27 | bruce | 2001-08-10 20:01:55 -0600 (Fri, 10 Aug 2001) | 2 lines
+Changed paths:
+   M /trunk/smtpfront-echo=x
+   M /trunk/smtpfront-qmail=x
+
+Link against the full SMTP AUTH implementation.
+
+------------------------------------------------------------------------
+r26 | bruce | 2001-08-10 20:01:38 -0600 (Fri, 10 Aug 2001) | 2 lines
+Changed paths:
+   M /trunk/smtpfront-reject=x
+
+Link against the SMTP AUTH stubs.
+
+------------------------------------------------------------------------
+r25 | bruce | 2001-08-10 20:01:11 -0600 (Fri, 10 Aug 2001) | 2 lines
+Changed paths:
+   A /trunk/smtp-auth-stub.c
+
+First check-in of the dummy SMTP AUTH stub functions.
+
+------------------------------------------------------------------------
+r24 | bruce | 2001-08-10 20:00:56 -0600 (Fri, 10 Aug 2001) | 2 lines
+Changed paths:
+   A /trunk/smtp-auth.c
+
+First check-in of the main SMTP AUTH support module.
+
+------------------------------------------------------------------------
+r23 | bruce | 2001-08-10 19:54:02 -0600 (Fri, 10 Aug 2001) | 2 lines
+Changed paths:
+   M /trunk/qmail-validate.c
+
+Use the new dict_load_list to load the dictionaries.
+
+------------------------------------------------------------------------
+r22 | bruce | 2001-08-08 20:12:37 -0600 (Wed, 08 Aug 2001) | 2 lines
+Changed paths:
+   M /trunk/smtpfront-echo=x
+   M /trunk/smtpfront-qmail=x
+   M /trunk/smtpfront-reject=x
+
+Added missing iopoll.o object.
+
+------------------------------------------------------------------------
+r21 | bruce | 2001-08-08 20:11:15 -0600 (Wed, 08 Aug 2001) | 2 lines
+Changed paths:
+   M /trunk/README
+
+*** empty log message ***
+
+------------------------------------------------------------------------
+r20 | bruce | 2001-08-08 20:05:02 -0600 (Wed, 08 Aug 2001) | 2 lines
+Changed paths:
+   A /trunk/makedist.py
+
+Added distribution file.
+
+------------------------------------------------------------------------
+r19 | bruce | 2001-08-08 20:04:54 -0600 (Wed, 08 Aug 2001) | 2 lines
+Changed paths:
+   A /trunk/NEWS
+   A /trunk/README
+   A /trunk/README.CVS
+   A /trunk/mailfront.html
+   A /trunk/qmail-backend.html
+   A /trunk/qmail-validate.html
+   A /trunk/smtpfront.html
+
+Added documentation.
+
+------------------------------------------------------------------------
+r18 | bruce | 2001-08-08 20:04:36 -0600 (Wed, 08 Aug 2001) | 2 lines
+Changed paths:
+   M /trunk/insthier.c
+
+*** empty log message ***
+
+------------------------------------------------------------------------
+r17 | bruce | 2001-08-08 20:01:53 -0600 (Wed, 08 Aug 2001) | 2 lines
+Changed paths:
+   D /trunk/architecture.txt
+   D /trunk/features.txt
+
+Translated into the HTML documentation and removed.
+
+------------------------------------------------------------------------
+r16 | bruce | 2001-08-08 19:59:02 -0600 (Wed, 08 Aug 2001) | 2 lines
+Changed paths:
+   M /trunk/TODO
+
+*** empty log message ***
+
+------------------------------------------------------------------------
+r15 | bruce | 2001-08-08 19:58:49 -0600 (Wed, 08 Aug 2001) | 2 lines
+Changed paths:
+   A /trunk/smtpfront-echo.c
+   A /trunk/smtpfront-echo=x
+   D /trunk/smtpfront-test.c
+   D /trunk/smtpfront-test=x
+
+Renamed smtpfront-test to smtpfront-echo.
+
+------------------------------------------------------------------------
+r14 | bruce | 2001-08-07 23:19:39 -0600 (Tue, 07 Aug 2001) | 2 lines
+Changed paths:
+   M /trunk/features.txt
+   M /trunk/smtp-commands.c
+
+Handle RFC 1869 extended RCPT TO: and MAIL FROM: parameters.
+
+------------------------------------------------------------------------
+r13 | bruce | 2001-08-07 23:18:36 -0600 (Tue, 07 Aug 2001) | 2 lines
+Changed paths:
+   M /trunk/insthier.c
+
+Adapted to new insthier framework.
+
+------------------------------------------------------------------------
+r12 | bruce | 2001-08-07 22:48:17 -0600 (Tue, 07 Aug 2001) | 2 lines
+Changed paths:
+   M /trunk/features.txt
+
+Added badrcptto handling to the qmail backend.
+
+------------------------------------------------------------------------
+r11 | bruce | 2001-08-07 22:47:31 -0600 (Tue, 07 Aug 2001) | 2 lines
+Changed paths:
+   M /trunk/qmail-validate.c
+
+Added badrcptto handling.
+
+------------------------------------------------------------------------
+r10 | bruce | 2001-08-07 22:47:09 -0600 (Tue, 07 Aug 2001) | 2 lines
+Changed paths:
+   M /trunk/smtpfront-reject.c
+
+Added a missing include.
+
+------------------------------------------------------------------------
+r9 | bruce | 2001-08-03 23:16:22 -0600 (Fri, 03 Aug 2001) | 2 lines
+Changed paths:
+   M /trunk/smtpfront-qmail.c
+   M /trunk/smtpfront-test.c
+
+Fixed up the program names.
+
+------------------------------------------------------------------------
+r8 | bruce | 2001-08-03 23:16:12 -0600 (Fri, 03 Aug 2001) | 2 lines
+Changed paths:
+   M /trunk/qmail-validate.c
+
+Renamed an internal function.
+
+------------------------------------------------------------------------
+r7 | bruce | 2001-08-03 23:15:42 -0600 (Fri, 03 Aug 2001) | 2 lines
+Changed paths:
+   A /trunk/smtpfront-reject.c
+   A /trunk/smtpfront-reject=x
+
+Added a simple reject-everything server.
+
+------------------------------------------------------------------------
+r6 | bruce | 2001-08-03 23:15:12 -0600 (Fri, 03 Aug 2001) | 2 lines
+Changed paths:
+   D /trunk/smtpfront-qmail-er.c
+   D /trunk/smtpfront-qmail-er=x
+
+Removed this FutureQuest internal program.
+
+------------------------------------------------------------------------
+r5 | bruce | 2001-06-15 21:25:12 -0600 (Fri, 15 Jun 2001) | 2 lines
+Changed paths:
+   M /trunk/qmail-validate.c
+   M /trunk/smtpfront-qmail-er=x
+   M /trunk/smtpfront-qmail=x
+
+Added support for verifying addresses against control/morercpthosts.cdb.
+
+------------------------------------------------------------------------
+r4 | bruce | 2001-06-15 21:24:48 -0600 (Fri, 15 Jun 2001) | 3 lines
+Changed paths:
+   M /trunk/smtp-commands.c
+
+Totally rewrote the DATA command to handle the message content in fixed
+space (as opposed to allocated space for each line).
+
+------------------------------------------------------------------------
+r3 | bruce | 2001-06-15 21:23:52 -0600 (Fri, 15 Jun 2001) | 2 lines
+Changed paths:
+   M /trunk/smtp-mainloop.c
+   M /trunk/smtp.h
+
+Renamed databytes to maxdatabytes.
+
+------------------------------------------------------------------------
+r2 | bruce | 2001-06-15 21:23:16 -0600 (Fri, 15 Jun 2001) | 2 lines
+Changed paths:
+   M /trunk/TODO
+   M /trunk/features.txt
+
+*** empty log message ***
+
+------------------------------------------------------------------------
+r1 | bruce | 2001-06-15 19:33:05 -0600 (Fri, 15 Jun 2001) | 2 lines
+Changed paths:
+   A /trunk
+   A /trunk/TODO
+   A /trunk/architecture.txt
+   A /trunk/echo-backend.c
+   A /trunk/features.txt
+   A /trunk/insthier.c
+   A /trunk/log.c
+   A /trunk/log.h
+   A /trunk/mailfront.h
+   A /trunk/qmail-backend.c
+   A /trunk/qmail-validate.c
+   A /trunk/qmail.h
+   A /trunk/qmail=l
+   A /trunk/responses.c
+   A /trunk/responses.h
+   A /trunk/smtp-commands.c
+   A /trunk/smtp-mainloop.c
+   A /trunk/smtp-respond.c
+   A /trunk/smtp.h
+   A /trunk/smtp=l
+   A /trunk/smtpfront-qmail-er.c
+   A /trunk/smtpfront-qmail-er=x
+   A /trunk/smtpfront-qmail.c
+   A /trunk/smtpfront-qmail=x
+   A /trunk/smtpfront-test.c
+   A /trunk/smtpfront-test=x
+
+Initial revision
+
+------------------------------------------------------------------------
